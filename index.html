@@ -51,6 +51,88 @@
   }
   .page-wrap{position:relative}
 
+  /* Scroll progress bar */
+  .scroll-progress{
+    position:fixed;top:0;left:0;right:0;
+    height:3px;z-index:200;
+    background:transparent;pointer-events:none;
+  }
+  .scroll-progress .bar{
+    height:100%;width:0;
+    background:linear-gradient(90deg,var(--sage),var(--gold),var(--khaki));
+    transition:width .1s linear;
+    box-shadow:0 0 10px rgba(163,142,72,.6);
+  }
+
+  /* Trotting cat (appears while scrolling) */
+  .trot-cat{
+    position:fixed;
+    right:32px;bottom:32px;
+    width:110px;
+    z-index:80;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .4s ease, transform .4s ease;
+    pointer-events:none;
+  }
+  .trot-cat.show{opacity:1;transform:translateY(0)}
+  .trot-cat svg{width:100%;color:var(--olive);filter:drop-shadow(0 4px 6px rgba(42,40,31,.15))}
+  @keyframes bodyBob{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-2px)}
+  }
+  @keyframes legA{
+    0%,100%{transform:rotate(-12deg)}
+    50%{transform:rotate(18deg)}
+  }
+  @keyframes legB{
+    0%,100%{transform:rotate(18deg)}
+    50%{transform:rotate(-12deg)}
+  }
+  @keyframes tailSway{
+    0%,100%{transform:rotate(-6deg)}
+    50%{transform:rotate(10deg)}
+  }
+  .trot-cat.show .cat-body{animation:bodyBob .5s ease-in-out infinite}
+  .trot-cat.show .leg-a{animation:legA .5s ease-in-out infinite;transform-origin:top center}
+  .trot-cat.show .leg-b{animation:legB .5s ease-in-out infinite;transform-origin:top center}
+  .trot-cat.show .cat-tail{animation:tailSway .8s ease-in-out infinite;transform-origin:right center}
+
+  /* Floating decorative leaves */
+  .floating-deco{
+    position:absolute;
+    pointer-events:none;
+    z-index:1;
+    opacity:.3;
+    color:var(--sage);
+  }
+  @keyframes floatDrift{
+    0%,100%{transform:translate(0,0) rotate(0deg)}
+    25%{transform:translate(14px,-16px) rotate(5deg)}
+    50%{transform:translate(-8px,-30px) rotate(-4deg)}
+    75%{transform:translate(-18px,-10px) rotate(3deg)}
+  }
+  .floating-deco svg{width:100%;height:100%;animation:floatDrift 12s ease-in-out infinite}
+
+  /* Shimmer on headings */
+  .shimmer{
+    background:linear-gradient(
+      90deg,
+      var(--olive) 0%,
+      var(--olive) 40%,
+      var(--gold) 50%,
+      var(--olive) 60%,
+      var(--olive) 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+    animation:shimmerRun 6s ease-in-out infinite;
+  }
+  @keyframes shimmerRun{
+    0%{background-position:150% 0}
+    100%{background-position:-150% 0}
+  }
+
   /* ========== HEADER ========== */
   header{
     position:sticky;
@@ -650,6 +732,29 @@
 </style>
 </head>
 <body>
+<!-- Scroll progress bar -->
+<div class="scroll-progress"><div class="bar" id="scrollBar"></div></div>
+
+<!-- Trotting cat (appears while scrolling) -->
+<div class="trot-cat" id="trotCat" aria-hidden="true">
+  <svg viewBox="0 0 140 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g class="cat-tail">
+      <path d="M22 50c-8-2-14-8-14-18 4 4 10 4 14 6" />
+    </g>
+    <g class="cat-body">
+      <path d="M22 52c10-14 28-20 46-18 14 1 26 8 32 20"/>
+      <path d="M90 46c3-2 7-2 10 0l6-8-2 10c2 2 3 5 3 8"/>
+      <path d="M96 38l-2-8 6 4M104 38l2-8-6 4"/>
+      <circle cx="102" cy="46" r="1.3" fill="currentColor"/>
+      <path d="M100 50c.6.6 1.4.6 2 0"/>
+    </g>
+    <g class="leg-a"><path d="M40 56l-3 14"/></g>
+    <g class="leg-b"><path d="M54 58l-2 14"/></g>
+    <g class="leg-a" style="animation-delay:.12s"><path d="M76 58l2 14"/></g>
+    <g class="leg-b" style="animation-delay:.12s"><path d="M90 56l3 14"/></g>
+  </svg>
+</div>
+
 <div class="page-wrap">
 <canvas id="pawCanvas"></canvas>
 
@@ -701,15 +806,15 @@
       </div>
       <div class="hero-meta">
         <div class="meta-item">
-          <div class="num">+5.000</div>
+          <div class="num"><span class="counter" data-target="5000" data-prefix="+" data-sep=".">0</span></div>
           <div class="label">Gatos Felices</div>
         </div>
         <div class="meta-item">
-          <div class="num">100%</div>
+          <div class="num"><span class="counter" data-target="100" data-suffix="%">0</span></div>
           <div class="label">Natural</div>
         </div>
         <div class="meta-item">
-          <div class="num">12</div>
+          <div class="num"><span class="counter" data-target="12">0</span></div>
           <div class="label">Recetas</div>
         </div>
       </div>
@@ -754,6 +859,12 @@
 
 <!-- ============= SECRETO ============= -->
 <section class="secret">
+  <div class="floating-deco" style="top:10%;left:4%;width:90px;height:90px;color:var(--olive);opacity:.15">
+    <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 5c20 15 35 35 35 55-20 0-40-15-50-35 5-7 10-13 15-20z"/></svg>
+  </div>
+  <div class="floating-deco" style="bottom:12%;right:6%;width:70px;height:70px;color:var(--cream);opacity:.3;animation-delay:-4s">
+    <svg viewBox="0 0 100 100" fill="currentColor"><path d="M15 80c10-30 40-60 75-65-5 35-30 60-65 75-5-3-7-6-10-10z"/></svg>
+  </div>
   <div class="container secret-inner">
     <div class="fade-in">
       <span class="section-eyebrow">El Secreto</span>
@@ -782,6 +893,12 @@
 
 <!-- ============= NUESTRO BARF / INFO ============= -->
 <section class="info" id="nuestro-barf">
+  <div class="floating-deco" style="top:8%;right:3%;width:110px;height:110px;opacity:.2">
+    <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 5c20 15 35 35 35 55-20 0-40-15-50-35 5-7 10-13 15-20z"/></svg>
+  </div>
+  <div class="floating-deco" style="bottom:10%;left:2%;width:80px;height:80px;color:var(--khaki);opacity:.35;animation-delay:-6s">
+    <svg viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="40"/><path d="M20 35c15 10 40 15 60 5M15 55c20 5 45 10 65 0M25 75c15-5 35-5 50 5" stroke="#7C8456" stroke-width="1.2" fill="none"/></svg>
+  </div>
   <div class="container info-grid">
     <div class="info-visual fade-in">
       <div class="main-img">
@@ -936,6 +1053,9 @@
 
 <!-- ============= RESEÑAS ============= -->
 <section class="reviews" id="resenas">
+  <div class="floating-deco" style="top:12%;right:5%;width:70px;height:70px;color:var(--khaki);opacity:.35">
+    <svg viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="40"/><path d="M20 35c15 10 40 15 60 5M15 55c20 5 45 10 65 0M25 75c15-5 35-5 50 5" stroke="#7C8456" stroke-width="1.2" fill="none"/></svg>
+  </div>
   <div class="container">
     <div class="section-head fade-in">
       <span class="eye">Testimonios</span>
@@ -1110,12 +1230,23 @@
 </div><!-- /page-wrap -->
 
 <script>
-/* ===================== PAW TRAIL ON SCROLL ===================== */
+/* ===================== DYNAMIC PAW TRAIL ===================== */
 (function(){
   const canvas = document.getElementById('pawCanvas');
   const ctx = canvas.getContext('2d');
   const wrap = document.querySelector('.page-wrap');
   let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  let paws = [];
+  let lastScrollY = window.scrollY;
+  let accumScroll = 0;
+  let scrollDir = 1;          // 1 = down, -1 = up
+  let sideToggle = 0;
+
+  const SPACING = 140;        // pixels of scroll per paw
+  const LIFE = 4800;          // total lifetime ms
+  const FADE_IN = 320;
+  const FADE_OUT = 1500;
 
   function resize(){
     const w = wrap.offsetWidth;
@@ -1125,100 +1256,174 @@
     canvas.style.width = w + 'px';
     canvas.style.height = h + 'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    redraw();
   }
 
-  // Generate paw positions along the entire page length
-  // We store them persistently so they stay drawn.
-  const paws = [];
-  let built = false;
-  function buildPaws(){
-    const totalH = wrap.offsetHeight;
-    const stepY = 95;             // vertical spacing
-    const margin = 46;            // distance from edge
-    const jitter = 18;            // horizontal randomness
+  function addPaw(){
     const w = wrap.offsetWidth;
-    paws.length = 0;
-    let side = 0;
-    for(let y = 140; y < totalH - 200; y += stepY){
-      const left = (side % 2 === 0);
-      const x = left
-        ? margin + (Math.random()*jitter)
-        : w - margin - (Math.random()*jitter);
-      const rot = left ? (-14 + Math.random()*10) : (14 - Math.random()*10);
-      paws.push({x, y, rot, left, visible:false});
-      side++;
-    }
-    built = true;
+    const left = (sideToggle % 2 === 0);
+    sideToggle++;
+    const margin = 42;
+    const jitter = 22;
+    const x = left
+      ? margin + Math.random()*jitter
+      : w - margin - Math.random()*jitter;
+
+    // Place paw a bit below the current viewport when scrolling down,
+    // and above when scrolling up, so it feels like the cat walks with you.
+    const offset = scrollDir > 0
+      ? window.innerHeight * (0.5 + Math.random()*0.35)
+      : window.innerHeight * (0.15 + Math.random()*0.3);
+    const y = window.scrollY + offset;
+
+    const rot = left
+      ? (-18 + Math.random()*14)
+      : (18 - Math.random()*14);
+
+    paws.push({
+      x, y, rot,
+      born: performance.now(),
+      scaleJitter: 0.85 + Math.random()*0.35
+    });
   }
 
-  function drawPaw(p, alpha){
+  function drawPaw(p, alpha, scale){
     ctx.save();
     ctx.translate(p.x, p.y);
     ctx.rotate(p.rot * Math.PI/180);
+    ctx.scale(scale * p.scaleJitter, scale * p.scaleJitter);
     ctx.globalAlpha = alpha;
-    ctx.fillStyle = '#7C8456';
+    ctx.fillStyle = '#323915';
     // main pad
     ctx.beginPath();
-    ctx.ellipse(0, 6, 7.5, 6, 0, 0, Math.PI*2);
+    ctx.ellipse(0, 6, 7.8, 6.2, 0, 0, Math.PI*2);
     ctx.fill();
     // toes
     const toes = [[-7,-3],[-3,-8],[3,-8],[7,-3]];
     toes.forEach(([tx,ty])=>{
       ctx.beginPath();
-      ctx.ellipse(tx, ty, 2.6, 3.4, 0, 0, Math.PI*2);
+      ctx.ellipse(tx, ty, 2.7, 3.5, 0, 0, Math.PI*2);
       ctx.fill();
     });
     ctx.restore();
   }
 
-  function redraw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    const scrollTop = window.scrollY;
-    const viewportBottom = scrollTop + window.innerHeight;
-
+  function tick(now){
+    ctx.clearRect(0,0,wrap.offsetWidth,wrap.offsetHeight);
+    paws = paws.filter(p => now - p.born < LIFE);
     paws.forEach(p=>{
-      // paw becomes visible once it passes ~70% of viewport on first scroll-by
-      if(p.y < viewportBottom - 80) p.visible = true;
-      if(p.visible){
-        // fade relative to how recently they appeared — always keep them decent
-        const distance = viewportBottom - p.y;
-        const alpha = Math.min(0.5, 0.15 + distance/1800);
-        drawPaw(p, alpha);
+      const age = now - p.born;
+      let alpha, scale;
+      if(age < FADE_IN){
+        const t = age / FADE_IN;
+        alpha = 0.55 * t;
+        scale = 0.4 + 0.6*t;      // pop-in
+      } else if(age < LIFE - FADE_OUT){
+        alpha = 0.55;
+        scale = 1;
+      } else {
+        const t = (LIFE - age) / FADE_OUT;
+        alpha = 0.55 * t;
+        scale = 1;
       }
+      drawPaw(p, alpha, scale);
     });
+    requestAnimationFrame(tick);
   }
+  requestAnimationFrame(tick);
 
-  let ticking = false;
   window.addEventListener('scroll', ()=>{
-    if(!ticking){
-      requestAnimationFrame(()=>{
-        redraw();
-        ticking=false;
-      });
-      ticking=true;
+    const dy = window.scrollY - lastScrollY;
+    if(dy !== 0) scrollDir = dy > 0 ? 1 : -1;
+    accumScroll += Math.abs(dy);
+    while(accumScroll >= SPACING){
+      addPaw();
+      accumScroll -= SPACING;
     }
+    lastScrollY = window.scrollY;
   }, {passive:true});
 
   window.addEventListener('resize', ()=>{
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    buildPaws();
     resize();
   });
 
-  // Initial — wait a tick so layout is stable
-  window.addEventListener('load', ()=>{
-    buildPaws();
-    resize();
-    // reveal on first render
-    setTimeout(()=>{redraw()}, 50);
-  });
+  window.addEventListener('load', resize);
+  resize();
+})();
 
-  // Rebuild on DOM ready as fallback
-  if(document.readyState !== 'loading'){
-    buildPaws();
-    resize();
-  }
+/* ===================== SCROLL PROGRESS BAR ===================== */
+(function(){
+  const bar = document.getElementById('scrollBar');
+  if(!bar) return;
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement;
+    const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = pct + '%';
+  }, {passive:true});
+})();
+
+/* ===================== TROTTING CAT ON SCROLL ===================== */
+(function(){
+  const cat = document.getElementById('trotCat');
+  if(!cat) return;
+  let timer;
+  window.addEventListener('scroll', ()=>{
+    cat.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(()=>cat.classList.remove('show'), 900);
+  }, {passive:true});
+})();
+
+/* ===================== COUNTER ANIMATION ===================== */
+(function(){
+  const counters = document.querySelectorAll('.counter');
+  const animate = (el)=>{
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const sep = el.dataset.sep || '';
+    const duration = 1800;
+    const start = performance.now();
+    function step(now){
+      const p = Math.min((now-start)/duration, 1);
+      const eased = 1 - Math.pow(1-p, 3);
+      const val = Math.round(target * eased);
+      const formatted = sep
+        ? val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep)
+        : val.toString();
+      el.textContent = prefix + formatted + suffix;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  };
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        animate(e.target);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.4});
+  counters.forEach(c=>obs.observe(c));
+})();
+
+/* ===================== TILT 3D ON PRODUCT CARDS ===================== */
+(function(){
+  const cards = document.querySelectorAll('.product-card, .review-card');
+  cards.forEach(card=>{
+    card.style.transformStyle = 'preserve-3d';
+    card.addEventListener('mousemove', (e)=>{
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - .5;
+      const y = (e.clientY - rect.top) / rect.height - .5;
+      const rx = (-y * 6).toFixed(2);
+      const ry = (x * 6).toFixed(2);
+      card.style.transform = `translateY(-8px) perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    card.addEventListener('mouseleave', ()=>{
+      card.style.transform = '';
+    });
+  });
 })();
 
 /* ===================== FADE-IN ON SCROLL ===================== */
