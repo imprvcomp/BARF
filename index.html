@@ -922,6 +922,21 @@
     aspect-ratio:4/5;box-shadow:var(--shadow-md);
   }
   .info-visual .main-img img{width:100%;height:100%;object-fit:cover}
+
+  /* ============================================
+     PALETTE TONE — sepia warm filter to match brand
+  ============================================ */
+  .palette-tone{
+    filter:sepia(.55) saturate(.75) hue-rotate(355deg) brightness(.94) contrast(1.04);
+  }
+  .palette-tone-wrap{
+    position:relative;
+  }
+  .palette-tone-wrap::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(145deg, rgba(124,132,86,.18), rgba(163,142,72,.12));
+    mix-blend-mode:multiply;
+  }
   .info-visual .side-img{
     position:absolute;bottom:-40px;right:-30px;
     width:55%;aspect-ratio:4/3;
@@ -984,6 +999,10 @@
     display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
     position:relative;z-index:2;
   }
+  .product-grid.two-cols{
+    grid-template-columns:repeat(2,1fr);
+    max-width:880px;margin:0 auto;gap:40px;
+  }
   .product-card{
     position:relative;background:var(--cream);border-radius:24px;
     padding:0;color:var(--dark);
@@ -1025,12 +1044,22 @@
   }
   .product-card:hover .product-photo img{transform:scale(1.1)}
 
+  /* real product photo (cream bg matches image background) */
+  .product-photo-real{
+    background:#F6F6E9;
+  }
+  .product-photo-real img{
+    object-fit:contain;
+    padding:18px;
+  }
+
   /* subtle bottom gradient on photo */
   .product-photo::after{
     content:"";position:absolute;inset:0;z-index:1;
     background:linear-gradient(180deg,transparent 60%,rgba(42,40,31,.3));
     pointer-events:none;
   }
+  .product-photo-real::after{display:none}
 
   /* floating tag */
   .tag{
@@ -1606,12 +1635,12 @@
         <path d="M 80 96 q 6 -4 12 0 M 100 92 q 6 -3 12 0 M 122 94 q 6 -3 12 0 M 144 100 q 5 -2 10 0"
               stroke="#0d0b06" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
 
-        <!-- ====== NECK (centered) ====== -->
-        <path d="M 180 104
-                 Q 196 96, 204 92
-                 L 220 100
-                 Q 214 118, 198 126
-                 Q 186 122, 180 114 Z"
+        <!-- ====== NECK (centered, connects body to head) ====== -->
+        <path d="M 190 124
+                 Q 188 114, 196 108
+                 L 214 108
+                 Q 218 120, 214 128
+                 Q 202 130, 190 124 Z"
               fill="url(#tbFur)"/>
 
         <!-- oversized head -->
@@ -1845,7 +1874,7 @@
     <div class="fade-in">
       <span class="section-eyebrow">El Secreto</span>
       <h2>Ingredientes<br>100% Naturales</h2>
-      <p class="lead">Carnes magras, órganos, huesos carnosos molidos y vegetales seleccionados. La dieta BARF imita lo que un felino comería en libertad — sin conservantes, sin cereales, sin atajos.</p>
+      <p class="lead">Carnes magras, órganos y huesos carnosos molidos. La dieta BARF imita lo que un felino comería en libertad — sin conservantes, sin cereales, sin atajos.</p>
     </div>
     <div class="icon-row stagger fade-in">
       <div class="icon-card">
@@ -1877,11 +1906,11 @@
   </div>
   <div class="container info-grid">
     <div class="info-visual fade-in">
-      <div class="main-img">
-        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=900&q=80" alt="Gato naranja mirando"/>
+      <div class="main-img palette-tone-wrap">
+        <img class="palette-tone" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=900&q=80" alt="Gato mirando"/>
       </div>
-      <div class="side-img">
-        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80" alt="Gato cercano"/>
+      <div class="side-img palette-tone-wrap">
+        <img class="palette-tone" src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80" alt="Gato cercano"/>
       </div>
     </div>
     <div class="fade-in">
@@ -1895,7 +1924,7 @@
         </li>
         <li>
           <div class="num">02</div>
-          <div class="txt"><strong>Balance nutricional</strong><span>Proporción exacta de músculo, órganos, huesos carnosos y vegetales.</span></div>
+          <div class="txt"><strong>Balance nutricional</strong><span>Proporción exacta de músculo, órganos y huesos carnosos molidos.</span></div>
         </li>
         <li>
           <div class="num">03</div>
@@ -1919,10 +1948,10 @@
       <p>Pequeños lotes, frescura garantizada. Elegí la receta que mejor calce con el paladar de tu gato.</p>
     </div>
 
-    <div class="product-grid stagger fade-in">
+    <div class="product-grid two-cols stagger fade-in">
 
-      <!-- ===== CARD 1 ===== -->
-      <article class="product-card" data-id="1" data-name="Mix Pollo & Res" data-price="13" data-img="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80">
+      <!-- ===== CARD 1 — BARF CRUDO ===== -->
+      <article class="product-card" data-id="1" data-name="BARF Crudo" data-price="13" data-img="assets/barf-crudo.jpg">
         <div class="ribbon">Bestseller</div>
         <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
           <g class="kitten-body" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1934,22 +1963,22 @@
             <path d="M37 66c-4 2-8 2-12 0"/>
           </g>
           <g class="yarn" transform="translate(22 72)">
-            <circle r="8" fill="#c0392b" stroke="#7d2a1c" stroke-width="1"/>
-            <path d="M-6 -3c3 2 6 4 8 7M-5 2c4 1 8 3 10 5M-3 -6c2 3 4 6 5 9" stroke="#7d2a1c" stroke-width="0.8" fill="none"/>
+            <circle r="8" fill="#A38E48" stroke="#6b5c2e" stroke-width="1"/>
+            <path d="M-6 -3c3 2 6 4 8 7M-5 2c4 1 8 3 10 5M-3 -6c2 3 4 6 5 9" stroke="#6b5c2e" stroke-width="0.8" fill="none"/>
           </g>
         </svg>
-        <div class="product-photo">
+        <div class="product-photo product-photo-real">
           <div class="tag gold">Más Vendido</div>
           <button class="quick-view" aria-label="Vista rápida">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>
           <div class="weight-badge">500 g</div>
-          <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80" alt="Mix Pollo y Res"/>
+          <img src="assets/barf-crudo.jpg" alt="BARF Crudo para gatos"/>
         </div>
         <div class="card-body">
-          <div class="category">Receta Completa</div>
-          <h3>Mix Pollo &amp; Res</h3>
-          <p class="desc">Carne magra, órganos frescos y vegetales selectos.</p>
+          <div class="category">Receta Cruda</div>
+          <h3>BARF Crudo</h3>
+          <p class="desc">Carne y órganos frescos, sin cocción. Nutrientes biológicamente intactos.</p>
           <div class="stars">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
@@ -1972,57 +2001,8 @@
         </div>
       </article>
 
-      <!-- ===== CARD 2 ===== -->
-      <article class="product-card" data-id="2" data-name="Pavo BARF" data-price="12" data-img="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=400&q=80">
-        <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-          <g class="kitten-body" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M55 62c-10 0-18-6-18-14 0-2 0-4 1-6l-4-6c-1-1 0-3 2-2l6 3c3-1 6-2 9-2s6 1 9 2l6-3c2-1 3 1 2 2l-4 6c1 2 1 4 1 6 0 8-4 14-10 14z"/>
-            <circle cx="47" cy="46" r="1.4" fill="currentColor"/>
-            <circle cx="57" cy="46" r="1.4" fill="currentColor"/>
-            <path d="M52 51c-1 1-2 1-3 0"/>
-            <path d="M55 62l3 10M49 62l-2 10"/>
-            <path d="M37 66c-4 2-8 2-12 0"/>
-          </g>
-          <g class="yarn" transform="translate(22 72)">
-            <circle r="8" fill="#A38E48" stroke="#6b5c2e" stroke-width="1"/>
-            <path d="M-6 -3c3 2 6 4 8 7M-5 2c4 1 8 3 10 5M-3 -6c2 3 4 6 5 9" stroke="#6b5c2e" stroke-width="0.8" fill="none"/>
-          </g>
-        </svg>
-        <div class="product-photo">
-          <div class="tag">Ligero</div>
-          <button class="quick-view" aria-label="Vista rápida">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <div class="weight-badge">500 g</div>
-          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80" alt="Pavo BARF"/>
-        </div>
-        <div class="card-body">
-          <div class="category">Receta Ligera</div>
-          <h3>Pavo BARF</h3>
-          <p class="desc">Proteína magra ideal para gatos sensibles o senior.</p>
-          <div class="stars">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-            <span class="rev-count">(217)</span>
-          </div>
-          <div class="divider"></div>
-          <div class="product-row">
-            <div class="price-wrap">
-              <span class="price"><span class="cur">$</span>12<small style="font-size:16px">.00</small></span>
-            </div>
-            <button class="add-btn">
-              <span>Añadir</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- ===== CARD 3 ===== -->
-      <article class="product-card" data-id="3" data-name="Pescado BARF" data-price="13" data-img="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&q=80">
+      <!-- ===== CARD 2 — BARF COCIDO ===== -->
+      <article class="product-card" data-id="2" data-name="BARF Cocido" data-price="13" data-img="assets/barf-cocido.jpg">
         <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
           <g class="kitten-body" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M55 62c-10 0-18-6-18-14 0-2 0-4 1-6l-4-6c-1-1 0-3 2-2l6 3c3-1 6-2 9-2s6 1 9 2l6-3c2-1 3 1 2 2l-4 6c1 2 1 4 1 6 0 8-4 14-10 14z"/>
@@ -2037,25 +2017,25 @@
             <path d="M-6 -3c3 2 6 4 8 7M-5 2c4 1 8 3 10 5M-3 -6c2 3 4 6 5 9" stroke="#4a5130" stroke-width="0.8" fill="none"/>
           </g>
         </svg>
-        <div class="product-photo">
-          <div class="tag">Omega 3</div>
+        <div class="product-photo product-photo-real">
+          <div class="tag">Suave</div>
           <button class="quick-view" aria-label="Vista rápida">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>
           <div class="weight-badge">500 g</div>
-          <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=800&q=80" alt="Pescado BARF"/>
+          <img src="assets/barf-cocido.jpg" alt="BARF Cocido para gatos"/>
         </div>
         <div class="card-body">
-          <div class="category">Pescado Premium</div>
-          <h3>Pescado BARF</h3>
-          <p class="desc">Rico en Omega 3 para pelaje brillante y articulaciones.</p>
+          <div class="category">Receta Cocida</div>
+          <h3>BARF Cocido</h3>
+          <p class="desc">La misma fórmula, cocida a baja temperatura. Ideal para gatos sensibles o senior.</p>
           <div class="stars">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-            <span class="rev-count">(156)</span>
+            <span class="rev-count">(217)</span>
           </div>
           <div class="divider"></div>
           <div class="product-row">
@@ -2346,7 +2326,7 @@
         <button class="faq-q">¿Qué es exactamente el alimento BARF?
           <span class="faq-icon"></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">BARF (Biologically Appropriate Raw Food) es una dieta cruda diseñada para respetar la biología ancestral del gato: músculo, órganos, huesos carnosos molidos y un pequeño porcentaje de vegetales. Cada receta está balanceada por veterinarios nutricionistas.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">BARF (Biologically Appropriate Raw Food) es una dieta cruda diseñada para respetar la biología ancestral del gato: músculo, órganos y huesos carnosos molidos. Cada receta está balanceada por veterinarios nutricionistas.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo hago la transición desde el alimento balanceado?
@@ -2703,7 +2683,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 
 /* ===================== SHOPPING CART ===================== */
 (function(){
-  const STORAGE_KEY = 'barf_cart_v1';
+  const STORAGE_KEY = 'barf_cart_v2';
   let cart = [];
   try { cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e){ cart = []; }
 
