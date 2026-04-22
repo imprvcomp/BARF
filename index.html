@@ -158,92 +158,118 @@
   }
   .trot-cat.show .tb-ear{animation:tbEarTwitch 4.5s ease-in-out infinite;transform-origin:bottom center}
 
-  /* ========== CINEMA SECTION (cat.mp4) ========== */
-  .cinema{
+  /* ============================================
+     HISTORIA BARFirenzina (cinemático, split layout)
+  ============================================ */
+  .historia{
     position:relative;
-    padding:0;
-    background:var(--dark);
+    min-height:min(90vh, 780px);
+    background:#14130e;
     color:var(--cream);
+    display:flex;align-items:center;
     overflow:hidden;
+    padding:140px 0;
+    isolation:isolate;
   }
-  .cinema-wrap{
-    position:relative;
-    height:min(90vh, 820px);
-    min-height:560px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+  .hist-video{
+    position:absolute;inset:0;z-index:0;overflow:hidden;
   }
-  .cinema-video{
-    position:absolute;inset:0;z-index:0;
-    overflow:hidden;
-  }
-  .cinema-video video{
+  .hist-video video{
     width:100%;height:100%;object-fit:cover;
-    filter:brightness(.9) contrast(1.05) saturate(1.05);
-    transform:scale(1.05);
-    transition:transform 10s ease;
+    filter:brightness(.75) contrast(1.08) saturate(.9);
+    transform:scale(1.04);
+    transition:transform 14s ease;
   }
-  .cinema:hover .cinema-video video{transform:scale(1.12)}
-  .cinema-video::after{
-    content:"";position:absolute;inset:0;z-index:2;
-    background:linear-gradient(180deg, rgba(42,40,31,.25) 0%, rgba(42,40,31,.15) 40%, rgba(42,40,31,.55) 100%);
-    pointer-events:none;
+  .historia:hover .hist-video video{transform:scale(1.1)}
+  .hist-vig{
+    position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(ellipse at 65% 50%, transparent 20%, rgba(20,19,14,.85) 100%),
+      linear-gradient(90deg, rgba(20,19,14,.9) 0%, rgba(20,19,14,.35) 55%, rgba(20,19,14,.55) 100%);
   }
-  .cinema-content{
+  .hist-rec{
+    position:absolute;top:28px;right:32px;z-index:4;
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:10px;letter-spacing:.4em;text-transform:uppercase;
+    color:rgba(246,246,233,.85);font-weight:600;
+    padding:9px 16px;border:1px solid rgba(246,246,233,.2);border-radius:999px;
+    backdrop-filter:blur(6px);background:rgba(20,19,14,.35);
+  }
+  .hist-rec span{
+    width:8px;height:8px;border-radius:50%;
+    background:#c0392b;
+    box-shadow:0 0 0 0 rgba(192,57,43,.6);
+    animation:livePulse 1.8s ease-in-out infinite;
+  }
+  .hist-inner{
     position:relative;z-index:3;
-    max-width:760px;
-    padding:0 32px;
-    text-align:center;
+    display:grid;grid-template-columns:1.2fr 1fr;
+    gap:60px;align-items:center;
   }
-  .cinema .eyebrow-cin{
+  .hist-eyebrow{
     display:inline-flex;align-items:center;gap:12px;
-    font-size:11px;letter-spacing:.35em;text-transform:uppercase;
-    font-weight:600;color:var(--khaki);
-    margin-bottom:24px;
+    font-size:10px;letter-spacing:.45em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:28px;
   }
-  .cinema .eyebrow-cin::before,
-  .cinema .eyebrow-cin::after{
-    content:"";width:40px;height:1.5px;background:var(--khaki);
+  .hist-eyebrow::before{
+    content:"";width:32px;height:1px;background:var(--gold);
   }
-  .cinema h2{
-    font-family:var(--serif);
-    font-size:clamp(44px,6vw,92px);
-    font-weight:500;line-height:.98;letter-spacing:-.01em;
-    margin-bottom:28px;
+  .hist-text h2{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(46px, 6.5vw, 96px);
+    line-height:.96;letter-spacing:-.02em;
     color:var(--cream);
   }
-  .cinema h2 em{
+  .hist-text h2 em{
     font-style:italic;color:var(--khaki);display:block;
   }
-  .cinema .cin-sub{
-    max-width:540px;margin:0 auto 40px;
-    font-size:17px;color:rgba(246,246,233,.85);line-height:1.6;
+  .hist-divider{
+    margin:34px 0 28px;width:80px;height:1px;
+    background:rgba(246,246,233,.25);position:relative;
   }
-  .cinema-stats{
-    display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
-    margin-top:50px;padding-top:32px;
-    border-top:1px solid rgba(246,246,233,.2);
+  .hist-divider span{
+    position:absolute;left:0;top:-2px;width:20px;height:5px;
+    background:var(--gold);border-radius:1px;
   }
-  .cinema-stats .stat{text-align:center}
-  .cinema-stats .stat .n{
-    font-family:var(--serif);font-size:40px;font-weight:600;
-    color:var(--khaki);line-height:1;display:block;
+  .hist-text p{
+    max-width:440px;font-size:16.5px;line-height:1.65;
+    color:rgba(246,246,233,.78);margin-bottom:38px;
   }
-  .cinema-stats .stat .l{
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-    color:rgba(246,246,233,.7);margin-top:6px;
+  .hist-btn{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:16px 28px;border:1px solid rgba(246,246,233,.35);
+    font-size:11px;letter-spacing:.35em;text-transform:uppercase;font-weight:600;
+    color:var(--cream);border-radius:999px;
+    transition:all .35s ease;
+    backdrop-filter:blur(6px);
   }
-  .cinema-play{
-    position:absolute;bottom:28px;left:28px;z-index:3;
-    display:flex;align-items:center;gap:10px;
-    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-    font-weight:600;color:var(--cream);
+  .hist-btn:hover{
+    background:var(--cream);color:var(--olive);border-color:var(--cream);
+    gap:18px;
   }
-  .cinema-play .rec{
-    width:10px;height:10px;border-radius:50%;
-    background:#c0392b;animation:livePulse 1.6s ease-in-out infinite;
+  .hist-btn svg{width:16px;height:16px}
+
+  .hist-meta{
+    display:flex;flex-direction:column;gap:40px;
+    padding-left:40px;
+    border-left:1px solid rgba(246,246,233,.18);
+  }
+  .hist-meta > div{display:flex;flex-direction:column;gap:6px}
+  .hist-meta .hm-n{
+    font-family:var(--serif);font-weight:500;
+    font-size:54px;line-height:1;color:var(--khaki);
+    letter-spacing:-.015em;
+  }
+  .hist-meta .hm-l{
+    font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+    color:rgba(246,246,233,.55);
+  }
+
+  @media (max-width:900px){
+    .hist-inner{grid-template-columns:1fr;gap:40px}
+    .hist-meta{flex-direction:row;justify-content:space-between;gap:20px;padding-left:0;padding-top:28px;border-left:none;border-top:1px solid rgba(246,246,233,.18)}
+    .hist-meta .hm-n{font-size:36px}
+    .historia{padding:100px 0}
   }
 
   /* ========== PROCESS SECTION WITH VIDEO ========== */
@@ -1450,30 +1476,16 @@
     color:rgba(246,246,233,.55);
   }
 
-  /* TRIO MINIMAL */
-  .trio{
-    display:grid;grid-template-columns:repeat(3, 1fr);
-    gap:0;margin:100px 0 0;
-    border-top:1px solid rgba(191,187,133,.15);
+  /* EXPLAIN signoff line */
+  .explain-signoff{
+    text-align:center;margin:60px auto 0;
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:18px;color:rgba(246,246,233,.55);
+    letter-spacing:.01em;
   }
-  .trio-item{
-    padding:56px 28px 0;
-    text-align:center;
-    border-right:1px solid rgba(191,187,133,.15);
-    display:flex;flex-direction:column;align-items:center;gap:14px;
-  }
-  .trio-item:last-child{border-right:none}
-  .trio-ico{
-    width:54px;height:54px;color:var(--gold);opacity:.9;
-    margin-bottom:6px;
-  }
-  .trio-item strong{
-    font-family:var(--serif);font-weight:500;
-    font-size:32px;color:var(--cream);letter-spacing:-.01em;
-  }
-  .trio-item span{
-    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
-    color:rgba(246,246,233,.5);
+  .explain-signoff::before,
+  .explain-signoff::after{
+    content:"—";margin:0 14px;color:var(--gold);font-style:normal;opacity:.6;
   }
 
   @media (max-width: 960px){
@@ -1481,94 +1493,124 @@
     .stat-ticker .stat:nth-child(2){border-right:none}
     .stat-ticker .stat:nth-child(1),
     .stat-ticker .stat:nth-child(2){border-bottom:1px solid rgba(191,187,133,.12)}
-    .trio{grid-template-columns:1fr;gap:0}
-    .trio-item{border-right:none;border-bottom:1px solid rgba(191,187,133,.15);padding:40px 20px}
-    .trio-item:last-child{border-bottom:none}
     .explain{padding:100px 0 110px}
   }
 
   /* ============================================
-     NOTAS (sección editable por la clienta)
+     INSTAGRAM FEED (embed grid)
   ============================================ */
-  .notas{
+  .ig-section{
     background:var(--cream);
     padding:130px 0 140px;
-    position:relative;
+    position:relative;overflow:hidden;
   }
-  .notas-head{
-    text-align:center;max-width:720px;margin:0 auto 70px;
+  .ig-section::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+    background-image:radial-gradient(circle at 2px 2px, rgba(124,132,86,.12) 1px, transparent 0);
+    background-size:28px 28px;
   }
-  .notas-head .eyebrow-n{
+  .ig-head{
+    text-align:center;max-width:720px;margin:0 auto 72px;position:relative;
+  }
+  .ig-eyebrow{
     display:inline-flex;align-items:center;gap:12px;
-    font-size:11px;letter-spacing:.4em;text-transform:uppercase;
+    font-size:11px;letter-spacing:.42em;text-transform:uppercase;
     color:var(--sage);font-weight:600;margin-bottom:18px;
   }
-  .notas-head .eyebrow-n::before,
-  .notas-head .eyebrow-n::after{
+  .ig-eyebrow::before,
+  .ig-eyebrow::after{
     content:"";width:40px;height:1px;background:var(--khaki);
   }
-  .notas-head h2{
+  .ig-head h2{
     font-family:var(--serif);font-weight:500;
-    font-size:clamp(34px, 4.6vw, 56px);
-    line-height:1.08;letter-spacing:-.015em;
+    font-size:clamp(36px, 4.8vw, 60px);
+    line-height:1.05;letter-spacing:-.015em;
     color:var(--olive);
   }
-  .notas-head h2 em{color:var(--gold);font-style:italic}
-  .notas-head p{
-    margin-top:18px;color:rgba(42,40,31,.65);font-size:16px;
+  .ig-head h2 em{
+    font-style:italic;
+    background:linear-gradient(90deg, #d6b35e, #a38e48, #7C8456);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
-  .notas-grid{
-    display:grid;grid-template-columns:repeat(3, 1fr);
-    gap:24px;
+  .ig-head p{
+    margin-top:18px;font-size:16px;color:rgba(42,40,31,.65);
   }
-  .nota{
+
+  .ig-grid{
+    display:grid;grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+    align-items:start;
+  }
+  .ig-slot{
     background:#fff;
-    border:1px solid rgba(191,187,133,.35);
+    border:1px solid rgba(191,187,133,.4);
     border-radius:4px;
-    padding:38px 32px;
-    position:relative;
+    padding:14px;
+    min-height:360px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
     transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .4s ease;
-    overflow:hidden;
   }
-  .nota::before{
-    content:"";position:absolute;top:0;left:0;width:0;height:2px;
-    background:linear-gradient(90deg, var(--gold), var(--sage));
-    transition:width .6s cubic-bezier(.2,.8,.2,1);
-  }
-  .nota:hover{
+  .ig-slot:hover{
     transform:translateY(-4px);
     box-shadow:0 30px 60px -30px rgba(42,40,31,.25);
     border-color:var(--khaki);
   }
-  .nota:hover::before{width:100%}
-  .nota-tag{
-    display:inline-block;
-    font-size:10px;letter-spacing:.35em;text-transform:uppercase;
-    color:var(--gold);font-weight:600;
-    padding:6px 14px;
-    border:1px solid rgba(163,142,72,.3);
-    border-radius:999px;
-    margin-bottom:22px;
+  .ig-slot .instagram-media{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    margin:0 !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:2px !important;
   }
-  .nota h3{
-    font-family:var(--serif);font-weight:500;
-    font-size:26px;line-height:1.2;letter-spacing:-.01em;
-    color:var(--olive);margin-bottom:14px;
+  /* Fallback mientras cargan los embeds o si no hay URL válida */
+  .ig-slot .instagram-media:not([data-instgrm-rendered]){
+    background:linear-gradient(145deg, rgba(124,132,86,.08), rgba(163,142,72,.12));
+    border-radius:2px;
+    min-height:320px;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
   }
-  .nota p{
-    font-size:15px;line-height:1.6;color:rgba(42,40,31,.72);
+  .ig-slot .instagram-media:not([data-instgrm-rendered])::before{
+    content:"";
+    position:absolute;left:50%;top:calc(50% - 28px);transform:translateX(-50%);
+    width:48px;height:48px;
+    background:linear-gradient(45deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%);
+    border-radius:12px;
+    opacity:.85;pointer-events:none;
   }
-  .nota-meta{
-    display:flex;align-items:center;gap:10px;margin-top:24px;
-    padding-top:20px;border-top:1px dashed rgba(191,187,133,.5);
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--sage);
+  .ig-slot .instagram-media:not([data-instgrm-rendered]) a{
+    color:var(--olive);font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+    font-weight:600;margin-top:42px;display:block;position:relative;z-index:2;
   }
-  .nota-meta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
 
-  @media (max-width: 960px){
-    .notas-grid{grid-template-columns:1fr;gap:18px}
-    .notas{padding:90px 0 100px}
+  .ig-follow{
+    display:inline-flex;align-items:center;gap:12px;
+    margin:60px auto 0;
+    padding:16px 32px;
+    background:linear-gradient(45deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%);
+    color:#fff;font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;
+    border-radius:999px;
+    box-shadow:0 20px 40px -20px rgba(214,41,118,.5);
+    transition:transform .4s ease, box-shadow .4s ease;
+    position:relative;
+    left:50%;transform:translateX(-50%);
+  }
+  .ig-follow:hover{
+    transform:translateX(-50%) translateY(-3px);
+    box-shadow:0 26px 50px -18px rgba(214,41,118,.6);
+  }
+  .ig-follow svg{width:18px;height:18px}
+
+  @media (max-width:1100px){
+    .ig-grid{grid-template-columns:repeat(2, 1fr)}
+  }
+  @media (max-width:600px){
+    .ig-grid{grid-template-columns:1fr;gap:18px}
+    .ig-section{padding:90px 0 100px}
   }
 </style>
 </head>
@@ -1635,13 +1677,8 @@
         <path d="M 80 96 q 6 -4 12 0 M 100 92 q 6 -3 12 0 M 122 94 q 6 -3 12 0 M 144 100 q 5 -2 10 0"
               stroke="#0d0b06" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
 
-        <!-- ====== NECK (centered, connects body to head) ====== -->
-        <path d="M 190 124
-                 Q 188 114, 196 108
-                 L 214 108
-                 Q 218 120, 214 128
-                 Q 202 130, 190 124 Z"
-              fill="url(#tbFur)"/>
+        <!-- ====== NECK (simple centered ellipse) ====== -->
+        <ellipse cx="198" cy="112" rx="16" ry="10" fill="url(#tbFur)"/>
 
         <!-- oversized head -->
         <path d="M 210 46
@@ -1739,7 +1776,7 @@
       <li><a href="#nuestro-barf">Nuestro BARF</a></li>
       <li><a href="#productos">Productos</a></li>
       <li><a href="#explicaciones">Explicaciones</a></li>
-      <li><a href="#notas">Notas</a></li>
+      <li><a href="#instagram">Instagram</a></li>
       <li><a href="#beneficios">Beneficios</a></li>
       <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
@@ -2054,36 +2091,38 @@
   </div>
 </section>
 
-<!-- ============= CINEMA (cat.mp4) ============= -->
-<section class="cinema" id="historia">
-  <div class="cinema-wrap">
-    <div class="cinema-video">
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="assets/cat.mp4" type="video/mp4" />
-      </video>
+<!-- ============= HISTORIA BARFirenzina (cinemático) ============= -->
+<section class="historia" id="historia">
+  <div class="hist-video">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="assets/cat.mp4" type="video/mp4" />
+    </video>
+    <div class="hist-vig"></div>
+  </div>
+
+  <div class="hist-rec"><span></span>Filmado en nuestra cocina</div>
+
+  <div class="container hist-inner">
+    <div class="hist-text fade-in">
+      <span class="hist-eyebrow">Historia BARFirenzina</span>
+      <h2>Porque un gato <em>no pide permiso.</em></h2>
+      <div class="hist-divider"><span></span></div>
+      <p>Nacimos del vínculo con nuestros propios felinos. Entendimos que su instinto no negocia — y que la comida que merecen tampoco debería hacer concesiones.</p>
+      <a href="#productos" class="hist-btn">Ver recetas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
 
-    <div class="cinema-play">
-      <span class="rec"></span>Filmado en nuestra cocina
-    </div>
-
-    <div class="cinema-content fade-in">
-      <div class="eyebrow-cin">Historia BARFirenzina</div>
-      <h2>Porque un gato<br><em>no pide permiso.</em></h2>
-      <p class="cin-sub">Nacimos del vínculo con nuestros propios felinos. Entendimos que su instinto no negocia — y que la comida que merecen tampoco debería hacer concesiones.</p>
-      <a href="#productos" class="btn btn-secondary" style="border-color:var(--khaki);color:var(--khaki)">Descubrir nuestras recetas</a>
-      <div class="cinema-stats">
-        <div class="stat"><span class="n">2020</span><span class="l">Fundación</span></div>
-        <div class="stat"><span class="n">+5.000</span><span class="l">Gatos Felices</span></div>
-        <div class="stat"><span class="n">48 hs</span><span class="l">Cadena de frío</span></div>
-      </div>
+    <div class="hist-meta fade-in">
+      <div><span class="hm-n">2020</span><span class="hm-l">Fundación</span></div>
+      <div><span class="hm-n">+5.000</span><span class="hm-l">Gatos felices</span></div>
+      <div><span class="hm-n">48 hs</span><span class="hm-l">Cadena de frío</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============= EXPLICACIONES ============= -->
+<!-- ============= EXPLICACIONES (ticker minimalista) ============= -->
 <section class="explain" id="explicaciones">
-  <div class="explain-grid-lines"></div>
   <div class="container">
     <header class="explain-head fade-in">
       <span class="eyebrow-x">Explicaciones</span>
@@ -2109,92 +2148,75 @@
       </div>
     </div>
 
-    <div class="trio fade-in">
-      <div class="trio-item">
-        <div class="trio-ico">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 22c0-6 5-11 12-11s12 5 12 11"/><path d="M6 28h28"/><circle cx="14" cy="18" r="1.2" fill="currentColor"/><circle cx="26" cy="18" r="1.2" fill="currentColor"/></svg>
-        </div>
-        <strong>Crudo</strong>
-        <span>nunca cocido</span>
-      </div>
-      <div class="trio-item">
-        <div class="trio-ico">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 6v28M6 20h28M12 12l16 16M28 12L12 28"/></svg>
-        </div>
-        <strong>Cero</strong>
-        <span>sin aditivos</span>
-      </div>
-      <div class="trio-item">
-        <div class="trio-ico">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="20" r="14"/><path d="M20 11v9l6 4"/></svg>
-        </div>
-        <strong>Fresco</strong>
-        <span>48h al hogar</span>
-      </div>
-    </div>
+    <p class="explain-signoff fade-in">Datos reales. Sin letra chica.</p>
   </div>
 </section>
 
-<!-- ============= NOTAS (sección editable por la clienta) ============= -->
+<!-- ============= INSTAGRAM FEED ============= -->
 <!--
-  ╔═══════════════════════════════════════════════════════════════════╗
-  ║  SECCIÓN EDITABLE — poné acá cualquier información o dato random  ║
-  ║  • Cambiá los textos entre las etiquetas <h3>, <p>, <span>        ║
-  ║  • Podés agregar o quitar bloques <article class="nota">          ║
-  ║  • Cada bloque tiene: categoría, título, descripción y meta abajo ║
-  ╚═══════════════════════════════════════════════════════════════════╝
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║  CÓMO EMBEBER TU INSTAGRAM                                             ║
+  ║  1) Entrá a un post tuyo en Instagram                                  ║
+  ║  2) Tocá los 3 puntitos · · · → "Insertar" → "Copiar código"           ║
+  ║  3) Pegá ese código completo donde dice <!-- POST N --> más abajo      ║
+  ║                                                                        ║
+  ║  Como alternativa rápida: reemplazá la URL en data-instgrm-permalink  ║
+  ║  por el link de TU post (ej: https://www.instagram.com/p/TU_POST/)     ║
+  ║                                                                        ║
+  ║  También cambiá el @usuario en el título y el link "Seguir"            ║
+  ╚════════════════════════════════════════════════════════════════════════╝
 -->
-<section class="notas" id="notas">
+<section class="ig-section" id="instagram">
   <div class="container">
-
-    <header class="notas-head fade-in">
-      <!-- EDITABLE: subtítulo chico arriba -->
-      <span class="eyebrow-n">Notas</span>
-      <!-- EDITABLE: título grande — podés usar <em> para resaltar una palabra -->
-      <h2>Información y <em>novedades</em>.</h2>
-      <!-- EDITABLE: bajada corta (opcional, podés borrarla) -->
-      <p>Avisos, datos curiosos, recordatorios y todo lo que quieras contarles a tus clientes.</p>
+    <header class="ig-head fade-in">
+      <span class="ig-eyebrow">Comunidad</span>
+      <h2>Seguinos en <em>@barfirenzina</em></h2>
+      <p>Gatos felices, recetas del día y detrás de escena.</p>
     </header>
 
-    <div class="notas-grid">
+    <div class="ig-grid fade-in">
 
-      <!-- ════════ NOTA 1 — duplicá este bloque para agregar más ════════ -->
-      <article class="nota fade-in">
-        <span class="nota-tag">Aviso</span>
-        <h3>Envíos gratis sobre $25.000</h3>
-        <p>Recibí tu pedido con cadena de frío garantizada. Cobertura en CABA y GBA en menos de 24 horas.</p>
-        <div class="nota-meta">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Vigente este mes
-        </div>
-      </article>
+      <!-- POST 1 — reemplazá la URL con el link a tu post -->
+      <div class="ig-slot">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        </blockquote>
+      </div>
 
-      <!-- ════════ NOTA 2 ════════ -->
-      <article class="nota fade-in">
-        <span class="nota-tag">Dato</span>
-        <h3>Tu gato toma agua con la comida</h3>
-        <p>El BARF tiene 92% de humedad natural. Los gatos hidratan mal si toman solo croquetas — por eso el BARF les previene problemas renales.</p>
-        <div class="nota-meta">
-          <svg viewBox="0 0 24 24"><path d="M12 3l7 8a7 7 0 1 1-14 0z"/></svg>
-          Salud felina
-        </div>
-      </article>
+      <!-- POST 2 -->
+      <div class="ig-slot">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        </blockquote>
+      </div>
 
-      <!-- ════════ NOTA 3 ════════ -->
-      <article class="nota fade-in">
-        <span class="nota-tag">Novedad</span>
-        <h3>Nueva receta: pollo &amp; corazón</h3>
-        <p>Agregamos una variante pensada para gatos seniors. Más blanda, mayor contenido de taurina y omega 3 natural.</p>
-        <div class="nota-meta">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 20 12 16.5 6.5 20 8 13.5 3 9l6.5-.5z"/></svg>
-          Disponible ya
-        </div>
-      </article>
+      <!-- POST 3 -->
+      <div class="ig-slot">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        </blockquote>
+      </div>
 
-      <!-- Para agregar otra nota, copiá un <article class="nota">…</article> completo -->
+      <!-- POST 4 -->
+      <div class="ig-slot">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        </blockquote>
+      </div>
 
     </div>
+
+    <a class="ig-follow fade-in" href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+      </svg>
+      <span>Seguir en Instagram</span>
+    </a>
   </div>
+  <!-- Script oficial de Instagram para renderizar los embeds -->
+  <script async src="https://www.instagram.com/embed.js"></script>
 </section>
 
 <!-- ============= BENEFICIOS (color sólido) ============= -->
