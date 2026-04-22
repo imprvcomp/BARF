@@ -64,85 +64,263 @@
     box-shadow:0 0 10px rgba(163,142,72,.6);
   }
 
-  /* ===== Trotting cat — silhouette profile ===== */
+  /* ===== Trotting cat — Tim Burton style ===== */
   .trot-cat{
     position:fixed;
-    right:32px;bottom:28px;
-    width:140px;
+    right:24px;bottom:20px;
+    width:190px;
     z-index:80;
     opacity:0;
     transform:translateY(20px);
-    transition:opacity .4s ease, transform .4s ease;
+    transition:opacity .5s ease, transform .5s ease;
     pointer-events:none;
   }
   .trot-cat.show{opacity:1;transform:translateY(0)}
   .trot-cat svg{
     width:100%;
-    color:var(--olive);
-    filter:drop-shadow(0 6px 8px rgba(42,40,31,.18));
+    filter:drop-shadow(0 8px 10px rgba(20,18,10,.35));
     overflow:visible;
   }
-  /* shadow ellipse under paws */
-  .cat-shadow{
-    fill:rgba(42,40,31,.18);
-    transform-origin:center;
+
+  /* hand-drawn wobble using filter */
+  .burton-wobble{
+    animation:burtonBreathe 1.8s ease-in-out infinite;
+    transform-origin:center bottom;
   }
-  .trot-cat.show .cat-shadow{
-    animation:shadowPulse .42s ease-in-out infinite;
+  @keyframes burtonBreathe{
+    0%,100%{transform:scale(1,1)}
+    50%{transform:scale(1.02,.985)}
+  }
+
+  /* creepy oozing shadow */
+  .tb-shadow{
+    fill:rgba(20,18,10,.28);
+    filter:blur(2px);
+  }
+  .trot-cat.show .tb-shadow{
+    animation:shadowPulse .46s ease-in-out infinite;
+    transform-origin:center;
   }
   @keyframes shadowPulse{
-    0%,100%{transform:scaleX(1)}
-    50%{transform:scaleX(.88)}
+    0%,100%{transform:scaleX(1) scaleY(1)}
+    50%{transform:scaleX(.82) scaleY(1.1)}
   }
 
-  /* whole body bob */
-  @keyframes bodyBob{
-    0%,100%{transform:translateY(0)}
-    25%{transform:translateY(-2px)}
-    50%{transform:translateY(0)}
-    75%{transform:translateY(-2px)}
+  /* body gentle sinking */
+  @keyframes tbBob{
+    0%,100%{transform:translateY(0) rotate(0deg)}
+    25%{transform:translateY(-3px) rotate(-.6deg)}
+    50%{transform:translateY(0) rotate(0deg)}
+    75%{transform:translateY(-2px) rotate(.6deg)}
   }
-  .trot-cat.show .cat-main{
-    animation:bodyBob .42s ease-in-out infinite;
+  .trot-cat.show .tb-main{
+    animation:tbBob .46s ease-in-out infinite;
     transform-origin:center;
   }
 
-  /* tail sway */
-  @keyframes tailSway{
-    0%,100%{transform:rotate(-6deg)}
-    50%{transform:rotate(14deg)}
+  /* serpentine tail — moves in wave */
+  @keyframes tbTail{
+    0%,100%{transform:rotate(-10deg) skewY(-2deg)}
+    33%{transform:rotate(8deg) skewY(4deg)}
+    66%{transform:rotate(-4deg) skewY(-3deg)}
   }
-  .trot-cat.show .cat-tail{
-    animation:tailSway .9s ease-in-out infinite;
-    transform-origin:96% 50%;
+  .trot-cat.show .tb-tail{
+    animation:tbTail 1.6s ease-in-out infinite;
+    transform-origin:78% 62%;
   }
 
-  /* 4-beat walk cycle for legs — pairs in diagonal */
-  @keyframes stepA{
+  /* spindly legs - 4-beat diagonal */
+  @keyframes tbStepA{
     0%,100%{transform:translateY(0) rotate(0deg)}
-    25%{transform:translateY(-4px) rotate(-12deg)}
+    25%{transform:translateY(-5px) rotate(-14deg)}
     50%{transform:translateY(0) rotate(0deg)}
-    75%{transform:translateY(0) rotate(6deg)}
+    75%{transform:translateY(-1px) rotate(8deg)}
   }
-  @keyframes stepB{
+  @keyframes tbStepB{
     0%,100%{transform:translateY(0) rotate(0deg)}
-    25%{transform:translateY(0) rotate(6deg)}
+    25%{transform:translateY(-1px) rotate(8deg)}
     50%{transform:translateY(0) rotate(0deg)}
-    75%{transform:translateY(-4px) rotate(-12deg)}
+    75%{transform:translateY(-5px) rotate(-14deg)}
   }
-  .trot-cat.show .leg-fl{animation:stepA .42s ease-in-out infinite;transform-origin:top center}
-  .trot-cat.show .leg-hr{animation:stepA .42s ease-in-out infinite;transform-origin:top center}
-  .trot-cat.show .leg-fr{animation:stepB .42s ease-in-out infinite;transform-origin:top center}
-  .trot-cat.show .leg-hl{animation:stepB .42s ease-in-out infinite;transform-origin:top center}
+  .trot-cat.show .tb-leg-1{animation:tbStepA .46s ease-in-out infinite;transform-origin:top center}
+  .trot-cat.show .tb-leg-4{animation:tbStepA .46s ease-in-out infinite;transform-origin:top center}
+  .trot-cat.show .tb-leg-2{animation:tbStepB .46s ease-in-out infinite;transform-origin:top center}
+  .trot-cat.show .tb-leg-3{animation:tbStepB .46s ease-in-out infinite;transform-origin:top center}
 
-  /* ear twitch every few seconds */
-  @keyframes earTwitch{
+  /* eyes glow pulsing */
+  @keyframes eyeGlow{
+    0%,100%{filter:drop-shadow(0 0 2px rgba(163,142,72,.6))}
+    50%{filter:drop-shadow(0 0 6px rgba(163,142,72,1))}
+  }
+  .trot-cat.show .tb-eyes{animation:eyeGlow 2s ease-in-out infinite}
+
+  /* occasional blink */
+  @keyframes tbBlink{
+    0%,95%,100%{transform:scaleY(1)}
+    97%{transform:scaleY(.08)}
+  }
+  .trot-cat.show .tb-eye{animation:tbBlink 5s ease-in-out infinite;transform-origin:center}
+
+  /* ear twitch */
+  @keyframes tbEarTwitch{
     0%,92%,100%{transform:rotate(0)}
-    94%{transform:rotate(-10deg)}
+    94%{transform:rotate(-8deg)}
     96%{transform:rotate(4deg)}
-    98%{transform:rotate(-4deg)}
+    98%{transform:rotate(-3deg)}
   }
-  .trot-cat.show .cat-ear{animation:earTwitch 3.5s ease-in-out infinite;transform-origin:bottom center}
+  .trot-cat.show .tb-ear{animation:tbEarTwitch 4.5s ease-in-out infinite;transform-origin:bottom center}
+
+  /* ========== PROCESS SECTION WITH VIDEO ========== */
+  .process{
+    position:relative;
+    padding:120px 0;
+    background:var(--cream-2);
+    overflow:hidden;
+  }
+  .process::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 2px 2px, rgba(50,57,21,.06) 1px, transparent 0);
+    background-size:32px 32px;opacity:.8;
+  }
+  .process-inner{
+    display:grid;
+    grid-template-columns:1fr 1.05fr;
+    gap:70px;
+    align-items:center;
+    position:relative;z-index:2;
+  }
+  .process-video{
+    position:sticky;
+    top:100px;
+    border-radius:28px;
+    overflow:hidden;
+    aspect-ratio:3/4;
+    box-shadow:var(--shadow-lg);
+    border:10px solid var(--cream);
+  }
+  .process-video::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 45%,rgba(50,57,21,.45));
+    pointer-events:none;z-index:2;
+  }
+  .process-video video{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .process-video .overlay-tag{
+    position:absolute;
+    top:22px;left:22px;z-index:3;
+    background:var(--cream);
+    padding:10px 18px;border-radius:999px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:600;color:var(--olive);
+    display:flex;align-items:center;gap:8px;
+  }
+  .overlay-tag .live-dot{
+    width:8px;height:8px;border-radius:50%;background:#c0392b;
+    animation:livePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes livePulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(192,57,43,.6);opacity:1}
+    50%{box-shadow:0 0 0 8px rgba(192,57,43,0);opacity:.7}
+  }
+
+  .process-steps{display:flex;flex-direction:column;gap:22px}
+  .process-step{
+    display:flex;gap:22px;
+    padding:26px;
+    background:var(--cream);
+    border-radius:18px;
+    border-left:4px solid var(--sage);
+    box-shadow:var(--shadow-sm);
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .process-step:hover{
+    transform:translateX(8px);
+    border-left-color:var(--gold);
+    box-shadow:var(--shadow-md);
+  }
+  .process-step .step-num{
+    font-family:var(--serif);
+    font-size:54px;font-weight:600;
+    color:var(--khaki);line-height:.8;
+    min-width:62px;
+  }
+  .process-step:hover .step-num{color:var(--gold)}
+  .process-step h4{
+    font-family:var(--serif);
+    font-size:24px;font-weight:600;
+    color:var(--dark);margin-bottom:6px;
+  }
+  .process-step p{
+    font-size:14px;color:#5a5742;line-height:1.6;
+  }
+
+  /* ========== BENEFICIOS FULL-BLEED VIDEO ========== */
+  .benefits{
+    position:relative;
+    padding:140px 0;
+    overflow:hidden;
+    color:var(--cream);
+  }
+  .benefits-bg{
+    position:absolute;inset:0;z-index:0;
+    overflow:hidden;
+  }
+  .benefits-bg video{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(.55) saturate(1.05);
+  }
+  .benefits-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(42,40,31,.7) 0%,rgba(50,57,21,.7) 100%);
+  }
+  .benefits .container{z-index:2}
+  .benefits .section-head h2{color:var(--cream)}
+  .benefits .section-head .eye{color:var(--khaki)}
+  .benefits .section-head p{color:rgba(246,246,233,.75)}
+
+  .benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .benefit-card{
+    background:rgba(246,246,233,.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(246,246,233,.18);
+    border-radius:18px;
+    padding:30px 24px;
+    transition:transform .35s ease, background .35s ease, border-color .35s ease;
+  }
+  .benefit-card:hover{
+    transform:translateY(-10px);
+    background:rgba(246,246,233,.14);
+    border-color:var(--khaki);
+  }
+  .benefit-card .icon-wrap{
+    width:52px;height:52px;border-radius:14px;
+    background:var(--khaki);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;transition:background .3s ease;
+  }
+  .benefit-card:hover .icon-wrap{background:var(--gold)}
+  .benefit-card .icon-wrap svg{width:26px;height:26px;color:var(--olive)}
+  .benefit-card h4{
+    font-family:var(--serif);
+    font-size:22px;font-weight:600;
+    color:var(--cream);margin-bottom:10px;line-height:1.2;
+  }
+  .benefit-card p{font-size:14px;color:rgba(246,246,233,.75);line-height:1.6}
+
+  @media (max-width:1000px){
+    .process-inner{grid-template-columns:1fr;gap:40px}
+    .process-video{position:relative;top:auto;max-width:520px;margin:0 auto}
+    .benefit-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:620px){
+    .benefit-grid{grid-template-columns:1fr}
+    .trot-cat{width:140px;right:16px;bottom:14px}
+  }
 
   /* Floating decorative leaves */
   .floating-deco{
@@ -781,63 +959,137 @@
 <!-- Scroll progress bar -->
 <div class="scroll-progress"><div class="bar" id="scrollBar"></div></div>
 
-<!-- Trotting cat (appears while scrolling) -->
+<!-- Trotting cat (Tim Burton style) -->
 <div class="trot-cat" id="trotCat" aria-hidden="true">
-  <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
-    <!-- ground shadow -->
-    <ellipse class="cat-shadow" cx="110" cy="128" rx="72" ry="4"/>
+  <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- squiggly hand-drawn effect -->
+      <filter id="tbWobble" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.024" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+      </filter>
+      <linearGradient id="tbFur" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1710"/>
+        <stop offset="1" stop-color="#2A281F"/>
+      </linearGradient>
+      <radialGradient id="tbEye" cx=".4" cy=".4" r=".7">
+        <stop offset="0" stop-color="#F6E9A8"/>
+        <stop offset=".5" stop-color="#A38E48"/>
+        <stop offset="1" stop-color="#5a4a1a"/>
+      </radialGradient>
+    </defs>
 
-    <g class="cat-main" fill="currentColor">
-      <!-- tail (behind body) -->
-      <g class="cat-tail">
-        <path d="M38 72 C 18 70, 6 54, 12 30 C 16 18, 24 12, 32 14 C 26 20, 22 32, 30 50 C 34 58, 42 64, 48 68 Z"/>
+    <!-- oozing shadow -->
+    <ellipse class="tb-shadow" cx="130" cy="206" rx="86" ry="5"/>
+
+    <g class="burton-wobble" filter="url(#tbWobble)">
+      <g class="tb-main">
+
+        <!-- ====== LONG SERPENTINE TAIL ====== -->
+        <g class="tb-tail">
+          <path d="M 68 128
+                   C 40 120, 18 100, 16 70
+                   C 14 44, 28 24, 50 18
+                   C 36 30, 30 50, 44 78
+                   C 50 90, 62 100, 74 108
+                   C 82 114, 84 122, 78 130 Z"
+                fill="url(#tbFur)"/>
+          <!-- tail tip curl -->
+          <path d="M 46 20 C 40 24, 38 32, 44 36 C 42 30, 44 24, 50 22 Z" fill="#0d0b06"/>
+        </g>
+
+        <!-- ====== BACK LEGS (spindly, long) ====== -->
+        <g class="tb-leg-4">
+          <path d="M 78 128 L 74 188 L 80 196 L 86 196 L 88 186 L 84 128 Z" fill="url(#tbFur)"/>
+        </g>
+        <g class="tb-leg-3">
+          <path d="M 102 130 L 98 190 L 104 198 L 110 198 L 112 188 L 108 130 Z" fill="url(#tbFur)"/>
+        </g>
+
+        <!-- ====== EMACIATED BODY - S-curve ====== -->
+        <path d="M 60 120
+                 C 70 90, 110 82, 150 96
+                 C 180 106, 195 120, 200 132
+                 C 180 142, 140 144, 100 138
+                 C 80 136, 65 130, 60 120 Z"
+              fill="url(#tbFur)"/>
+
+        <!-- spine bumps -->
+        <path d="M 80 96 q 6 -4 12 0 M 100 92 q 6 -3 12 0 M 122 94 q 6 -3 12 0 M 144 100 q 5 -2 10 0"
+              stroke="#0d0b06" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
+
+        <!-- ====== NECK + HEAD ====== -->
+        <path d="M 178 110 C 198 100, 215 84, 218 64 L 238 72 C 232 104, 215 124, 196 130 Z" fill="url(#tbFur)"/>
+
+        <!-- oversized head -->
+        <path d="M 210 46
+                 C 232 40, 252 56, 250 80
+                 C 248 102, 226 112, 206 108
+                 C 188 104, 180 82, 188 64
+                 C 194 52, 202 48, 210 46 Z"
+              fill="url(#tbFur)"/>
+
+        <!-- ====== LONG POINTY EARS ====== -->
+        <g class="tb-ear">
+          <path d="M 194 54 L 184 10 L 206 40 Z" fill="url(#tbFur)"/>
+          <path d="M 197 45 L 190 20 L 200 34 Z" fill="#3a2f14" opacity=".7"/>
+        </g>
+        <g class="tb-ear" style="animation-delay:.3s">
+          <path d="M 232 48 L 246 6 L 244 44 Z" fill="url(#tbFur)"/>
+          <path d="M 235 40 L 242 18 L 240 38 Z" fill="#3a2f14" opacity=".7"/>
+        </g>
+
+        <!-- ====== HUGE GLOWING EYES ====== -->
+        <g class="tb-eyes">
+          <!-- left eye -->
+          <g class="tb-eye">
+            <ellipse cx="208" cy="76" rx="9" ry="11" fill="url(#tbEye)"/>
+            <!-- vertical pupil -->
+            <ellipse cx="208" cy="76" rx="1.6" ry="8" fill="#000"/>
+            <!-- highlight -->
+            <circle cx="205" cy="71" r="1.8" fill="#fffbe2"/>
+          </g>
+          <!-- right eye -->
+          <g class="tb-eye" style="animation-delay:.4s">
+            <ellipse cx="232" cy="78" rx="9" ry="11" fill="url(#tbEye)"/>
+            <ellipse cx="232" cy="78" rx="1.6" ry="8" fill="#000"/>
+            <circle cx="229" cy="73" r="1.8" fill="#fffbe2"/>
+          </g>
+        </g>
+
+        <!-- tiny nose -->
+        <path d="M 219 92 l -3 3 h 6 z" fill="#c0392b"/>
+        <!-- creepy thin smile -->
+        <path d="M 216 98 q 3 4 6 0 q 3 4 6 -1" stroke="#0d0b06" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+
+        <!-- long asymmetric whiskers -->
+        <g stroke="#F6F6E9" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".65">
+          <path d="M 210 96 q -14 -2 -28 2"/>
+          <path d="M 210 100 q -12 2 -24 6"/>
+          <path d="M 232 98 q 14 0 28 -4"/>
+          <path d="M 232 102 q 12 3 26 4"/>
+        </g>
+
+        <!-- ====== FRONT LEGS (on top of body) ====== -->
+        <g class="tb-leg-1">
+          <path d="M 152 130 L 148 192 L 154 200 L 160 200 L 162 190 L 158 130 Z" fill="url(#tbFur)"/>
+        </g>
+        <g class="tb-leg-2">
+          <path d="M 176 130 L 172 194 L 178 202 L 184 202 L 186 192 L 182 130 Z" fill="url(#tbFur)"/>
+        </g>
+
+        <!-- paw claws (tiny) -->
+        <g fill="#F6F6E9" opacity=".8">
+          <path d="M 78 196 l 2 -4 l 2 4 z"/>
+          <path d="M 102 198 l 2 -4 l 2 4 z"/>
+          <path d="M 154 200 l 2 -4 l 2 4 z"/>
+          <path d="M 178 202 l 2 -4 l 2 4 z"/>
+        </g>
+
+        <!-- spiral decoration on body (Burton motif) -->
+        <path d="M 135 120 q -4 -4 -8 0 q 4 0 4 4 q -2 2 -4 0" stroke="#0d0b06" stroke-width="1" fill="none" opacity=".5"/>
+
       </g>
-
-      <!-- back legs -->
-      <g class="leg-hr"><rect x="50" y="84" width="9" height="32" rx="4.5"/></g>
-      <g class="leg-hl"><rect x="66" y="86" width="9" height="30" rx="4.5"/></g>
-
-      <!-- body (ovoid) -->
-      <ellipse cx="105" cy="78" rx="62" ry="22"/>
-
-      <!-- chest connection to head -->
-      <path d="M150 72 Q 162 60, 172 58 L 178 76 Q 168 82, 158 84 Z"/>
-
-      <!-- head -->
-      <circle cx="172" cy="54" r="22"/>
-
-      <!-- ears -->
-      <g class="cat-ear">
-        <path d="M158 38 L 152 18 L 166 32 Z"/>
-        <path d="M186 34 L 196 18 L 188 42 Z"/>
-      </g>
-      <!-- inner ear -->
-      <path d="M160 34 L 158 24 L 164 32 Z" fill="#7C8456" opacity=".6"/>
-      <path d="M188 32 L 192 24 L 190 38 Z" fill="#7C8456" opacity=".6"/>
-
-      <!-- eye (closed, serene arc) -->
-      <path d="M176 52 q 4 -3 8 0" stroke="#F6F6E9" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <!-- nose -->
-      <circle cx="191" cy="58" r="1.6" fill="#2A281F"/>
-      <!-- mouth -->
-      <path d="M191 60 q -2 3 -4 0 M 191 60 q 2 3 4 0" stroke="#2A281F" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <!-- whiskers -->
-      <g stroke="#2A281F" stroke-width="0.9" fill="none" stroke-linecap="round" opacity=".7">
-        <path d="M184 62 L 172 60"/>
-        <path d="M184 64 L 172 65"/>
-        <path d="M198 62 L 210 60"/>
-        <path d="M198 64 L 210 65"/>
-      </g>
-
-      <!-- front legs (on top) -->
-      <g class="leg-fr"><rect x="130" y="88" width="9" height="30" rx="4.5"/></g>
-      <g class="leg-fl"><rect x="146" y="90" width="9" height="28" rx="4.5"/></g>
-
-      <!-- paws as small ovals for definition -->
-      <ellipse cx="54.5" cy="118" rx="6" ry="3"/>
-      <ellipse cx="70.5" cy="118" rx="6" ry="3"/>
-      <ellipse cx="134.5" cy="120" rx="6" ry="3"/>
-      <ellipse cx="150.5" cy="120" rx="6" ry="3"/>
     </g>
   </svg>
 </div>
@@ -863,10 +1115,10 @@
     <ul>
       <li><a href="#inicio" class="active">Inicio</a></li>
       <li><a href="#nuestro-barf">Nuestro BARF</a></li>
+      <li><a href="#proceso">Proceso</a></li>
       <li><a href="#productos">Productos</a></li>
       <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
-      <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#productos" class="nav-cta">Ordenar</a>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -1021,6 +1273,55 @@
   </div>
 </section>
 
+<!-- ============= NUESTRO PROCESO (video sticky) ============= -->
+<section class="process" id="proceso">
+  <div class="container process-inner">
+    <div class="process-video fade-in">
+      <div class="overlay-tag"><span class="live-dot"></span>Cocina BARFirenzina</div>
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/info.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="fade-in">
+      <span class="section-eyebrow">Nuestro Proceso</span>
+      <h2 style="font-family:var(--serif);font-size:clamp(34px,4vw,54px);font-weight:600;color:var(--dark);line-height:1.05;margin-bottom:16px;">Del productor<br><em style="font-style:italic;color:var(--olive)">al plato de tu gato.</em></h2>
+      <p style="color:#4a4735;margin-bottom:34px;font-size:16px;max-width:500px;">Cada etapa de elaboración está diseñada para preservar la frescura, el valor nutricional y el respeto por el animal. Así trabajamos cada día.</p>
+
+      <div class="process-steps stagger">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div>
+            <h4>Selección Artesanal</h4>
+            <p>Elegimos carnes y órganos frescos de proveedores locales certificados. Sin intermediarios, sin congelados de largo viaje.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div>
+            <h4>Molienda en Frío</h4>
+            <p>Procesamos todo por debajo de los 4 °C para conservar enzimas, aminoácidos y ácidos grasos en su forma biodisponible.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div>
+            <h4>Formulación Precisa</h4>
+            <p>Cada receta es pesada al gramo siguiendo el protocolo BARF: músculo, órganos, huesos carnosos y vegetales.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div>
+            <h4>Entrega Refrigerada</h4>
+            <p>Envasado al vacío, congelado y enviado en cadena de frío hasta la puerta de tu casa en menos de 48 horas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============= PRODUCTOS ============= -->
 <section class="products" id="productos">
   <div class="container">
@@ -1134,6 +1435,53 @@
         </div>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<!-- ============= BENEFICIOS (video de fondo) ============= -->
+<section class="benefits" id="beneficios">
+  <div class="benefits-bg">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="assets/info.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eye">Beneficios</span>
+      <h2>Lo que la dieta BARF<br>le da a tu felino</h2>
+      <p>Alimentación biológicamente apropiada significa resultados visibles — en poco tiempo y en cada detalle.</p>
+    </div>
+
+    <div class="benefit-grid stagger fade-in">
+      <div class="benefit-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-10A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 5C19 16.5 12 21 12 21z"/></svg>
+        </div>
+        <h4>Corazón fuerte</h4>
+        <p>Taurina natural en órganos frescos — clave para la salud cardiovascular felina.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c6-6 12-6 18 0M6 16c4-4 8-4 12 0M9 20c2-2 4-2 6 0"/></svg>
+        </div>
+        <h4>Pelaje brillante</h4>
+        <p>Ácidos grasos Omega 3 y 6 que dan brillo, suavidad y disminuyen la caída de pelo.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 0 0 8 0M9 9h.01M15 9h.01"/></svg>
+        </div>
+        <h4>Mejor digestión</h4>
+        <p>Proteínas biodisponibles y cero cereales — menos heces, menos olor, más asimilación.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        </div>
+        <h4>Energía sostenida</h4>
+        <p>Músculo magro y grasas de calidad que sostienen la actividad natural del gato.</p>
+      </div>
     </div>
   </div>
 </section>
