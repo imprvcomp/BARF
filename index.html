@@ -1457,6 +1457,90 @@
     .trio-item:last-child{border-bottom:none}
     .explain{padding:100px 0 110px}
   }
+
+  /* ============================================
+     NOTAS (sección editable por la clienta)
+  ============================================ */
+  .notas{
+    background:var(--cream);
+    padding:130px 0 140px;
+    position:relative;
+  }
+  .notas-head{
+    text-align:center;max-width:720px;margin:0 auto 70px;
+  }
+  .notas-head .eyebrow-n{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:11px;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--sage);font-weight:600;margin-bottom:18px;
+  }
+  .notas-head .eyebrow-n::before,
+  .notas-head .eyebrow-n::after{
+    content:"";width:40px;height:1px;background:var(--khaki);
+  }
+  .notas-head h2{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(34px, 4.6vw, 56px);
+    line-height:1.08;letter-spacing:-.015em;
+    color:var(--olive);
+  }
+  .notas-head h2 em{color:var(--gold);font-style:italic}
+  .notas-head p{
+    margin-top:18px;color:rgba(42,40,31,.65);font-size:16px;
+  }
+  .notas-grid{
+    display:grid;grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .nota{
+    background:#fff;
+    border:1px solid rgba(191,187,133,.35);
+    border-radius:4px;
+    padding:38px 32px;
+    position:relative;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .4s ease;
+    overflow:hidden;
+  }
+  .nota::before{
+    content:"";position:absolute;top:0;left:0;width:0;height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--sage));
+    transition:width .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .nota:hover{
+    transform:translateY(-4px);
+    box-shadow:0 30px 60px -30px rgba(42,40,31,.25);
+    border-color:var(--khaki);
+  }
+  .nota:hover::before{width:100%}
+  .nota-tag{
+    display:inline-block;
+    font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+    padding:6px 14px;
+    border:1px solid rgba(163,142,72,.3);
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .nota h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:26px;line-height:1.2;letter-spacing:-.01em;
+    color:var(--olive);margin-bottom:14px;
+  }
+  .nota p{
+    font-size:15px;line-height:1.6;color:rgba(42,40,31,.72);
+  }
+  .nota-meta{
+    display:flex;align-items:center;gap:10px;margin-top:24px;
+    padding-top:20px;border-top:1px dashed rgba(191,187,133,.5);
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--sage);
+  }
+  .nota-meta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+  @media (max-width: 960px){
+    .notas-grid{grid-template-columns:1fr;gap:18px}
+    .notas{padding:90px 0 100px}
+  }
 </style>
 </head>
 <body>
@@ -1626,6 +1710,7 @@
       <li><a href="#nuestro-barf">Nuestro BARF</a></li>
       <li><a href="#productos">Productos</a></li>
       <li><a href="#explicaciones">Explicaciones</a></li>
+      <li><a href="#notas">Notas</a></li>
       <li><a href="#beneficios">Beneficios</a></li>
       <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
@@ -2066,6 +2151,68 @@
         <strong>Fresco</strong>
         <span>48h al hogar</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= NOTAS (sección editable por la clienta) ============= -->
+<!--
+  ╔═══════════════════════════════════════════════════════════════════╗
+  ║  SECCIÓN EDITABLE — poné acá cualquier información o dato random  ║
+  ║  • Cambiá los textos entre las etiquetas <h3>, <p>, <span>        ║
+  ║  • Podés agregar o quitar bloques <article class="nota">          ║
+  ║  • Cada bloque tiene: categoría, título, descripción y meta abajo ║
+  ╚═══════════════════════════════════════════════════════════════════╝
+-->
+<section class="notas" id="notas">
+  <div class="container">
+
+    <header class="notas-head fade-in">
+      <!-- EDITABLE: subtítulo chico arriba -->
+      <span class="eyebrow-n">Notas</span>
+      <!-- EDITABLE: título grande — podés usar <em> para resaltar una palabra -->
+      <h2>Información y <em>novedades</em>.</h2>
+      <!-- EDITABLE: bajada corta (opcional, podés borrarla) -->
+      <p>Avisos, datos curiosos, recordatorios y todo lo que quieras contarles a tus clientes.</p>
+    </header>
+
+    <div class="notas-grid">
+
+      <!-- ════════ NOTA 1 — duplicá este bloque para agregar más ════════ -->
+      <article class="nota fade-in">
+        <span class="nota-tag">Aviso</span>
+        <h3>Envíos gratis sobre $25.000</h3>
+        <p>Recibí tu pedido con cadena de frío garantizada. Cobertura en CABA y GBA en menos de 24 horas.</p>
+        <div class="nota-meta">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Vigente este mes
+        </div>
+      </article>
+
+      <!-- ════════ NOTA 2 ════════ -->
+      <article class="nota fade-in">
+        <span class="nota-tag">Dato</span>
+        <h3>Tu gato toma agua con la comida</h3>
+        <p>El BARF tiene 92% de humedad natural. Los gatos hidratan mal si toman solo croquetas — por eso el BARF les previene problemas renales.</p>
+        <div class="nota-meta">
+          <svg viewBox="0 0 24 24"><path d="M12 3l7 8a7 7 0 1 1-14 0z"/></svg>
+          Salud felina
+        </div>
+      </article>
+
+      <!-- ════════ NOTA 3 ════════ -->
+      <article class="nota fade-in">
+        <span class="nota-tag">Novedad</span>
+        <h3>Nueva receta: pollo &amp; corazón</h3>
+        <p>Agregamos una variante pensada para gatos seniors. Más blanda, mayor contenido de taurina y omega 3 natural.</p>
+        <div class="nota-meta">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 20 12 16.5 6.5 20 8 13.5 3 9l6.5-.5z"/></svg>
+          Disponible ya
+        </div>
+      </article>
+
+      <!-- Para agregar otra nota, copiá un <article class="nota">…</article> completo -->
+
     </div>
   </div>
 </section>
