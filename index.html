@@ -181,23 +181,14 @@
   }
   .cinema-video video{
     width:100%;height:100%;object-fit:cover;
-    filter:brightness(.92) contrast(1.05) saturate(1.15) sepia(.2) hue-rotate(40deg);
+    filter:brightness(.9) contrast(1.05) saturate(1.05);
     transform:scale(1.05);
     transition:transform 10s ease;
   }
   .cinema:hover .cinema-video video{transform:scale(1.12)}
-  .cinema-video::before{
-    content:"";position:absolute;inset:0;z-index:2;
-    background:radial-gradient(ellipse at center, rgba(124,132,86,.12) 0%, rgba(50,57,21,.22) 70%, rgba(42,40,31,.4) 100%);
-    mix-blend-mode:color;
-    pointer-events:none;
-  }
   .cinema-video::after{
     content:"";position:absolute;inset:0;z-index:2;
-    background:
-      linear-gradient(180deg, rgba(50,57,21,.35) 0%, rgba(50,57,21,.20) 40%, rgba(50,57,21,.65) 100%),
-      linear-gradient(90deg, rgba(50,57,21,.35) 0%, rgba(50,57,21,.10) 50%, rgba(50,57,21,.35) 100%);
-    mix-blend-mode:multiply;
+    background:linear-gradient(180deg, rgba(42,40,31,.25) 0%, rgba(42,40,31,.15) 40%, rgba(42,40,31,.55) 100%);
     pointer-events:none;
   }
   .cinema-content{
@@ -1430,205 +1421,30 @@
     color:rgba(246,246,233,.55);
   }
 
-  /* SPLIT COMPARISON */
-  .split-compare{
-    position:relative;
-    display:grid;grid-template-columns:1fr auto 1fr;gap:0;
-    margin:0 0 120px;
-    border-radius:4px;overflow:hidden;
-    box-shadow:0 40px 100px -30px rgba(0,0,0,.6);
+  /* TRIO MINIMAL */
+  .trio{
+    display:grid;grid-template-columns:repeat(3, 1fr);
+    gap:0;margin:100px 0 0;
+    border-top:1px solid rgba(191,187,133,.15);
   }
-  .split-compare .side{
-    padding:60px 50px 70px;
-    position:relative;
-    min-height:560px;
+  .trio-item{
+    padding:56px 28px 0;
+    text-align:center;
+    border-right:1px solid rgba(191,187,133,.15);
+    display:flex;flex-direction:column;align-items:center;gap:14px;
   }
-  .side-barf{
-    background:
-      radial-gradient(ellipse at 80% 10%, rgba(163,142,72,.18), transparent 60%),
-      linear-gradient(155deg, #3c4519 0%, #2a3012 100%);
-    color:var(--cream);
+  .trio-item:last-child{border-right:none}
+  .trio-ico{
+    width:54px;height:54px;color:var(--gold);opacity:.9;
+    margin-bottom:6px;
   }
-  .side-barf::before{
-    content:"";position:absolute;top:22px;right:22px;width:52px;height:52px;
-    border:1px solid var(--gold);border-radius:50%;
-    background:
-      radial-gradient(circle, var(--gold) 3px, transparent 3.5px),
-      transparent;
-    background-size:100% 100%;
-    animation:dotPulse 3s ease-in-out infinite;
-  }
-  @keyframes dotPulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(163,142,72,.4)}
-    50%{box-shadow:0 0 0 18px rgba(163,142,72,0)}
-  }
-  .side-industrial{
-    background:
-      radial-gradient(ellipse at 20% 90%, rgba(191,187,133,.06), transparent 60%),
-      linear-gradient(155deg, #242520 0%, #14130e 100%);
-    color:rgba(246,246,233,.55);
-  }
-  .side-industrial::before{
-    content:"";position:absolute;top:22px;right:22px;width:52px;height:52px;
-    border:1px dashed rgba(191,187,133,.25);border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:22px;color:rgba(191,187,133,.3);
-  }
-  .side-industrial::after{
-    content:"✕";position:absolute;top:22px;right:22px;width:52px;height:52px;
-    display:flex;align-items:center;justify-content:center;
-    color:rgba(191,187,133,.35);font-size:20px;pointer-events:none;
-  }
-  .side .side-label{
-    display:inline-block;
-    font-size:10px;letter-spacing:.35em;text-transform:uppercase;
-    padding:8px 16px;border:1px solid currentColor;border-radius:999px;
-    opacity:.7;margin-bottom:28px;
-  }
-  .side-barf .side-label{color:var(--gold);border-color:rgba(163,142,72,.4)}
-  .side-industrial .side-label{color:rgba(191,187,133,.4);border-color:rgba(191,187,133,.18)}
-  .side h3{
-    font-family:var(--serif);font-weight:400;
-    font-size:clamp(28px, 3vw, 38px);
-    line-height:1.15;letter-spacing:-.01em;
-    margin-bottom:36px;
-  }
-  .side-barf h3{color:var(--cream)}
-  .side-industrial h3{color:rgba(246,246,233,.7)}
-  .side ul{list-style:none;padding:0;margin:0}
-  .side li{
-    padding:16px 0 16px 34px;
-    position:relative;
-    font-size:15px;line-height:1.5;
-    border-bottom:1px solid rgba(191,187,133,.1);
-  }
-  .side li:last-child{border-bottom:none}
-  .side-barf li::before{
-    content:"";position:absolute;left:0;top:22px;
-    width:18px;height:2px;background:var(--gold);
-    box-shadow:0 0 12px rgba(163,142,72,.5);
-  }
-  .side-barf li strong{color:var(--cream);font-weight:600;display:block;margin-bottom:2px}
-  .side-industrial li::before{
-    content:"";position:absolute;left:0;top:22px;
-    width:18px;height:2px;background:rgba(191,187,133,.25);
-  }
-  .side-industrial li strong{color:rgba(246,246,233,.5);font-weight:500;display:block;margin-bottom:2px}
-
-  .versus{
-    background:linear-gradient(180deg, #1e2110, #14130e);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    min-width:120px;
-    position:relative;
-    border-left:1px solid rgba(191,187,133,.12);
-    border-right:1px solid rgba(191,187,133,.12);
-  }
-  .versus .vs-label{
-    font-family:var(--serif);font-style:italic;font-weight:500;
-    font-size:42px;color:var(--gold);
-    letter-spacing:.05em;
-    transform:rotate(-4deg);
-    position:relative;
-    padding:0 10px;
-  }
-  .versus .vs-line{
-    position:absolute;left:50%;top:0;bottom:0;width:1px;
-    background:linear-gradient(180deg, transparent, var(--gold), transparent);
-    opacity:.35;
-    transform:translateX(-50%);
-  }
-
-  /* MYTHS */
-  .myths-head{
-    text-align:center;margin:0 0 48px;
-  }
-  .myths-head span{
-    display:inline-block;font-size:11px;letter-spacing:.35em;text-transform:uppercase;
-    color:var(--gold);margin-bottom:14px;
-  }
-  .myths-head h3{
+  .trio-item strong{
     font-family:var(--serif);font-weight:500;
-    font-size:clamp(30px, 3.5vw, 46px);color:var(--cream);
-    letter-spacing:-.01em;
+    font-size:32px;color:var(--cream);letter-spacing:-.01em;
   }
-  .myth-grid{
-    display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;
-  }
-  .myth-card{
-    position:relative;
-    min-height:280px;
-    perspective:1400px;
-    cursor:pointer;
-  }
-  .myth-inner{
-    position:relative;width:100%;height:100%;min-height:280px;
-    transform-style:preserve-3d;
-    transition:transform .9s cubic-bezier(.2,.8,.2,1);
-  }
-  .myth-card.flipped .myth-inner,
-  .myth-card:hover .myth-inner{transform:rotateY(180deg)}
-  .myth-face{
-    position:absolute;inset:0;
-    backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    border-radius:3px;
-    padding:36px 32px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    border:1px solid rgba(191,187,133,.15);
-  }
-  .myth-front{
-    background:
-      linear-gradient(160deg, rgba(163,142,72,.06), rgba(42,40,31,.4));
-    color:var(--cream);
-  }
-  .myth-front::before{
-    content:"?";position:absolute;top:-20px;right:24px;
-    font-family:var(--serif);font-weight:500;font-style:italic;
-    font-size:120px;line-height:1;color:var(--gold);opacity:.12;
-    pointer-events:none;
-  }
-  .myth-back{
-    background:
-      linear-gradient(160deg, #3c4519, #2a3012);
-    color:var(--cream);
-    transform:rotateY(180deg);
-  }
-  .myth-back::before{
-    content:"";position:absolute;top:20px;left:24px;
-    width:32px;height:32px;
-    background:var(--gold);
-    clip-path:polygon(20% 45%, 10% 55%, 42% 80%, 90% 25%, 78% 15%, 42% 58%);
-    opacity:.9;
-  }
-  .myth-tag{
-    display:inline-block;
-    font-size:10px;letter-spacing:.35em;text-transform:uppercase;
-    padding:6px 14px;border-radius:999px;
-    border:1px solid rgba(191,187,133,.25);
-    color:rgba(246,246,233,.6);
-    margin-bottom:auto;align-self:flex-start;
-  }
-  .myth-tag.real{
-    border-color:var(--gold);color:var(--gold);
-    background:rgba(163,142,72,.08);
-  }
-  .myth-face p{
-    font-family:var(--serif);font-weight:400;
-    font-size:22px;line-height:1.35;
-    color:var(--cream);
-    margin:20px 0;
-  }
-  .myth-back p{
-    font-family:var(--sans);font-weight:400;
-    font-size:14px;line-height:1.65;
-    color:rgba(246,246,233,.78);
-  }
-  .myth-hint{
-    font-size:10px;letter-spacing:.3em;text-transform:uppercase;
-    color:rgba(191,187,133,.4);
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .myth-hint::before{
-    content:"";width:24px;height:1px;background:currentColor;
+  .trio-item span{
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:rgba(246,246,233,.5);
   }
 
   @media (max-width: 960px){
@@ -1636,10 +1452,9 @@
     .stat-ticker .stat:nth-child(2){border-right:none}
     .stat-ticker .stat:nth-child(1),
     .stat-ticker .stat:nth-child(2){border-bottom:1px solid rgba(191,187,133,.12)}
-    .split-compare{grid-template-columns:1fr;gap:0}
-    .split-compare .side{min-height:auto;padding:48px 28px}
-    .versus{min-height:80px;flex-direction:row;gap:16px;border-top:1px solid rgba(191,187,133,.12);border-bottom:1px solid rgba(191,187,133,.12);border-left:none;border-right:none}
-    .myth-grid{grid-template-columns:1fr}
+    .trio{grid-template-columns:1fr;gap:0}
+    .trio-item{border-right:none;border-bottom:1px solid rgba(191,187,133,.15);padding:40px 20px}
+    .trio-item:last-child{border-bottom:none}
     .explain{padding:100px 0 110px}
   }
 </style>
@@ -2201,111 +2016,56 @@
   </div>
 </section>
 
-<!-- ============= EXPLICACIONES / DIFERENCIACIÓN ============= -->
+<!-- ============= EXPLICACIONES ============= -->
 <section class="explain" id="explicaciones">
   <div class="explain-grid-lines"></div>
   <div class="container">
     <header class="explain-head fade-in">
       <span class="eyebrow-x">Explicaciones</span>
-      <h2>Lo que <em>nadie</em> te cuenta del alimento para gatos.</h2>
-      <p>Abrir la bolsa. Girar la lata. Leer la etiqueta en letra chica. Hay un abismo entre lo que promete el marketing y lo que realmente come tu gato cada día.</p>
+      <h2>La diferencia, <em>en números</em>.</h2>
     </header>
 
-    <!-- STAT TICKER -->
     <div class="stat-ticker fade-in">
-      <div class="stat" data-target="92" data-suffix="%">
+      <div class="stat" data-target="92">
         <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
         <label>Humedad natural</label>
       </div>
-      <div class="stat" data-target="0" data-suffix="%">
+      <div class="stat" data-target="0">
         <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
         <label>Conservantes</label>
       </div>
-      <div class="stat" data-target="100" data-suffix="%">
+      <div class="stat" data-target="100">
         <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
         <label>Proteína animal</label>
       </div>
-      <div class="stat" data-target="2" data-suffix="°C">
+      <div class="stat" data-target="2">
         <div class="num-wrap"><span class="num">0</span><span class="unit">°C</span></div>
         <label>Cadena de frío</label>
       </div>
     </div>
 
-    <!-- SPLIT COMPARISON -->
-    <div class="split-compare fade-in">
-      <article class="side side-barf">
-        <span class="side-label">BARFirenzina</span>
-        <h3>Comida real, cruda, fría.</h3>
-        <ul>
-          <li><strong>92% de humedad natural</strong>como una presa recién cazada</li>
-          <li><strong>Carne + órganos + huesos carnosos</strong>proporción biológica exacta</li>
-          <li><strong>Procesado a 2°C</strong>nunca cocido, nutrientes intactos</li>
-          <li><strong>0 conservantes, 0 cereales</strong>cero harinas animales</li>
-          <li><strong>Taurina y vitaminas naturales</strong>presentes en la materia prima</li>
-        </ul>
-      </article>
-      <div class="versus">
-        <span class="vs-line"></span>
-        <span class="vs-label">vs</span>
+    <div class="trio fade-in">
+      <div class="trio-item">
+        <div class="trio-ico">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 22c0-6 5-11 12-11s12 5 12 11"/><path d="M6 28h28"/><circle cx="14" cy="18" r="1.2" fill="currentColor"/><circle cx="26" cy="18" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <strong>Crudo</strong>
+        <span>nunca cocido</span>
       </div>
-      <article class="side side-industrial">
-        <span class="side-label">Ultra-procesado</span>
-        <h3>Croqueta extrudida.</h3>
-        <ul>
-          <li><strong>8% de humedad</strong>deshidratación crónica del felino</li>
-          <li><strong>Harinas y subproductos</strong>partes no aptas para humanos</li>
-          <li><strong>Cocción a 200°C</strong>destruye aminoácidos sensibles</li>
-          <li><strong>Conservantes y colorantes</strong>rellenos baratos: maíz, soja, trigo</li>
-          <li><strong>Vitaminas sintéticas</strong>añadidas después, peor biodisponibilidad</li>
-        </ul>
-      </article>
-    </div>
-
-    <!-- MYTHS -->
-    <div class="myths-head fade-in">
-      <span>Mitos &amp; realidad</span>
-      <h3>Lo que escuchaste toda la vida, revisado.</h3>
-    </div>
-    <div class="myth-grid">
-      <article class="myth-card fade-in" tabindex="0">
-        <div class="myth-inner">
-          <div class="myth-face myth-front">
-            <span class="myth-tag">Mito</span>
-            <p>"La comida cruda es peligrosa, mi gato se puede enfermar."</p>
-            <span class="myth-hint">Tocar para revelar</span>
-          </div>
-          <div class="myth-face myth-back">
-            <span class="myth-tag real">Realidad</span>
-            <p>El estómago del gato tiene un pH de 1–2, diseñado por evolución para neutralizar bacterias de carne cruda. El riesgo real está en la manipulación, no en la dieta ancestral.</p>
-          </div>
+      <div class="trio-item">
+        <div class="trio-ico">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 6v28M6 20h28M12 12l16 16M28 12L12 28"/></svg>
         </div>
-      </article>
-      <article class="myth-card fade-in" tabindex="0">
-        <div class="myth-inner">
-          <div class="myth-face myth-front">
-            <span class="myth-tag">Mito</span>
-            <p>"Las croquetas limpian los dientes del gato."</p>
-            <span class="myth-hint">Tocar para revelar</span>
-          </div>
-          <div class="myth-face myth-back">
-            <span class="myth-tag real">Realidad</span>
-            <p>Estudios veterinarios (Watson, Logan) demostraron que la croqueta se rompe sin fricción real. Los huesos carnosos crudos son lo único que cumple una función mecánica de limpieza dental.</p>
-          </div>
+        <strong>Cero</strong>
+        <span>sin aditivos</span>
+      </div>
+      <div class="trio-item">
+        <div class="trio-ico">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="20" r="14"/><path d="M20 11v9l6 4"/></svg>
         </div>
-      </article>
-      <article class="myth-card fade-in" tabindex="0">
-        <div class="myth-inner">
-          <div class="myth-face myth-front">
-            <span class="myth-tag">Mito</span>
-            <p>"Los gatos pueden vivir perfectamente con cereales y vegetales."</p>
-            <span class="myth-hint">Tocar para revelar</span>
-          </div>
-          <div class="myth-face myth-back">
-            <span class="myth-tag real">Realidad</span>
-            <p>El gato es un carnívoro estricto obligado. No produce amilasa salival y su metabolismo no puede convertir almidones eficientemente. Necesita proteína animal como fuente primaria de energía.</p>
-          </div>
-        </div>
-      </article>
+        <strong>Fresco</strong>
+        <span>48h al hogar</span>
+      </div>
     </div>
   </div>
 </section>
@@ -2761,13 +2521,6 @@ const statIO = new IntersectionObserver((entries)=>{
 },{threshold:.45});
 document.querySelectorAll('.stat-ticker .stat').forEach(el=>statIO.observe(el));
 
-/* ===================== MYTH CARD FLIP (touch / click) ===================== */
-document.querySelectorAll('.myth-card').forEach(card=>{
-  card.addEventListener('click', ()=>card.classList.toggle('flipped'));
-  card.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); card.classList.toggle('flipped'); }
-  });
-});
 
 /* ===================== ACTIVE NAV LINK ===================== */
 const sections = document.querySelectorAll('section[id]');
