@@ -118,16 +118,7 @@
     transform-origin:center;
   }
 
-  /* serpentine tail — moves in wave */
-  @keyframes tbTail{
-    0%,100%{transform:rotate(-10deg) skewY(-2deg)}
-    33%{transform:rotate(8deg) skewY(4deg)}
-    66%{transform:rotate(-4deg) skewY(-3deg)}
-  }
-  .trot-cat.show .tb-tail{
-    animation:tbTail 1.6s ease-in-out infinite;
-    transform-origin:78% 62%;
-  }
+  /* tail stays fixed — no animation */
 
   /* spindly legs - 4-beat diagonal */
   @keyframes tbStepA{
@@ -147,19 +138,16 @@
   .trot-cat.show .tb-leg-2{animation:tbStepB .46s ease-in-out infinite;transform-origin:top center}
   .trot-cat.show .tb-leg-3{animation:tbStepB .46s ease-in-out infinite;transform-origin:top center}
 
-  /* eyes glow pulsing */
-  @keyframes eyeGlow{
-    0%,100%{filter:drop-shadow(0 0 2px rgba(163,142,72,.6))}
-    50%{filter:drop-shadow(0 0 6px rgba(163,142,72,1))}
-  }
-  .trot-cat.show .tb-eyes{animation:eyeGlow 2s ease-in-out infinite}
-
-  /* occasional blink */
+  /* blink — both eyes together, no drift */
   @keyframes tbBlink{
-    0%,95%,100%{transform:scaleY(1)}
-    97%{transform:scaleY(.08)}
+    0%,94%,100%{transform:scaleY(1)}
+    96%,98%{transform:scaleY(.08)}
   }
-  .trot-cat.show .tb-eye{animation:tbBlink 5s ease-in-out infinite;transform-origin:center}
+  .trot-cat.show .tb-eye{
+    animation:tbBlink 5s ease-in-out infinite;
+    transform-box:fill-box;
+    transform-origin:center center;
+  }
 
   /* ear twitch */
   @keyframes tbEarTwitch{
@@ -169,6 +157,95 @@
     98%{transform:rotate(-3deg)}
   }
   .trot-cat.show .tb-ear{animation:tbEarTwitch 4.5s ease-in-out infinite;transform-origin:bottom center}
+
+  /* ========== CINEMA SECTION (cat.mp4) ========== */
+  .cinema{
+    position:relative;
+    padding:0;
+    background:var(--dark);
+    color:var(--cream);
+    overflow:hidden;
+  }
+  .cinema-wrap{
+    position:relative;
+    height:min(90vh, 820px);
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .cinema-video{
+    position:absolute;inset:0;z-index:0;
+    overflow:hidden;
+  }
+  .cinema-video video{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(.7) saturate(1.1) contrast(1.05);
+    transform:scale(1.05);
+    transition:transform 10s ease;
+  }
+  .cinema:hover .cinema-video video{transform:scale(1.12)}
+  .cinema-video::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(42,40,31,.2) 0%, transparent 30%, rgba(42,40,31,.85) 100%),
+      linear-gradient(90deg, rgba(42,40,31,.55) 0%, transparent 50%);
+  }
+  .cinema-content{
+    position:relative;z-index:3;
+    max-width:760px;
+    padding:0 32px;
+    text-align:center;
+  }
+  .cinema .eyebrow-cin{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:11px;letter-spacing:.35em;text-transform:uppercase;
+    font-weight:600;color:var(--khaki);
+    margin-bottom:24px;
+  }
+  .cinema .eyebrow-cin::before,
+  .cinema .eyebrow-cin::after{
+    content:"";width:40px;height:1.5px;background:var(--khaki);
+  }
+  .cinema h2{
+    font-family:var(--serif);
+    font-size:clamp(44px,6vw,92px);
+    font-weight:500;line-height:.98;letter-spacing:-.01em;
+    margin-bottom:28px;
+    color:var(--cream);
+  }
+  .cinema h2 em{
+    font-style:italic;color:var(--khaki);display:block;
+  }
+  .cinema .cin-sub{
+    max-width:540px;margin:0 auto 40px;
+    font-size:17px;color:rgba(246,246,233,.85);line-height:1.6;
+  }
+  .cinema-stats{
+    display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+    margin-top:50px;padding-top:32px;
+    border-top:1px solid rgba(246,246,233,.2);
+  }
+  .cinema-stats .stat{text-align:center}
+  .cinema-stats .stat .n{
+    font-family:var(--serif);font-size:40px;font-weight:600;
+    color:var(--khaki);line-height:1;display:block;
+  }
+  .cinema-stats .stat .l{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(246,246,233,.7);margin-top:6px;
+  }
+  .cinema-play{
+    position:absolute;bottom:28px;left:28px;z-index:3;
+    display:flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:600;color:var(--cream);
+  }
+  .cinema-play .rec{
+    width:10px;height:10px;border-radius:50%;
+    background:#c0392b;animation:livePulse 1.6s ease-in-out infinite;
+  }
 
   /* ========== PROCESS SECTION WITH VIDEO ========== */
   .process{
@@ -255,24 +332,24 @@
     font-size:14px;color:#5a5742;line-height:1.6;
   }
 
-  /* ========== BENEFICIOS FULL-BLEED VIDEO ========== */
+  /* ========== BENEFICIOS (solid olive) ========== */
   .benefits{
     position:relative;
     padding:140px 0;
     overflow:hidden;
     color:var(--cream);
+    background:var(--olive);
   }
-  .benefits-bg{
-    position:absolute;inset:0;z-index:0;
-    overflow:hidden;
-  }
-  .benefits-bg video{
-    width:100%;height:100%;object-fit:cover;
-    filter:brightness(.55) saturate(1.05);
-  }
-  .benefits-bg::after{
+  .benefits::before{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(135deg,rgba(42,40,31,.7) 0%,rgba(50,57,21,.7) 100%);
+    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.06) 1px, transparent 0);
+    background-size:32px 32px;opacity:.8;pointer-events:none;
+  }
+  .benefits::after{
+    content:"";position:absolute;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(163,142,72,.2),transparent 70%);
+    top:-120px;right:-80px;pointer-events:none;
   }
   .benefits .container{z-index:2}
   .benefits .section-head h2{color:var(--cream)}
@@ -725,57 +802,173 @@
   }
 
   .product-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
     position:relative;z-index:2;
   }
   .product-card{
-    position:relative;background:var(--cream);border-radius:22px;
-    padding:26px 26px 28px;color:var(--dark);
+    position:relative;background:var(--cream);border-radius:24px;
+    padding:0;color:var(--dark);
     box-shadow:var(--shadow-md);
-    transition:transform .4s ease, box-shadow .4s ease;
+    transition:transform .5s cubic-bezier(.2,.7,.1,1), box-shadow .5s ease;
+    overflow:hidden;
+    isolation:isolate;
   }
-  .product-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+  /* animated gold gradient border on hover */
+  .product-card::before{
+    content:"";
+    position:absolute;inset:-2px;
+    border-radius:26px;
+    background:conic-gradient(from 0deg, var(--gold), var(--khaki), var(--sage), var(--gold));
+    z-index:-1;
+    opacity:0;
+    transition:opacity .4s ease;
+    animation:spinBorder 6s linear infinite;
+  }
+  @keyframes spinBorder{to{transform:rotate(360deg)}}
+  .product-card:hover::before{opacity:1}
+  .product-card:hover{transform:translateY(-14px);box-shadow:var(--shadow-lg)}
 
   .kitten-decor{
-    position:absolute;top:-46px;right:18px;
-    width:90px;height:90px;color:var(--olive);pointer-events:none;z-index:3;
+    position:absolute;top:-42px;right:20px;
+    width:88px;height:88px;color:var(--olive);pointer-events:none;z-index:6;
   }
   .product-card:hover .kitten-body{animation:pawTap 1.2s ease-in-out infinite}
   .product-card:hover .yarn{animation:spinYarn 2.4s linear infinite;transform-origin:center}
   @keyframes spinYarn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
   @keyframes pawTap{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 
-  .product-photo{
-    width:100%;aspect-ratio:4/3;border-radius:14px;
-    overflow:hidden;background:#eee;margin-bottom:20px;position:relative;
+  /* ribbon for best seller */
+  .ribbon{
+    position:absolute;
+    top:18px;right:-44px;z-index:5;
+    background:var(--gold);color:var(--cream);
+    padding:6px 54px;
+    font-size:10px;letter-spacing:.25em;text-transform:uppercase;
+    font-weight:700;
+    transform:rotate(34deg);
+    box-shadow:0 4px 10px rgba(42,40,31,.2);
   }
-  .product-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .product-card:hover .product-photo img{transform:scale(1.08)}
-  .tag{
-    position:absolute;top:12px;left:12px;z-index:2;
-    background:var(--olive);color:var(--cream);
-    padding:6px 12px;border-radius:999px;
-    font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
-  }
-  .tag.gold{background:var(--gold)}
 
-  .product-card h3{
-    font-family:var(--serif);font-size:26px;font-weight:600;
-    color:var(--olive);margin-bottom:4px;
+  .product-photo{
+    width:100%;aspect-ratio:5/4;
+    overflow:hidden;background:var(--sage);
+    margin-bottom:0;position:relative;
+    border-radius:24px 24px 0 0;
   }
-  .product-card .desc{font-size:13px;color:#5a5742;margin-bottom:14px}
-  .stars{display:flex;gap:2px;margin-bottom:14px;color:var(--gold)}
+  .product-photo img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .9s cubic-bezier(.2,.7,.1,1);
+  }
+  .product-card:hover .product-photo img{transform:scale(1.1)}
+
+  /* subtle bottom gradient on photo */
+  .product-photo::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,transparent 60%,rgba(42,40,31,.3));
+    pointer-events:none;
+  }
+
+  /* floating tag */
+  .tag{
+    position:absolute;top:16px;left:16px;z-index:3;
+    background:rgba(246,246,233,.92);
+    backdrop-filter:blur(6px);
+    color:var(--olive);
+    padding:7px 14px;border-radius:999px;
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .tag::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--sage);
+  }
+  .tag.gold{background:var(--gold);color:var(--cream)}
+  .tag.gold::before{background:var(--cream)}
+
+  /* weight badge (bottom-left on photo) */
+  .weight-badge{
+    position:absolute;bottom:16px;left:16px;z-index:3;
+    background:rgba(42,40,31,.85);color:var(--cream);
+    padding:6px 12px;border-radius:8px;
+    font-size:11px;letter-spacing:.12em;font-weight:600;
+  }
+
+  /* quick-view icon button */
+  .quick-view{
+    position:absolute;top:16px;right:16px;z-index:3;
+    width:40px;height:40px;border-radius:50%;
+    background:rgba(246,246,233,.92);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;transform:translateY(-6px);
+    transition:opacity .35s ease, transform .35s ease, background .3s ease;
+    cursor:pointer;
+  }
+  .product-card:hover .quick-view{opacity:1;transform:translateY(0)}
+  .quick-view:hover{background:var(--gold)}
+  .quick-view svg{width:18px;height:18px;color:var(--olive);transition:color .3s}
+  .quick-view:hover svg{color:var(--cream)}
+
+  .card-body{
+    padding:24px 26px 26px;
+    position:relative;
+    background:var(--cream);
+  }
+  .card-body .category{
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    font-weight:600;color:var(--sage);margin-bottom:6px;
+  }
+  .product-card h3{
+    font-family:var(--serif);font-size:28px;font-weight:600;
+    color:var(--dark);margin-bottom:8px;line-height:1.05;
+    letter-spacing:-.01em;
+  }
+  .product-card .desc{
+    font-size:13px;color:#6a6650;margin-bottom:14px;
+    font-style:italic;
+  }
+  .stars{display:flex;gap:2px;margin-bottom:4px;color:var(--gold);align-items:center}
   .stars svg{width:14px;height:14px}
-  .product-row{display:flex;align-items:center;justify-content:space-between}
-  .price{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--gold)}
-  .price small{font-size:13px;color:#8a8570;font-weight:400;text-decoration:line-through;margin-right:6px}
+  .stars .rev-count{
+    font-size:12px;color:#8a8570;margin-left:6px;letter-spacing:.04em;font-style:normal;
+  }
+
+  .divider{
+    height:1px;background:linear-gradient(90deg,transparent,rgba(50,57,21,.18),transparent);
+    margin:18px 0 16px;
+  }
+
+  .product-row{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:14px;
+  }
+  .price-wrap{display:flex;flex-direction:column;line-height:1.1}
+  .price-wrap .was{
+    font-size:12px;color:#a09a82;text-decoration:line-through;
+  }
+  .price{
+    font-family:var(--serif);font-size:30px;font-weight:700;
+    color:var(--gold);letter-spacing:-.01em;
+  }
+  .price .cur{font-size:16px;vertical-align:super;margin-right:1px;font-weight:500}
+
   .add-btn{
     background:var(--olive);color:var(--cream);
-    padding:11px 20px;border-radius:999px;
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
-    transition:background .25s ease, transform .2s ease;
+    padding:13px 22px;border-radius:999px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:background .3s ease, transform .25s ease, gap .3s ease;
+    position:relative;overflow:hidden;
   }
-  .add-btn:hover{background:var(--gold);transform:scale(1.04)}
+  .add-btn::before{
+    content:"";position:absolute;inset:0;
+    background:var(--gold);
+    transform:translateX(-101%);
+    transition:transform .4s cubic-bezier(.2,.7,.1,1);
+  }
+  .add-btn:hover::before{transform:translateX(0)}
+  .add-btn span{position:relative;z-index:2}
+  .add-btn svg{width:14px;height:14px;position:relative;z-index:2;transition:transform .3s ease}
+  .add-btn:hover{gap:12px}
+  .add-btn:hover svg{transform:translateX(3px)}
 
   /* ========== RESEÑAS ========== */
   .reviews{padding:120px 0;background:var(--cream);position:relative}
@@ -1018,8 +1211,13 @@
         <path d="M 80 96 q 6 -4 12 0 M 100 92 q 6 -3 12 0 M 122 94 q 6 -3 12 0 M 144 100 q 5 -2 10 0"
               stroke="#0d0b06" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
 
-        <!-- ====== NECK + HEAD ====== -->
-        <path d="M 178 110 C 198 100, 215 84, 218 64 L 238 72 C 232 104, 215 124, 196 130 Z" fill="url(#tbFur)"/>
+        <!-- ====== NECK (centered) ====== -->
+        <path d="M 180 104
+                 Q 196 96, 204 92
+                 L 220 100
+                 Q 214 118, 198 126
+                 Q 186 122, 180 114 Z"
+              fill="url(#tbFur)"/>
 
         <!-- oversized head -->
         <path d="M 210 46
@@ -1115,8 +1313,8 @@
     <ul>
       <li><a href="#inicio" class="active">Inicio</a></li>
       <li><a href="#nuestro-barf">Nuestro BARF</a></li>
-      <li><a href="#proceso">Proceso</a></li>
       <li><a href="#productos">Productos</a></li>
+      <li><a href="#beneficios">Beneficios</a></li>
       <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
     </ul>
@@ -1273,55 +1471,6 @@
   </div>
 </section>
 
-<!-- ============= NUESTRO PROCESO (video sticky) ============= -->
-<section class="process" id="proceso">
-  <div class="container process-inner">
-    <div class="process-video fade-in">
-      <div class="overlay-tag"><span class="live-dot"></span>Cocina BARFirenzina</div>
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="assets/info.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-    <div class="fade-in">
-      <span class="section-eyebrow">Nuestro Proceso</span>
-      <h2 style="font-family:var(--serif);font-size:clamp(34px,4vw,54px);font-weight:600;color:var(--dark);line-height:1.05;margin-bottom:16px;">Del productor<br><em style="font-style:italic;color:var(--olive)">al plato de tu gato.</em></h2>
-      <p style="color:#4a4735;margin-bottom:34px;font-size:16px;max-width:500px;">Cada etapa de elaboración está diseñada para preservar la frescura, el valor nutricional y el respeto por el animal. Así trabajamos cada día.</p>
-
-      <div class="process-steps stagger">
-        <div class="process-step">
-          <div class="step-num">01</div>
-          <div>
-            <h4>Selección Artesanal</h4>
-            <p>Elegimos carnes y órganos frescos de proveedores locales certificados. Sin intermediarios, sin congelados de largo viaje.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="step-num">02</div>
-          <div>
-            <h4>Molienda en Frío</h4>
-            <p>Procesamos todo por debajo de los 4 °C para conservar enzimas, aminoácidos y ácidos grasos en su forma biodisponible.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="step-num">03</div>
-          <div>
-            <h4>Formulación Precisa</h4>
-            <p>Cada receta es pesada al gramo siguiendo el protocolo BARF: músculo, órganos, huesos carnosos y vegetales.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="step-num">04</div>
-          <div>
-            <h4>Entrega Refrigerada</h4>
-            <p>Envasado al vacío, congelado y enviado en cadena de frío hasta la puerta de tu casa en menos de 48 horas.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============= PRODUCTOS ============= -->
 <section class="products" id="productos">
   <div class="container">
@@ -1333,7 +1482,9 @@
 
     <div class="product-grid stagger fade-in">
 
+      <!-- ===== CARD 1 ===== -->
       <article class="product-card">
+        <div class="ribbon">Bestseller</div>
         <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
           <g class="kitten-body" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M55 62c-10 0-18-6-18-14 0-2 0-4 1-6l-4-6c-1-1 0-3 2-2l6 3c3-1 6-2 9-2s6 1 9 2l6-3c2-1 3 1 2 2l-4 6c1 2 1 4 1 6 0 8-4 14-10 14z"/>
@@ -1350,23 +1501,39 @@
         </svg>
         <div class="product-photo">
           <div class="tag gold">Más Vendido</div>
+          <button class="quick-view" aria-label="Vista rápida">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <div class="weight-badge">500 g</div>
           <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80" alt="Mix Pollo y Res"/>
         </div>
-        <h3>Mix Pollo & Res</h3>
-        <p class="desc">Receta completa · 500 g</p>
-        <div class="stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <div class="product-row">
-          <span class="price"><small>$16</small>$13</span>
-          <button class="add-btn">Añadir</button>
+        <div class="card-body">
+          <div class="category">Receta Completa</div>
+          <h3>Mix Pollo &amp; Res</h3>
+          <p class="desc">Carne magra, órganos frescos y vegetales selectos.</p>
+          <div class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <span class="rev-count">(348)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="product-row">
+            <div class="price-wrap">
+              <span class="was">$16.00</span>
+              <span class="price"><span class="cur">$</span>13<small style="font-size:16px">.00</small></span>
+            </div>
+            <button class="add-btn">
+              <span>Añadir</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ===== CARD 2 ===== -->
       <article class="product-card">
         <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
           <g class="kitten-body" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1384,23 +1551,38 @@
         </svg>
         <div class="product-photo">
           <div class="tag">Ligero</div>
-          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80" alt="Pavo BARF Mix"/>
+          <button class="quick-view" aria-label="Vista rápida">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <div class="weight-badge">500 g</div>
+          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80" alt="Pavo BARF"/>
         </div>
-        <h3>Pavo BARF</h3>
-        <p class="desc">Receta ligera · 500 g</p>
-        <div class="stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <div class="product-row">
-          <span class="price">$12</span>
-          <button class="add-btn">Añadir</button>
+        <div class="card-body">
+          <div class="category">Receta Ligera</div>
+          <h3>Pavo BARF</h3>
+          <p class="desc">Proteína magra ideal para gatos sensibles o senior.</p>
+          <div class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <span class="rev-count">(217)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="product-row">
+            <div class="price-wrap">
+              <span class="price"><span class="cur">$</span>12<small style="font-size:16px">.00</small></span>
+            </div>
+            <button class="add-btn">
+              <span>Añadir</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ===== CARD 3 ===== -->
       <article class="product-card">
         <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
           <g class="kitten-body" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1418,20 +1600,34 @@
         </svg>
         <div class="product-photo">
           <div class="tag">Omega 3</div>
+          <button class="quick-view" aria-label="Vista rápida">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <div class="weight-badge">500 g</div>
           <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=800&q=80" alt="Pescado BARF"/>
         </div>
-        <h3>Pescado BARF</h3>
-        <p class="desc">Omega natural · 500 g</p>
-        <div class="stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <div class="product-row">
-          <span class="price">$13</span>
-          <button class="add-btn">Añadir</button>
+        <div class="card-body">
+          <div class="category">Pescado Premium</div>
+          <h3>Pescado BARF</h3>
+          <p class="desc">Rico en Omega 3 para pelaje brillante y articulaciones.</p>
+          <div class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+            <span class="rev-count">(156)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="product-row">
+            <div class="price-wrap">
+              <span class="price"><span class="cur">$</span>13<small style="font-size:16px">.00</small></span>
+            </div>
+            <button class="add-btn">
+              <span>Añadir</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
       </article>
 
@@ -1439,13 +1635,35 @@
   </div>
 </section>
 
-<!-- ============= BENEFICIOS (video de fondo) ============= -->
-<section class="benefits" id="beneficios">
-  <div class="benefits-bg">
-    <video autoplay muted loop playsinline preload="metadata">
-      <source src="assets/info.mp4" type="video/mp4" />
-    </video>
+<!-- ============= CINEMA (cat.mp4) ============= -->
+<section class="cinema" id="historia">
+  <div class="cinema-wrap">
+    <div class="cinema-video">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/cat.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="cinema-play">
+      <span class="rec"></span>Filmado en nuestra cocina
+    </div>
+
+    <div class="cinema-content fade-in">
+      <div class="eyebrow-cin">Historia BARFirenzina</div>
+      <h2>Porque un gato<br><em>no pide permiso.</em></h2>
+      <p class="cin-sub">Nacimos del vínculo con nuestros propios felinos. Entendimos que su instinto no negocia — y que la comida que merecen tampoco debería hacer concesiones.</p>
+      <a href="#productos" class="btn btn-secondary" style="border-color:var(--khaki);color:var(--khaki)">Descubrir nuestras recetas</a>
+      <div class="cinema-stats">
+        <div class="stat"><span class="n">2020</span><span class="l">Fundación</span></div>
+        <div class="stat"><span class="n">+5.000</span><span class="l">Gatos Felices</span></div>
+        <div class="stat"><span class="n">48 hs</span><span class="l">Cadena de frío</span></div>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- ============= BENEFICIOS (color sólido) ============= -->
+<section class="benefits" id="beneficios">
   <div class="container">
     <div class="section-head fade-in">
       <span class="eye">Beneficios</span>
