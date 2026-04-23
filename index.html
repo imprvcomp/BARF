@@ -139,29 +139,26 @@
   }
 
   /* ============================================
-     HISTORIA BARFirenzina (redesign — cream card on cinematic video)
+     HISTORIA BARFirenzina (redesign — solid olive background)
   ============================================ */
   .historia{
     position:relative;
-    background:var(--dark);
+    background:var(--olive);
     color:var(--cream);
     overflow:hidden;
     padding:120px 0 140px;
     isolation:isolate;
   }
-  .hist-video{position:absolute;inset:0;z-index:0;overflow:hidden}
-  .hist-video video{
-    width:100%;height:100%;object-fit:cover;
-    filter:brightness(.55) contrast(1.05) saturate(.85);
-    transform:scale(1.04);
-    transition:transform 18s ease;
+  .historia::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.06) 1px, transparent 0);
+    background-size:32px 32px;
   }
-  .historia:hover .hist-video video{transform:scale(1.12)}
-  .hist-vig{
-    position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:
-      radial-gradient(ellipse at 70% 30%, transparent 0%, rgba(42,40,31,.55) 55%, rgba(42,40,31,.92) 100%),
-      linear-gradient(180deg, rgba(42,40,31,.55) 0%, rgba(42,40,31,.3) 40%, rgba(42,40,31,.85) 100%);
+  .historia::after{
+    content:"";position:absolute;
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(163,142,72,.22),transparent 70%);
+    top:-140px;right:-120px;pointer-events:none;
   }
   .hist-rec{
     position:absolute;top:28px;right:32px;z-index:4;
@@ -1188,7 +1185,7 @@
   .card-body{
     padding:24px 26px 26px;
     position:relative;
-    background:var(--cream);
+    background:var(--cream-2);
   }
   .card-body .category{
     font-size:10px;letter-spacing:.28em;text-transform:uppercase;
@@ -1528,7 +1525,13 @@
   .poster-frame video{
     width:100%;height:auto;display:block;
     aspect-ratio:2/3;object-fit:cover;
+    object-position:center top;
     border-radius:1px;
+    background:var(--olive);
+  }
+  .poster-frame.solution video{
+    object-fit:contain;
+    background:#c5924a;
   }
   .poster-frame.problem{transform:rotate(-2deg)}
   .poster-frame.solution{transform:rotate(2deg)}
@@ -2110,13 +2113,6 @@
 
 <!-- ============= HISTORIA BARFirenzina (redesign) ============= -->
 <section class="historia" id="historia">
-  <div class="hist-video">
-    <video autoplay muted loop playsinline preload="metadata">
-      <source src="assets/cat.mp4" type="video/mp4" />
-    </video>
-    <div class="hist-vig"></div>
-  </div>
-
   <div class="hist-rec"><span></span>Filmado en nuestra cocina</div>
 
   <div class="container">
