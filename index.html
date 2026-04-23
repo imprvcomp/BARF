@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Preload hero video so it starts playing instantly on page load -->
+<link rel="preload" as="video" href="assets/hero.mp4" type="video/mp4">
 
 <style>
   :root{
@@ -1127,7 +1129,7 @@
   .product-photo-real img{
     object-fit:contain;
     object-position:center;
-    width:82%;height:82%;
+    width:92%;height:92%;
     padding:0;
   }
 
@@ -1518,7 +1520,8 @@
     box-shadow:0 40px 70px -35px rgba(42,40,31,.6);
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
   }
-  .poster-frame img{
+  .poster-frame img,
+  .poster-frame video{
     width:100%;height:auto;display:block;
     aspect-ratio:2/3;object-fit:cover;
     border-radius:1px;
@@ -1872,7 +1875,7 @@
 
     <div class="hero-visual">
       <div class="hero-image-wrap" id="heroImg">
-        <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80">
+        <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
           <source src="assets/hero.mp4" type="video/mp4" />
         </video>
       </div>
@@ -2169,7 +2172,9 @@
 
     <div class="poster-story fade-in">
       <div class="poster-frame problem">
-        <img src="assets/poster-industrial.jpg" alt="Procesos industriales: pérdida de nutrientes"/>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="assets/explain-problem.mp4" type="video/mp4" />
+        </video>
         <span class="p-label">El problema</span>
       </div>
       <div class="poster-arrow">
@@ -2178,7 +2183,9 @@
         </svg>
       </div>
       <div class="poster-frame solution">
-        <img src="assets/poster-natural.jpg" alt="Gato comiendo alimento natural BARF"/>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="assets/explain-solution.mp4" type="video/mp4" />
+        </video>
         <span class="p-label">La solución</span>
       </div>
     </div>
