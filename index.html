@@ -6,7 +6,7 @@
 <title>BARFirenzina — Nutrición Premium para Gatos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -19,10 +19,6 @@
     --gold:#A38E48;
     --serif: "Cormorant Garamond", Georgia, serif;
     --sans: "Inter", system-ui, -apple-system, sans-serif;
-    --mono: "Montserrat", "Inter", system-ui, sans-serif;
-    /* Introrust / Intropro with fallbacks (Anton + Inter) */
-    --display: "Introrust", "Anton", Impact, "Arial Black", sans-serif;
-    --subtitle: "Intropro", "Inter", system-ui, sans-serif;
     --shadow-sm: 0 4px 14px -6px rgba(42,40,31,.18);
     --shadow-md: 0 18px 40px -20px rgba(42,40,31,.30);
     --shadow-lg: 0 30px 70px -30px rgba(42,40,31,.45);
@@ -203,10 +199,10 @@
   }
   .hist-eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
   .hist-card h2{
-    font-family:var(--display);font-weight:400;
-    font-size:clamp(36px, 4.6vw, 60px);
-    line-height:1.02;letter-spacing:.005em;
-    color:var(--olive);text-transform:uppercase;
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(40px, 5.2vw, 72px);
+    line-height:1;letter-spacing:-.02em;
+    color:var(--olive);
   }
   .hist-card h2 em{
     font-style:italic;color:var(--gold);display:block;
@@ -250,8 +246,7 @@
     transition:transform .6s cubic-bezier(.2,.8,.2,1);
   }
   .hist-poster:hover{transform:rotate(0) scale(1.02)}
-  .hist-poster img,
-  .hist-poster video{
+  .hist-poster img{
     width:100%;height:100%;display:block;object-fit:cover;
     aspect-ratio:3/4;
     border-radius:2px;
@@ -382,21 +377,21 @@
   }
   .process-step:hover .step-num{color:var(--gold)}
   .process-step h4{
-    font-family:var(--subtitle);
-    font-size:20px;font-weight:700;
-    color:var(--dark);margin-bottom:6px;letter-spacing:.01em;
+    font-family:var(--serif);
+    font-size:24px;font-weight:600;
+    color:var(--dark);margin-bottom:6px;
   }
   .process-step p{
     font-size:14px;color:#5a5742;line-height:1.6;
   }
 
-  /* ========== BENEFICIOS (verde más claro — sage) ========== */
+  /* ========== BENEFICIOS (solid olive) ========== */
   .benefits{
     position:relative;
     padding:140px 0;
     overflow:hidden;
     color:var(--cream);
-    background:#9AA273;
+    background:var(--olive);
   }
   .benefits::before{
     content:"";position:absolute;inset:0;
@@ -420,30 +415,30 @@
     gap:20px;
   }
   .benefit-card{
-    background:rgba(42,40,31,.18);
+    background:rgba(246,246,233,.08);
     backdrop-filter:blur(10px);
-    border:1px solid rgba(246,246,233,.3);
+    border:1px solid rgba(246,246,233,.18);
     border-radius:18px;
     padding:30px 24px;
     transition:transform .35s ease, background .35s ease, border-color .35s ease;
   }
   .benefit-card:hover{
     transform:translateY(-10px);
-    background:rgba(42,40,31,.3);
-    border-color:var(--cream);
+    background:rgba(246,246,233,.14);
+    border-color:var(--khaki);
   }
   .benefit-card .icon-wrap{
     width:52px;height:52px;border-radius:14px;
-    background:var(--olive);
+    background:var(--khaki);
     display:flex;align-items:center;justify-content:center;
     margin-bottom:18px;transition:background .3s ease;
   }
   .benefit-card:hover .icon-wrap{background:var(--gold)}
-  .benefit-card .icon-wrap svg{width:26px;height:26px;color:var(--cream)}
+  .benefit-card .icon-wrap svg{width:26px;height:26px;color:var(--olive)}
   .benefit-card h4{
-    font-family:var(--subtitle);
-    font-size:18px;font-weight:700;
-    color:var(--cream);margin-bottom:10px;line-height:1.25;letter-spacing:.01em;
+    font-family:var(--serif);
+    font-size:22px;font-weight:600;
+    color:var(--cream);margin-bottom:10px;line-height:1.2;
   }
   .benefit-card p{font-size:14px;color:rgba(246,246,233,.75);line-height:1.6}
 
@@ -603,8 +598,8 @@
     display:flex;align-items:center;justify-content:space-between;
   }
   .cart-header h3{
-    font-family:var(--subtitle);font-size:20px;font-weight:700;
-    color:var(--dark);letter-spacing:.01em;
+    font-family:var(--serif);font-size:26px;font-weight:600;
+    color:var(--dark);
   }
   .cart-header h3 span{color:var(--sage);font-size:16px;margin-left:6px}
   .cart-close{
@@ -628,8 +623,8 @@
   }
   .cart-empty svg{width:64px;height:64px;color:var(--khaki);margin:0 auto 18px;display:block}
   .cart-empty h4{
-    font-family:var(--subtitle);font-size:18px;color:var(--dark);
-    margin-bottom:8px;font-weight:700;letter-spacing:.01em;
+    font-family:var(--serif);font-size:22px;color:var(--dark);
+    margin-bottom:8px;
   }
   .cart-empty p{font-size:14px;margin-bottom:24px}
 
@@ -766,13 +761,12 @@
     content:"";width:36px;height:2px;background:var(--sage);
   }
   .hero h1{
-    font-family:var(--display);
-    font-weight:400;
-    font-size:clamp(44px, 5.6vw, 82px);
-    line-height:1.02;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(50px, 6.5vw, 96px);
+    line-height:1;
     color:var(--dark);
-    letter-spacing:.01em;
-    text-transform:uppercase;
+    letter-spacing:-1px;
   }
   .hero h1 .accent{
     font-style:italic;
@@ -951,10 +945,10 @@
     content:"";width:30px;height:1.5px;background:var(--olive);
   }
   .secret h2{
-    font-family:var(--display);
-    font-size:clamp(32px,3.6vw,52px);
-    font-weight:400;color:var(--olive);line-height:1.05;
-    margin-bottom:22px;letter-spacing:.01em;text-transform:uppercase;
+    font-family:var(--serif);
+    font-size:clamp(36px,4vw,58px);
+    font-weight:600;color:var(--olive);line-height:1.05;
+    margin-bottom:22px;
   }
   .secret p.lead{max-width:480px;color:#3a3a28;margin-bottom:36px;font-size:16px}
 
@@ -1013,10 +1007,9 @@
   .info-visual .side-img img{width:100%;height:100%;object-fit:cover}
 
   .info h2{
-    font-family:var(--display);
-    font-size:clamp(32px,3.6vw,52px);
-    font-weight:400;color:var(--dark);line-height:1.05;margin-bottom:22px;
-    letter-spacing:.01em;text-transform:uppercase;
+    font-family:var(--serif);
+    font-size:clamp(36px,4vw,58px);
+    font-weight:600;color:var(--dark);line-height:1.05;margin-bottom:22px;
   }
   .info h2 em{font-style:italic;color:var(--olive)}
   .info p.body{color:#4a4735;margin-bottom:28px;font-size:16px;max-width:520px}
@@ -1053,10 +1046,9 @@
     font-weight:600;color:var(--khaki);margin-bottom:16px;display:block;
   }
   .section-head h2{
-    font-family:var(--display);
-    font-size:clamp(34px,3.8vw,56px);
-    font-weight:400;color:var(--cream);line-height:1.05;
-    letter-spacing:.01em;text-transform:uppercase;
+    font-family:var(--serif);
+    font-size:clamp(38px,4.2vw,62px);
+    font-weight:600;color:var(--cream);line-height:1.05;
   }
   .section-head p{
     color:rgba(246,246,233,.75);margin-top:14px;font-size:16px;
@@ -1066,14 +1058,11 @@
   .product-grid{
     display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
     position:relative;z-index:2;
-    padding-top:70px;
   }
   .product-grid.two-cols{
     grid-template-columns:repeat(2,1fr);
     max-width:880px;margin:0 auto;gap:40px;
   }
-  /* wrapper allows kitten-decor to peek above the card without breaking ribbon clip */
-  .product-card-wrap{position:relative}
   .product-card{
     position:relative;background:var(--cream);border-radius:24px;
     padding:0;color:var(--dark);
@@ -1083,15 +1072,12 @@
     isolation:isolate;
   }
   .product-card:hover{transform:translateY(-14px);box-shadow:var(--shadow-lg)}
-  .product-card-wrap:hover .kitten-decor{transform:translateY(-14px) rotate(-4deg)}
 
   .kitten-decor{
-    position:absolute;top:-80px;left:22px;
-    width:110px;height:110px;color:var(--olive);pointer-events:none;z-index:6;
-    filter:drop-shadow(0 6px 10px rgba(42,40,31,.3));
-    transition:transform .5s cubic-bezier(.2,.7,.1,1);
+    position:absolute;top:-42px;right:20px;
+    width:88px;height:88px;color:var(--olive);pointer-events:none;z-index:6;
   }
-  .product-card-wrap:hover .kitten-body{animation:pawTap 1.2s ease-in-out infinite}
+  .product-card:hover .kitten-body{animation:pawTap 1.2s ease-in-out infinite}
   @keyframes pawTap{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 
   /* ribbon for best seller */
@@ -1118,17 +1104,13 @@
   }
   .product-card:hover .product-photo img{transform:scale(1.1)}
 
-  /* real product photo — square container, photo centered and slightly inset */
+  /* real product photo (cream bg matches image background) */
   .product-photo-real{
     background:#F6F6E9;
-    aspect-ratio:1/1;
-    display:flex;align-items:center;justify-content:center;
   }
   .product-photo-real img{
     object-fit:contain;
-    object-position:center;
-    width:82%;height:82%;
-    padding:0;
+    padding:18px;
   }
 
   /* subtle bottom gradient on photo */
@@ -1160,8 +1142,7 @@
     position:absolute;bottom:16px;left:16px;z-index:3;
     background:rgba(42,40,31,.85);color:var(--cream);
     padding:6px 12px;border-radius:8px;
-    font-family:var(--mono);
-    font-size:11px;letter-spacing:.08em;font-weight:700;
+    font-size:11px;letter-spacing:.12em;font-weight:600;
   }
 
   /* quick-view icon button */
@@ -1189,7 +1170,7 @@
     font-weight:600;color:var(--sage);margin-bottom:6px;
   }
   .product-card h3{
-    font-family:var(--subtitle);font-size:22px;font-weight:700;letter-spacing:.005em;
+    font-family:var(--serif);font-size:28px;font-weight:600;
     color:var(--dark);margin-bottom:8px;line-height:1.05;
     letter-spacing:-.01em;
   }
@@ -1200,9 +1181,7 @@
   .stars{display:flex;gap:2px;margin-bottom:4px;color:var(--gold);align-items:center}
   .stars svg{width:14px;height:14px}
   .stars .rev-count{
-    font-family:var(--mono);
-    font-size:12px;color:#8a8570;margin-left:6px;letter-spacing:.02em;font-style:normal;
-    font-weight:500;
+    font-size:12px;color:#8a8570;margin-left:6px;letter-spacing:.04em;font-style:normal;
   }
 
   .divider{
@@ -1216,14 +1195,13 @@
   }
   .price-wrap{display:flex;flex-direction:column;line-height:1.1}
   .price-wrap .was{
-    font-family:var(--mono);font-weight:500;
-    font-size:12px;color:#a09a82;text-decoration:line-through;letter-spacing:.01em;
+    font-size:12px;color:#a09a82;text-decoration:line-through;
   }
   .price{
-    font-family:var(--mono);font-size:26px;font-weight:700;
-    color:var(--gold);letter-spacing:-.02em;
+    font-family:var(--serif);font-size:30px;font-weight:700;
+    color:var(--gold);letter-spacing:-.01em;
   }
-  .price .cur{font-size:14px;vertical-align:super;margin-right:2px;font-weight:600}
+  .price .cur{font-size:16px;vertical-align:super;margin-right:1px;font-weight:500}
 
   .add-btn{
     background:var(--olive);color:var(--cream);
@@ -1284,9 +1262,6 @@
 
   /* ========== FAQ ========== */
   .faq{padding:120px 0;background:var(--cream-2);position:relative}
-  .faq .section-head .eye{color:var(--sage)}
-  .faq .section-head h2{color:#000}
-  .faq .section-head p{color:#000}
   .faq-wrap{max-width:820px;margin:0 auto}
   .faq-item{
     background:var(--cream);border-radius:16px;margin-bottom:14px;
@@ -1341,9 +1316,9 @@
   .cta-banner::before{top:-80px;left:-80px}
   .cta-banner::after{bottom:-100px;right:-60px;background:radial-gradient(circle, rgba(163,142,72,.28), transparent 70%)}
   .cta-banner h2{
-    font-family:var(--display);font-size:clamp(36px,4.4vw,64px);
-    font-weight:400;line-height:1.05;margin-bottom:18px;
-    position:relative;z-index:2;letter-spacing:.01em;text-transform:uppercase;
+    font-family:var(--serif);font-size:clamp(40px,5vw,72px);
+    font-weight:500;line-height:1.05;margin-bottom:18px;
+    position:relative;z-index:2;
   }
   .cta-banner h2 em{font-style:italic;color:var(--khaki)}
   .cta-banner p{
@@ -1358,8 +1333,8 @@
   footer{background:var(--dark);color:var(--cream);padding:80px 0 30px}
   .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px}
   .footer-brand h4{
-    font-family:var(--display);font-size:26px;font-weight:400;
-    margin-bottom:12px;color:var(--khaki);letter-spacing:.02em;text-transform:uppercase;
+    font-family:var(--serif);font-size:30px;font-weight:600;
+    margin-bottom:12px;color:var(--khaki);
   }
   .footer-brand p{color:rgba(246,246,233,.65);font-size:14px;max-width:320px;margin-bottom:22px}
   footer h5{
@@ -1452,40 +1427,42 @@
     color:var(--sage);font-weight:700;margin-bottom:22px;
   }
   .explain-head h2{
-    font-family:var(--display);font-weight:400;
-    font-size:clamp(38px, 5vw, 68px);
-    line-height:1.02;letter-spacing:.01em;text-transform:uppercase;
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(42px, 6vw, 82px);
+    line-height:1;letter-spacing:-.02em;
     color:var(--olive);
   }
   .explain-head h2 em{
     color:var(--gold);font-style:italic;display:inline-block;
   }
 
-  /* STAT TICKER — transparent, just letters */
+  /* STAT TICKER — renewed */
   .stat-ticker{
     display:grid;grid-template-columns:repeat(4,1fr);
     gap:0;margin:0 0 80px;
     position:relative;
     background:transparent;
-    border-top:1px solid rgba(50,57,21,.18);
-    border-bottom:1px solid rgba(50,57,21,.18);
+    border-radius:0;
+    overflow:hidden;
   }
   .stat-ticker .stat{
     padding:52px 20px 46px;
     text-align:center;
     border-right:1px solid rgba(50,57,21,.12);
     position:relative;
+    transition:background .4s ease;
   }
   .stat-ticker .stat:last-child{border-right:none}
+  .stat-ticker .stat:hover{background:rgba(50,57,21,.04)}
   .stat-ticker .stat::after{
-    content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);
-    width:0;height:2px;background:var(--gold);
+    content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+    width:0;height:3px;background:var(--gold);
     transition:width .8s cubic-bezier(.2,.8,.2,1);
   }
   .stat-ticker .stat.visible::after{width:44%}
   .stat-ticker .stat .num-wrap{
     font-family:var(--serif);font-weight:500;
-    font-size:clamp(54px,7vw,96px);
+    font-size:clamp(52px,7vw,92px);
     line-height:1;color:var(--olive);
     display:inline-flex;align-items:flex-start;gap:4px;
     letter-spacing:-.02em;
@@ -1594,9 +1571,9 @@
     content:"";width:48px;height:1px;background:var(--gold);
   }
   .ig-head h2{
-    font-family:var(--display);font-weight:400;
-    font-size:clamp(34px, 4.6vw, 60px);
-    line-height:1.04;letter-spacing:.01em;text-transform:uppercase;
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px, 5.5vw, 76px);
+    line-height:1.02;letter-spacing:-.02em;
     color:var(--cream);
   }
   .ig-head h2 em{
@@ -1991,22 +1968,30 @@
     <div class="product-grid two-cols stagger fade-in">
 
       <!-- ===== CARD 1 — BARF CRUDO ===== -->
-      <div class="product-card-wrap">
-      <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <g class="kitten-body">
-          <path d="M43 56 C40 64, 41 78, 44 88 L56 88 C59 78, 60 64, 57 56 Z" fill="currentColor"/>
-          <circle cx="50" cy="44" r="14" fill="currentColor"/>
-          <path d="M39 38 L35 24 L44 34 Z" fill="currentColor"/>
-          <path d="M61 38 L65 24 L56 34 Z" fill="currentColor"/>
-          <circle cx="45" cy="44" r="4" fill="#F6F6E9"/>
-          <circle cx="55" cy="44" r="4" fill="#F6F6E9"/>
-          <circle cx="45" cy="45" r="1.8" fill="currentColor"/>
-          <circle cx="55" cy="45" r="1.8" fill="currentColor"/>
-          <path d="M58 76 Q68 72 66 62" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </g>
-      </svg>
       <article class="product-card" data-id="1" data-name="BARF Crudo" data-price="13" data-img="assets/barf-crudo.jpg">
         <div class="ribbon">Bestseller</div>
+        <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <g class="kitten-body">
+            <!-- skinny body -->
+            <path d="M43 56 C40 64, 41 78, 44 88 L56 88 C59 78, 60 64, 57 56 Z" fill="currentColor"/>
+            <!-- head -->
+            <circle cx="50" cy="44" r="14" fill="currentColor"/>
+            <!-- ears -->
+            <path d="M39 38 L35 24 L44 34 Z" fill="currentColor"/>
+            <path d="M61 38 L65 24 L56 34 Z" fill="currentColor"/>
+            <!-- big round eyes -->
+            <circle cx="45" cy="44" r="4" fill="#F6F6E9"/>
+            <circle cx="55" cy="44" r="4" fill="#F6F6E9"/>
+            <circle cx="45" cy="45" r="1.8" fill="currentColor"/>
+            <circle cx="55" cy="45" r="1.8" fill="currentColor"/>
+            <!-- tail -->
+            <path d="M58 76 Q68 72 66 62" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+          <g class="yarn" transform="translate(22 82)">
+            <circle r="7" fill="#A38E48" stroke="#6b5c2e" stroke-width="1"/>
+            <path d="M-5 -2c3 2 5 3 7 6M-4 2c3 1 7 2 9 4" stroke="#6b5c2e" stroke-width="0.8" fill="none"/>
+          </g>
+        </svg>
         <div class="product-photo product-photo-real">
           <div class="tag gold">Más Vendido</div>
           <button class="quick-view" aria-label="Vista rápida">
@@ -2040,24 +2025,26 @@
           </div>
         </div>
       </article>
-      </div>
 
       <!-- ===== CARD 2 — BARF COCIDO ===== -->
-      <div class="product-card-wrap">
-      <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <g class="kitten-body">
-          <path d="M43 56 C40 64, 41 78, 44 88 L56 88 C59 78, 60 64, 57 56 Z" fill="currentColor"/>
-          <circle cx="50" cy="44" r="14" fill="currentColor"/>
-          <path d="M39 38 L35 24 L44 34 Z" fill="currentColor"/>
-          <path d="M61 38 L65 24 L56 34 Z" fill="currentColor"/>
-          <circle cx="45" cy="44" r="4" fill="#F6F6E9"/>
-          <circle cx="55" cy="44" r="4" fill="#F6F6E9"/>
-          <circle cx="45" cy="45" r="1.8" fill="currentColor"/>
-          <circle cx="55" cy="45" r="1.8" fill="currentColor"/>
-          <path d="M58 76 Q68 72 66 62" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </g>
-      </svg>
       <article class="product-card" data-id="2" data-name="BARF Cocido" data-price="13" data-img="assets/barf-cocido.jpg">
+        <svg class="kitten-decor" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <g class="kitten-body">
+            <path d="M43 56 C40 64, 41 78, 44 88 L56 88 C59 78, 60 64, 57 56 Z" fill="currentColor"/>
+            <circle cx="50" cy="44" r="14" fill="currentColor"/>
+            <path d="M39 38 L35 24 L44 34 Z" fill="currentColor"/>
+            <path d="M61 38 L65 24 L56 34 Z" fill="currentColor"/>
+            <circle cx="45" cy="44" r="4" fill="#F6F6E9"/>
+            <circle cx="55" cy="44" r="4" fill="#F6F6E9"/>
+            <circle cx="45" cy="45" r="1.8" fill="currentColor"/>
+            <circle cx="55" cy="45" r="1.8" fill="currentColor"/>
+            <path d="M58 76 Q68 72 66 62" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+          <g class="yarn" transform="translate(22 82)">
+            <circle r="7" fill="#7C8456" stroke="#4a5130" stroke-width="1"/>
+            <path d="M-5 -2c3 2 5 3 7 6M-4 2c3 1 7 2 9 4" stroke="#4a5130" stroke-width="0.8" fill="none"/>
+          </g>
+        </svg>
         <div class="product-photo product-photo-real">
           <div class="tag">Suave</div>
           <button class="quick-view" aria-label="Vista rápida">
@@ -2090,7 +2077,6 @@
           </div>
         </div>
       </article>
-      </div>
 
     </div>
   </div>
@@ -2120,9 +2106,7 @@
       </div>
 
       <div class="hist-poster fade-in">
-        <video autoplay muted loop playsinline preload="metadata">
-          <source src="assets/hist-hands.mp4" type="video/mp4" />
-        </video>
+        <img src="assets/poster-hands.jpg" alt="Gato recibiendo BARF fresco en sus manos"/>
         <span class="hp-tag">Alimentado con intención</span>
       </div>
     </div>
