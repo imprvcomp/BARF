@@ -1120,7 +1120,7 @@
   }
   .product-card:hover .product-photo img{transform:scale(1.1)}
 
-  /* real product photo — square container, photo centered and slightly inset */
+  /* real product photo — square container, photo centered, nearly fills */
   .product-photo-real{
     background:#F6F6E9;
     aspect-ratio:1/1;
@@ -1129,9 +1129,11 @@
   .product-photo-real img{
     object-fit:contain;
     object-position:center;
-    width:92%;height:92%;
+    width:100%;height:100%;
     padding:0;
+    transform:scale(1.1);
   }
+  .product-card:hover .product-photo-real img{transform:scale(1.18)}
 
   /* subtle bottom gradient on photo */
   .product-photo::after{
@@ -2170,10 +2172,15 @@
       </div>
     </div>
 
+    <!-- =========================================================
+      POSTER STORY — videos hospedados en /videos/ (carpeta aparte)
+      Subí explain-problem.mp4 y explain-solution.mp4 a /videos/
+      (o cambiá los src por una URL externa de Cloudinary/Vimeo/etc).
+    ========================================================= -->
     <div class="poster-story fade-in">
       <div class="poster-frame problem">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="assets/explain-problem.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="auto" poster="assets/poster-industrial.jpg">
+          <source src="videos/explain-problem.mp4" type="video/mp4" />
         </video>
         <span class="p-label">El problema</span>
       </div>
@@ -2183,8 +2190,8 @@
         </svg>
       </div>
       <div class="poster-frame solution">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="assets/explain-solution.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="auto" poster="assets/poster-natural.jpg">
+          <source src="videos/explain-solution.mp4" type="video/mp4" />
         </video>
         <span class="p-label">La solución</span>
       </div>
@@ -2194,12 +2201,34 @@
   </div>
 </section>
 
-<!-- ============= INSTAGRAM + WHATSAPP (redesign) =============
-  CÓMO EMBEBER TUS POSTS:
-  En Instagram: abrir el post, tocar los 3 puntos, elegir "Insertar" y copiar código.
-  Pegá ese código dentro de cada div class="ig-slot" reemplazando el blockquote actual.
-  O simplemente cambiá la URL en data-instgrm-permalink por el link de tu post.
-============================================= -->
+<!-- =======================================================================
+     INSTAGRAM — CÓMO SUBIR LAS PUBLICACIONES PARA QUE SE VEAN
+  =======================================================================
+  Para cada uno de los 4 slots abajo, hacé UNA de estas 2 opciones:
+
+  OPCIÓN A (rápida) — cambiar SOLO la URL del post:
+    1. Entrá al post en Instagram (desde un navegador, no la app).
+    2. Copiá la URL del post (ejemplo: https://www.instagram.com/p/CxYzAbcDeF/).
+    3. Reemplazá el valor de data-instgrm-permalink="..." con esa URL.
+    4. Reemplazá también el href="..." del <a> de adentro con la misma URL.
+
+  OPCIÓN B (más fiel) — código oficial de "Insertar":
+    1. En el post de Instagram, click "..." → "Insertar" → "Copiar código de inserción".
+    2. Reemplazá todo el <blockquote>...</blockquote> de abajo por el código pegado.
+
+  EJEMPLO (OPCIÓN A) — así debería quedar un slot con un post real:
+
+    <div class="ig-slot">
+      <blockquote class="instagram-media"
+                  data-instgrm-permalink="https://www.instagram.com/p/CxYzAbcDeF/"
+                  data-instgrm-version="14">
+        <a href="https://www.instagram.com/p/CxYzAbcDeF/" target="_blank" rel="noopener">Ver en Instagram</a>
+      </blockquote>
+    </div>
+
+  El script oficial de Instagram (ya cargado al final de la sección) detecta
+  automáticamente los blockquotes y los convierte en posts embebidos.
+======================================================================= -->
 <section class="ig-section" id="instagram">
   <div class="container">
     <header class="ig-head fade-in">
@@ -2209,26 +2238,35 @@
     </header>
 
     <div class="ig-grid fade-in">
+
+      <!-- POST 1 — Reel -->
       <div class="ig-slot">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
-          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUUAIg1ldjv/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/reel/DUUAIg1ldjv/" target="_blank" rel="noopener">Ver en Instagram</a>
         </blockquote>
       </div>
+
+      <!-- POST 2 — Carrusel -->
       <div class="ig-slot">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
-          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSK3ePQDsUu/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/p/DSK3ePQDsUu/" target="_blank" rel="noopener">Ver en Instagram</a>
         </blockquote>
       </div>
+
+      <!-- POST 3 -->
       <div class="ig-slot">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
-          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DS2yRAnkw_0/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/p/DS2yRAnkw_0/" target="_blank" rel="noopener">Ver en Instagram</a>
         </blockquote>
       </div>
+
+      <!-- POST 4 — Carrusel -->
       <div class="ig-slot">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/barfirenzina/" data-instgrm-version="14">
-          <a href="https://www.instagram.com/barfirenzina/" target="_blank" rel="noopener">Ver en Instagram</a>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSXqXlEDs8B/" data-instgrm-version="14">
+          <a href="https://www.instagram.com/p/DSXqXlEDs8B/" target="_blank" rel="noopener">Ver en Instagram</a>
         </blockquote>
       </div>
+
     </div>
 
     <div class="social-cta fade-in">
