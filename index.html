@@ -550,58 +550,71 @@
     100%{background-position:-150% 0}
   }
 
-  /* ========== HEADER ========== */
+  /* ========== HEADER (parchment cream, vintage) ========== */
   header{
     position:sticky;
     top:0;
     z-index:100;
-    background:rgba(50,57,21,.96);
-    backdrop-filter:saturate(140%) blur(8px);
-    color:var(--cream);
-    border-bottom:1px solid rgba(246,246,233,.08);
+    background:#f1ecd5;
+    color:var(--olive);
+    border-bottom:1px solid rgba(50,57,21,.15);
   }
   .nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:18px 32px;max-width:1240px;margin:0 auto;
+    padding:14px 32px;max-width:1340px;margin:0 auto;gap:32px;
   }
-  .brand{display:flex;align-items:center;gap:14px}
-  .logo{
-    width:54px;height:54px;border-radius:50%;
-    background:var(--cream);
-    overflow:hidden;
-    border:2px solid var(--khaki);
-    box-shadow:0 0 0 4px rgba(191,187,133,.15);
-    transition:transform .4s ease;
-  }
-  .logo:hover{transform:rotate(-8deg) scale(1.05)}
-  .logo img{width:100%;height:100%;object-fit:cover;display:block}
+  .brand{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+  .logo{display:none}
   .brand-name{
-    font-family:var(--serif);
-    font-size:22px;
-    font-weight:600;
-    color:var(--cream);
-    letter-spacing:.5px;
+    font-family:var(--display);
+    font-size:clamp(22px, 2.2vw, 30px);
+    font-weight:400;
+    color:var(--olive);
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    line-height:1;
   }
-  .brand-name span{color:var(--khaki)}
+  .brand-name span{color:var(--olive);text-transform:lowercase}
+  .brand-name span::before,
+  .brand-name span::after{display:none}
+  .brand::after{
+    content:"Alimentación natural para gatos";
+    font-family:var(--subtitle);
+    font-size:10px;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--olive);opacity:.7;font-weight:600;
+  }
 
-  .nav ul{list-style:none;display:flex;gap:38px}
+  .nav ul{list-style:none;display:flex;gap:32px;align-items:center}
   .nav ul a{
-    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
-    font-weight:500;padding:8px 0;position:relative;
-    transition:color .25s;color:rgba(246,246,233,.85);
+    font-family:var(--subtitle);
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:700;padding:8px 0;position:relative;
+    transition:color .25s;color:var(--olive);
   }
-  .nav ul a:hover,.nav ul a.active{color:var(--khaki)}
+  .nav ul a:hover,.nav ul a.active{color:var(--gold)}
   .nav ul a.active::after{
     content:"";position:absolute;left:0;right:0;bottom:-2px;
-    height:2px;background:var(--khaki);
+    height:1px;background:var(--gold);
   }
+  /* diamond separators between nav items */
+  .nav ul li + li{position:relative}
+  .nav ul li + li::before{
+    content:"";position:absolute;left:-18px;top:50%;
+    width:4px;height:4px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);
+    opacity:.6;
+  }
+
   .nav-cta{
-    background:var(--khaki);color:var(--dark);
-    padding:11px 22px;border-radius:999px;
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-    transition:background .25s ease, transform .2s ease;
+    display:inline-flex;align-items:center;gap:10px;
+    background:transparent;color:var(--olive);
+    border:1.5px solid var(--olive);
+    padding:11px 22px;border-radius:4px;
+    font-family:var(--subtitle);
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    transition:background .25s ease, color .25s ease, transform .2s ease;
   }
-  .nav-cta:hover{background:var(--gold);color:var(--cream);transform:translateY(-1px)}
+  .nav-cta:hover{background:var(--olive);color:var(--cream);transform:translateY(-1px)}
+  .nav-cta svg{width:16px;height:16px}
 
   /* ========== CART BUTTON + DRAWER ========== */
   .nav-right{display:flex;align-items:center;gap:14px}
@@ -784,71 +797,70 @@
   .cart-toast.show{transform:translate(-50%, 0)}
 
   .burger{display:none;width:32px;height:32px;cursor:pointer}
-  .burger span{display:block;height:2px;background:var(--cream);margin:7px 0;transition:.3s}
+  .burger span{display:block;height:2px;background:var(--olive);margin:7px 0;transition:.3s}
 
-  /* ========== HERO ========== */
+  /* ========== HERO (vintage engraved style — dark olive) ========== */
   .hero{
     position:relative;
-    min-height:92vh;
+    min-height:88vh;
     display:flex;align-items:center;
-    padding:80px 0 100px;
-    background:
-      radial-gradient(ellipse at 80% 30%, rgba(124,132,86,.25), transparent 55%),
-      radial-gradient(ellipse at 15% 75%, rgba(163,142,72,.18), transparent 55%),
-      var(--cream);
+    padding:80px 0 140px;
+    background:#2a3516;
+    color:var(--cream);
     overflow:hidden;
+    isolation:isolate;
   }
+  /* paper grain texture */
   .hero::before{
-    content:"";position:absolute;inset:0;
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.15;z-index:1;
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(50,57,21,.06) 1px, transparent 0);
-    background-size:28px 28px;
-    opacity:.5;
-    pointer-events:none;
+      repeating-linear-gradient(45deg, rgba(246,246,233,.04) 0 2px, transparent 2px 5px),
+      radial-gradient(circle at 1px 1px, rgba(246,246,233,.08) 1px, transparent 0);
+    background-size:auto, 20px 20px;
+    mix-blend-mode:overlay;
+  }
+  /* torn paper bottom edge */
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:50px;z-index:2;pointer-events:none;
+    background:
+      radial-gradient(circle at 10px 40px, var(--cream) 10px, transparent 11px),
+      radial-gradient(circle at 35px 30px, var(--cream) 14px, transparent 15px),
+      radial-gradient(circle at 65px 45px, var(--cream) 12px, transparent 13px),
+      radial-gradient(circle at 95px 32px, var(--cream) 16px, transparent 17px),
+      radial-gradient(circle at 125px 42px, var(--cream) 10px, transparent 11px),
+      radial-gradient(circle at 155px 28px, var(--cream) 14px, transparent 15px),
+      linear-gradient(to top, var(--cream) 20px, transparent 60px);
+    background-repeat:repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, no-repeat;
+    background-size:180px 50px, 180px 50px, 180px 50px, 180px 50px, 180px 50px, 180px 50px, 100% 100%;
   }
 
   .hero-grid{
     position:relative;z-index:3;
     display:grid;
-    grid-template-columns:1.1fr 1fr;
+    grid-template-columns:1.05fr 1fr;
     align-items:center;
-    gap:80px;
+    gap:60px;
   }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
-    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
-    font-weight:600;color:var(--sage);
-    margin-bottom:22px;
+
+  /* Left — text column */
+  .hero-ornament{
+    display:flex;align-items:center;justify-content:flex-start;
+    margin-bottom:22px;color:var(--gold);
   }
-  .eyebrow::before{
-    content:"";width:36px;height:2px;background:var(--sage);
-  }
+  .hero-ornament svg{width:80px;height:auto}
+
   .hero h1{
     font-family:var(--display);
     font-weight:400;
-    font-size:clamp(44px, 5.6vw, 82px);
-    line-height:1.02;
-    color:var(--dark);
+    font-size:clamp(44px, 6vw, 90px);
+    line-height:.98;
+    color:var(--cream);
     letter-spacing:.01em;
     text-transform:uppercase;
+    margin:0;
   }
-  .hero h1 .accent{
-    font-style:italic;
-    font-weight:400;
-    color:var(--olive);
-    position:relative;
-    display:inline-block;
-  }
-  .hero h1 .accent::after{
-    content:"";
-    position:absolute;
-    bottom:6px;left:-4px;right:-4px;
-    height:14px;
-    background:var(--khaki);
-    z-index:-1;
-    opacity:.45;
-    border-radius:4px;
-  }
+  .hero h1 .line-top{display:block;color:var(--cream)}
+  .hero h1 .line-bottom{display:block;color:#99a05f}
   .hero h1 .line{display:block;overflow:hidden}
   .hero h1 .line-inner{
     display:inline-block;
@@ -856,41 +868,138 @@
     animation:revealUp 1.1s cubic-bezier(.2,.7,.1,1) forwards;
   }
   .hero h1 .line:nth-child(2) .line-inner{animation-delay:.15s}
-  .hero h1 .line:nth-child(3) .line-inner{animation-delay:.3s}
   @keyframes revealUp{to{transform:translateY(0)}}
 
+  .hero-divider{
+    margin:28px 0 20px;display:flex;align-items:center;gap:14px;
+    color:var(--gold);
+  }
+  .hero-divider::before,
+  .hero-divider::after{
+    content:"";flex:0 0 48px;height:1px;background:currentColor;opacity:.7;
+  }
+  .hero-divider::before{flex-basis:0}
+  .hero-divider-diamond{
+    width:8px;height:8px;background:currentColor;transform:rotate(45deg);
+    box-shadow:0 0 0 3px rgba(163,142,72,.2);
+  }
+
   .hero .lead{
-    margin-top:26px;
     font-size:18px;
-    color:#4a4735;
-    max-width:500px;
+    color:rgba(246,246,233,.8);
+    max-width:520px;line-height:1.5;
     opacity:0;animation:fadeUp .9s .7s forwards;
+    font-family:var(--subtitle);
   }
   .cta-row{
-    margin-top:36px;
+    margin-top:30px;
     display:flex;gap:14px;flex-wrap:wrap;
     opacity:0;animation:fadeUp .9s .85s forwards;
   }
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-  .hero-meta{
-    margin-top:48px;
-    display:flex;gap:36px;flex-wrap:wrap;
-    padding-top:28px;
-    border-top:1px solid rgba(42,40,31,.12);
-    opacity:0;animation:fadeUp .9s 1s forwards;
+  /* Vintage bordered WhatsApp button */
+  .hero-wa{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:16px 34px;
+    background:transparent;
+    color:var(--cream);
+    border:2px solid var(--gold);
+    border-radius:4px;
+    font-family:var(--subtitle);
+    font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+    position:relative;
+    transition:background .3s ease, color .3s ease, transform .3s ease;
+    box-shadow:inset 0 0 0 1px rgba(163,142,72,.4);
   }
-  .meta-item .num{
-    font-family:var(--serif);
-    font-size:38px;
-    font-weight:600;
-    color:var(--olive);
-    line-height:1;
+  .hero-wa:hover{
+    background:var(--gold);color:var(--dark);transform:translateY(-2px);
   }
-  .meta-item .label{
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-    color:#6a6650;margin-top:4px;font-weight:500;
+  .hero-wa svg{width:22px;height:22px;flex-shrink:0}
+
+  .hero-tag{
+    margin-top:24px;display:flex;align-items:center;gap:14px;
+    font-family:var(--subtitle);
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;
+    color:var(--gold);opacity:0;animation:fadeUp .9s 1s forwards;
   }
+  .hero-tag svg{width:14px;height:14px;flex-shrink:0}
+  .hero-tag-arrow{color:var(--gold);opacity:.7}
+
+  /* Right — cat visual column */
+  .hero-cat-wrap{
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    min-height:500px;
+  }
+  .hero-cat-circle{
+    position:relative;
+    width:clamp(320px, 42vw, 520px);
+    aspect-ratio:1;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at center, #e8e3c9 0%, #d9d3b0 70%, #c2ba8a 100%);
+    overflow:hidden;
+    box-shadow:
+      0 0 0 3px rgba(163,142,72,.5),
+      0 0 0 5px #2a3516,
+      0 0 0 7px rgba(163,142,72,.3),
+      0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  /* sunburst behind cat */
+  .hero-cat-circle::before{
+    content:"";position:absolute;inset:0;
+    background:
+      repeating-conic-gradient(
+        from 0deg at 50% 50%,
+        rgba(163,142,72,.12) 0deg 3deg,
+        transparent 3deg 10deg
+      );
+    opacity:.6;
+  }
+  .hero-cat-circle svg{
+    position:relative;z-index:2;
+    width:92%;height:92%;
+    margin:4%;
+    display:block;
+  }
+
+  /* decorative leaves around the circle */
+  .hero-leaves{
+    position:absolute;z-index:3;color:#5f6b2a;opacity:.9;pointer-events:none;
+  }
+  .hero-leaves.l-left{bottom:6%;left:-2%;width:36%}
+  .hero-leaves.l-right{bottom:4%;right:-2%;width:34%;transform:scaleX(-1)}
+  .hero-leaves svg{width:100%;height:auto;display:block}
+
+  /* 100% natural round seal top right */
+  .hero-seal{
+    position:absolute;top:6%;right:-4%;z-index:4;
+    width:clamp(110px, 13vw, 160px);
+    aspect-ratio:1;border-radius:50%;
+    background:#2a3516;
+    color:var(--gold);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    box-shadow:
+      inset 0 0 0 2px var(--gold),
+      inset 0 0 0 4px rgba(163,142,72,.35),
+      0 10px 30px -10px rgba(0,0,0,.4);
+    animation:sealSpin 28s linear infinite;
+    transform-origin:center;
+  }
+  @keyframes sealSpin{to{transform:rotate(360deg)}}
+  .hero-seal-inner{
+    font-family:var(--display);font-weight:400;font-size:clamp(10px, .9vw, 12px);
+    letter-spacing:.08em;line-height:1.05;
+    animation:sealSpin 28s linear reverse infinite;
+  }
+  .hero-seal-inner .pct{
+    display:block;font-size:clamp(22px,2.4vw,32px);color:var(--gold);
+    margin:4px 0;letter-spacing:-.01em;
+  }
+  .hero-seal-inner .lbl{display:block;color:var(--gold);opacity:.9}
+  .hero-seal-inner .sub{display:block;font-size:clamp(8px,.7vw,10px);margin-top:4px;opacity:.7}
 
   .btn{
     display:inline-flex;align-items:center;gap:10px;
@@ -957,10 +1066,7 @@
   }
 
   .scroll-ind{
-    position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
-    font-size:10px;letter-spacing:.3em;text-transform:uppercase;
-    color:#6a6650;display:flex;flex-direction:column;align-items:center;gap:10px;
-    opacity:0;animation:fadeUp 1s 1.5s forwards;
+    display:none;
   }
   .scroll-ind .line{
     width:1px;height:40px;background:var(--olive);
@@ -1468,6 +1574,8 @@
     .hero-grid{grid-template-columns:1fr;gap:60px}
     .hero-visual{order:-1;max-width:440px;margin:0 auto}
     .hero-image-wrap{aspect-ratio:4/4}
+    .hero-cat-wrap{order:-1;min-height:auto}
+    .hero-seal{width:100px;top:2%;right:-2%}
     .secret-inner,.info-grid{grid-template-columns:1fr;gap:50px}
     .product-grid{grid-template-columns:repeat(2,1fr);gap:24px}
     .review-grid{grid-template-columns:1fr;gap:20px}
@@ -1841,22 +1949,24 @@
 <header>
   <nav class="nav">
     <a href="#inicio" class="brand">
-      <div class="logo">
-        <img src="assets/logo.jpg" alt="BARFirenzina"/>
-      </div>
-      <span class="brand-name">BARF<span>irenzina</span></span>
+      <span class="brand-name">BARFIRENZINA</span>
     </a>
     <ul>
       <li><a href="#inicio" class="active">Inicio</a></li>
-      <li><a href="#nuestro-barf">Nuestro BARF</a></li>
+      <li><a href="#nuestro-barf">Sobre BARF</a></li>
       <li><a href="#productos">Productos</a></li>
-      <li><a href="#explicaciones">Explicaciones</a></li>
-      <li><a href="#instagram">Instagram</a></li>
       <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#preguntas">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav-right">
-      <a href="#productos" class="nav-cta">Ordenar</a>
-      <button class="cart-btn" id="cartBtn" aria-label="Ver carrito">
+      <a href="https://wa.me/5491154846054" target="_blank" rel="noopener" class="nav-cta">
+        Consultar
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 4c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zm-6 6c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zm12 0c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zm-9 4c-1.5 0-3-1.2-3-2.5s1.5-2.5 3-2.5 3 1.2 3 2.5-1.5 2.5-3 2.5zm6 0c-1.5 0-3-1.2-3-2.5s1.5-2.5 3-2.5 3 1.2 3 2.5-1.5 2.5-3 2.5zm-3 10c-4 0-7-2-7-5 0-2 1.5-4 3.5-5 1-.5 2-1 3.5-1s2.5.5 3.5 1c2 1 3.5 3 3.5 5 0 3-3 5-7 5z"/>
+        </svg>
+      </a>
+      <button class="cart-btn" id="cartBtn" aria-label="Ver carrito" style="display:none">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-count" id="cartCount">0</span>
       </button>
@@ -1904,55 +2014,153 @@
 <!-- ============= HERO ============= -->
 <section class="hero" id="inicio">
   <div class="container hero-grid">
+
+    <!-- LEFT column — title + CTA -->
     <div>
-      <span class="eyebrow">Alimento BARF Premium · Argentina</span>
-      <h1>
-        <span class="line"><span class="line-inner">Nutrición</span></span>
-        <span class="line"><span class="line-inner"><em class="accent">salvaje</em>,</span></span>
-        <span class="line"><span class="line-inner">cuidado noble.</span></span>
-      </h1>
-      <p class="lead">Comida cruda biológicamente apropiada para gatos. Ingredientes frescos, recetas equilibradas y cero aditivos — el instinto felino, honrado en cada bocado.</p>
-      <div class="cta-row">
-        <a href="#productos" class="btn btn-primary">
-          Ver Catálogo
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#nuestro-barf" class="btn btn-secondary">Nuestra Filosofía</a>
+      <div class="hero-ornament" aria-hidden="true">
+        <svg viewBox="0 0 120 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M60 4 L60 20 M52 12 L68 12 M44 8 Q52 4 60 12 Q68 20 76 12 Q68 4 60 8 Q52 20 44 8"/>
+          <circle cx="20" cy="12" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="100" cy="12" r="2" fill="currentColor" stroke="none"/>
+          <path d="M28 12 L48 12 M72 12 L92 12"/>
+        </svg>
       </div>
-      <div class="hero-meta">
-        <div class="meta-item">
-          <div class="num"><span class="counter" data-target="5000" data-prefix="+" data-sep=".">0</span></div>
-          <div class="label">Gatos Felices</div>
-        </div>
-        <div class="meta-item">
-          <div class="num"><span class="counter" data-target="100" data-suffix="%">0</span></div>
-          <div class="label">Natural</div>
-        </div>
-        <div class="meta-item">
-          <div class="num"><span class="counter" data-target="12">0</span></div>
-          <div class="label">Recetas</div>
-        </div>
+
+      <h1>
+        <span class="line"><span class="line-inner line-top">Instinto felino.</span></span>
+        <span class="line"><span class="line-inner line-bottom">Cuidado consciente.</span></span>
+      </h1>
+
+      <div class="hero-divider" aria-hidden="true"><span class="hero-divider-diamond"></span></div>
+
+      <p class="lead">Alimentación real para gatos, diseñada para mejorar su calidad de vida.</p>
+
+      <div class="cta-row">
+        <a href="https://wa.me/5491154846054?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20BARFirenzina" target="_blank" rel="noopener" class="hero-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+          </svg>
+          <span>Consultar por WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="hero-tag" aria-hidden="true">
+        <svg class="hero-tag-arrow" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6 L18 6 M14 2 L18 6 L14 10"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 10c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zm12 0c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zM10 7c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zm4 0c-1.5 0-3-1.5-3-3s1.5-3 3-3 3 1.5 3 3-1.5 3-3 3zm-2 3c-3 0-5 3-5 6s2 4 5 4 5-1 5-4-2-6-5-6z"/></svg>
+        <span>Exclusivo para gatos</span>
+        <svg class="hero-tag-arrow" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="transform:scaleX(-1)"><path d="M2 6 L18 6 M14 2 L18 6 L14 10"/></svg>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="hero-image-wrap" id="heroImg">
-        <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
-          <source src="assets/hero.mp4" type="video/mp4" />
-        </video>
+    <!-- RIGHT column — circular cat badge with leaves & seal -->
+    <div class="hero-cat-wrap">
+      <!-- Circular engraved cat -->
+      <div class="hero-cat-circle">
+        <svg viewBox="0 0 400 400" fill="none" aria-hidden="true">
+          <defs>
+            <pattern id="fur" patternUnits="userSpaceOnUse" width="4" height="4">
+              <path d="M0 2 L4 2" stroke="#2a3516" stroke-width=".5" opacity=".4"/>
+            </pattern>
+          </defs>
+          <!-- Cat body sitting, head tilted up -->
+          <g stroke="#1a1f0a" fill="#5a614a">
+            <!-- body -->
+            <path d="M 180 380 C 150 360, 140 320, 150 270 C 160 220, 180 180, 220 160 L 240 170 C 260 180, 270 200, 275 230 L 280 380 Z" fill="#5a614a" stroke-width="2"/>
+            <!-- fur texture body -->
+            <g stroke="#1a1f0a" stroke-width=".8" fill="none" opacity=".65" stroke-linecap="round">
+              <path d="M 165 240 q 10 -8 20 -4 M 155 270 q 12 -5 22 0 M 150 300 q 12 -4 24 2 M 155 330 q 14 -3 26 2 M 250 240 q -10 -6 -20 -2 M 260 270 q -12 -3 -22 2 M 265 300 q -14 -3 -26 3 M 262 335 q -14 -2 -26 3"/>
+              <path d="M 170 200 q 8 -4 16 0 M 200 190 q 8 -3 16 2 M 230 195 q 6 -2 14 4"/>
+            </g>
+            <!-- chest lighter -->
+            <path d="M 210 250 C 200 270, 198 310, 210 360 L 240 360 C 248 310, 246 270, 238 250 Z" fill="#8a9073" opacity=".5"/>
+
+            <!-- tail curled around -->
+            <path d="M 275 360 C 300 340, 310 300, 295 270 C 288 258, 285 262, 290 275 C 296 295, 288 325, 270 345 Z" fill="#4a513a" stroke-width="2"/>
+
+            <!-- Head (tilted up, looking up-right) -->
+            <path d="M 200 155
+                     C 220 130, 245 120, 265 130
+                     C 285 140, 288 160, 282 180
+                     C 275 198, 255 208, 230 205
+                     C 210 202, 195 188, 193 170
+                     C 192 162, 195 157, 200 155 Z"
+                  fill="#6a7152" stroke-width="2"/>
+
+            <!-- Ears (pointy) -->
+            <path d="M 210 145 L 200 108 L 228 135 Z" fill="#4a513a" stroke-width="1.5"/>
+            <path d="M 260 130 L 274 96 L 275 130 Z" fill="#4a513a" stroke-width="1.5"/>
+            <!-- inner ears -->
+            <path d="M 214 138 L 210 120 L 222 132 Z" fill="#2a3018" stroke="none"/>
+            <path d="M 264 126 L 272 106 L 273 124 Z" fill="#2a3018" stroke="none"/>
+
+            <!-- Face markings (stripes) -->
+            <g stroke="#1a1f0a" stroke-width="1.2" fill="none" opacity=".55" stroke-linecap="round">
+              <path d="M 230 140 q 2 4 0 8 M 245 135 q 2 4 0 8 M 260 138 q 1 4 -1 8"/>
+              <path d="M 215 155 q -4 3 -8 3 M 210 170 q -6 2 -12 1 M 275 155 q 3 4 7 3 M 280 170 q 4 3 8 2"/>
+            </g>
+
+            <!-- Eyes — looking up-right -->
+            <g>
+              <ellipse cx="234" cy="168" rx="7" ry="5" fill="#c8c27a" stroke="#1a1f0a" stroke-width="1.2"/>
+              <ellipse cx="260" cy="166" rx="7" ry="5" fill="#c8c27a" stroke="#1a1f0a" stroke-width="1.2"/>
+              <!-- pupils (looking up-right) -->
+              <ellipse cx="236" cy="166" rx="2" ry="4" fill="#1a1f0a"/>
+              <ellipse cx="262" cy="164" rx="2" ry="4" fill="#1a1f0a"/>
+              <!-- shine -->
+              <circle cx="237" cy="164" r="1" fill="#f6f6e9"/>
+              <circle cx="263" cy="162" r="1" fill="#f6f6e9"/>
+            </g>
+
+            <!-- Nose -->
+            <path d="M 244 182 L 248 186 L 252 182 Z" fill="#c9846a" stroke="#1a1f0a" stroke-width="1"/>
+            <!-- Mouth -->
+            <path d="M 248 188 L 248 194 M 248 194 Q 242 198 238 195 M 248 194 Q 254 198 258 195"
+                  stroke="#1a1f0a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+            <!-- Whiskers -->
+            <g stroke="#f6f6e9" stroke-width=".8" opacity=".8" stroke-linecap="round">
+              <path d="M 228 188 q -18 -2 -32 2"/>
+              <path d="M 230 193 q -16 3 -28 8"/>
+              <path d="M 264 188 q 16 -2 30 2"/>
+              <path d="M 262 193 q 16 3 28 8"/>
+            </g>
+
+            <!-- front paws -->
+            <ellipse cx="200" cy="370" rx="14" ry="6" fill="#4a513a" stroke-width="1.5"/>
+            <ellipse cx="250" cy="372" rx="14" ry="6" fill="#4a513a" stroke-width="1.5"/>
+          </g>
+        </svg>
       </div>
-      <div class="float-badge badge-1">
-        <span class="dot"></span>
-        <div>
-          <div style="font-size:12px;color:#6a6650;letter-spacing:.1em;text-transform:uppercase">Entrega Fresca</div>
-          <div>24/48 hs en cadena de frío</div>
-        </div>
+
+      <!-- Leaves decorative -->
+      <div class="hero-leaves l-left" aria-hidden="true">
+        <svg viewBox="0 0 200 180" fill="currentColor">
+          <path d="M 20 160 C 30 100, 60 60, 110 40 C 80 70, 60 110, 50 160 Z" opacity=".9"/>
+          <path d="M 60 170 C 80 120, 120 80, 170 70 C 130 100, 100 140, 90 175 Z" opacity=".7"/>
+          <path d="M 100 175 C 130 140, 170 120, 195 130 C 160 145, 135 165, 115 180 Z" opacity=".85"/>
+          <g stroke="#2a3516" stroke-width="1" fill="none" opacity=".5">
+            <path d="M 30 150 Q 60 100 100 50"/>
+            <path d="M 70 160 Q 110 110 160 80"/>
+          </g>
+        </svg>
       </div>
-      <div class="float-badge badge-2">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
-        <div>
-          <div style="font-weight:600">4.9 / 5</div>
-          <div style="font-size:12px;color:#6a6650">Más de 1.200 reseñas</div>
+      <div class="hero-leaves l-right" aria-hidden="true">
+        <svg viewBox="0 0 200 180" fill="currentColor">
+          <path d="M 20 160 C 30 100, 60 60, 110 40 C 80 70, 60 110, 50 160 Z" opacity=".9"/>
+          <path d="M 60 170 C 80 120, 120 80, 170 70 C 130 100, 100 140, 90 175 Z" opacity=".7"/>
+          <g stroke="#2a3516" stroke-width="1" fill="none" opacity=".5">
+            <path d="M 30 150 Q 60 100 100 50"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 100% naturales seal -->
+      <div class="hero-seal" aria-hidden="true">
+        <div class="hero-seal-inner">
+          <span class="lbl">INGREDIENTES</span>
+          <span class="pct">100%</span>
+          <span class="lbl">NATURALES</span>
+          <span class="sub">SIN ULTRAPROCESADOS</span>
         </div>
       </div>
     </div>
