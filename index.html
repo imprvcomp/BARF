@@ -615,8 +615,11 @@
   }
   .nav-cta img{
     display:block;
-    height:52px;width:auto;
-    filter:drop-shadow(0 4px 10px rgba(50,57,21,.3));
+    height:76px;width:auto;
+    filter:drop-shadow(0 6px 14px rgba(50,57,21,.35));
+  }
+  @media (max-width:900px){
+    .nav-cta img{height:58px}
   }
   .nav-cta:hover{transform:translateY(-2px)}
   .nav-cta:hover img{filter:drop-shadow(0 8px 16px rgba(50,57,21,.4)) brightness(1.08)}
@@ -2030,12 +2033,6 @@
 <!-- ============= HERO ============= -->
 <section class="hero" id="inicio">
   <img class="hero-banner" src="assets/hero-banner.png" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
-  <a href="https://wa.me/5491154846054?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20BARFirenzina" target="_blank" rel="noopener" class="hero-overlay-cta" aria-label="Consultar por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-    </svg>
-    <span>Consultar por WhatsApp</span>
-  </a>
 </section>
 
 <!-- ============= MARQUEE ============= -->
