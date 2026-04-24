@@ -807,30 +807,34 @@
   .burger{display:none;width:32px;height:32px;cursor:pointer}
   .burger span{display:block;height:2px;background:var(--cream);margin:7px 0;transition:.3s}
 
-  /* ========== HERO (banner image + gato animado a la derecha) ========== */
+  /* ========== HERO (banner image chico + gato animado a la derecha) ========== */
   .hero{
     position:relative;
     width:100%;
-    padding:0;
+    padding:40px 0;
     background:#f1ecd5;
     overflow:hidden;
     isolation:isolate;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-stage{
+    position:relative;
+    width:72%;
+    max-width:1100px;
   }
   .hero-banner{
     display:block;
     width:100%;
-    max-height:58vh;
     height:auto;
-    object-fit:cover;
-    object-position:center;
+    object-fit:contain;
   }
   /* Video hero a la derecha, rectangular 9:16 sobre el sunburst */
   .hero-cat{
     position:absolute;
     right:8%;top:50%;transform:translateY(-50%);
-    width:clamp(180px, 20vw, 280px);
+    width:22%;
     aspect-ratio:9/16;
-    z-index:3;pointer-events:none;
+    z-index:3;
     border-radius:12px;
     overflow:hidden;
     border:4px solid var(--gold);
@@ -1942,13 +1946,13 @@
 
 <!-- ============= HERO ============= -->
 <section class="hero" id="inicio">
-  <img class="hero-banner" src="assets/hero-instinto.png" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
-
-  <!-- Video hero a la derecha, sobre el sunburst -->
-  <div class="hero-cat" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
-      <source src="assets/hero.mp4" type="video/mp4" />
-    </video>
+  <div class="hero-stage">
+    <img class="hero-banner" src="assets/hero-instinto.png" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
+    <div class="hero-cat" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+    </div>
   </div>
 </section>
 
