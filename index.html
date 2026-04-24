@@ -824,28 +824,24 @@
     object-fit:cover;
     object-position:center;
   }
-  /* Gato skinny sobre el sunburst del lado derecho */
+  /* Video hero a la derecha, circular sobre el sunburst */
   .hero-cat{
     position:absolute;
     right:6%;top:50%;transform:translateY(-50%);
-    width:clamp(180px, 22vw, 320px);
+    width:clamp(280px, 32vw, 480px);
+    aspect-ratio:1/1;
     z-index:3;pointer-events:none;
-    filter:drop-shadow(0 14px 30px rgba(50,57,21,.4));
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:
+      0 0 0 4px rgba(163,142,72,.55),
+      0 0 0 8px #2a3516,
+      0 0 0 10px rgba(163,142,72,.35),
+      0 30px 60px -20px rgba(50,57,21,.5);
   }
-  .hero-cat svg{width:100%;height:auto;display:block;overflow:visible}
-  .hc-shadow{fill:rgba(20,18,10,.3);filter:blur(3px)}
-  /* animaciones (copiadas del trot-cat original) */
-  @keyframes hcBreathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.012,.988)}}
-  .hero-cat .hc-wobble{animation:hcBreathe 2.8s ease-in-out infinite;transform-origin:50% 100%}
-  @keyframes hcHeadTilt{0%,100%{transform:rotate(0)}50%{transform:rotate(-2deg)}}
-  .hero-cat .hc-head{animation:hcHeadTilt 4s ease-in-out infinite;transform-origin:60px 78px}
-  @keyframes hcBlink{0%,92%,100%{transform:scaleY(1)}94%,97%{transform:scaleY(.1)}}
-  .hero-cat .hc-eye{animation:hcBlink 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-  @keyframes hcEarFlick{0%,90%,100%{transform:rotate(0)}92%{transform:rotate(-6deg)}95%{transform:rotate(4deg)}}
-  .hero-cat .hc-ear-l{animation:hcEarFlick 6s ease-in-out infinite;transform-origin:40px 40px}
-  .hero-cat .hc-ear-r{animation:hcEarFlick 6.5s ease-in-out .8s infinite;transform-origin:80px 40px}
-  @keyframes hcTail{0%,100%{transform:rotate(0)}50%{transform:rotate(-5deg)}}
-  .hero-cat .hc-tail{animation:hcTail 3.2s ease-in-out infinite;transform-origin:80px 168px}
+  .hero-cat video{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
 
   /* borde inferior limpio (sin picos) */
   .hero::after{display:none}
@@ -1949,42 +1945,11 @@
 <section class="hero" id="inicio">
   <img class="hero-banner" src="assets/hero-banner.png" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
 
-  <!-- Gato skinny estilo pixel-art sobre el sunburst del lado derecho -->
+  <!-- Video hero a la derecha, sobre el sunburst -->
   <div class="hero-cat" aria-hidden="true">
-    <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-      <ellipse class="hc-shadow" cx="60" cy="194" rx="34" ry="4"/>
-      <g class="hc-wobble">
-        <path class="hc-tail" d="M 80 168 C 100 158, 104 138, 96 124 C 94 120, 92 118, 90 122"
-              stroke="#15130d" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="90.5" cy="122.5" r="3" fill="#F6F6E9"/>
-        <path d="M 46 88 C 40 110, 42 150, 48 180 L 72 180 C 78 150, 80 110, 74 88 Z" fill="#15130d"/>
-        <rect x="50" y="170" width="6" height="22" rx="2" fill="#15130d"/>
-        <rect x="64" y="170" width="6" height="22" rx="2" fill="#15130d"/>
-        <g class="hc-head">
-          <circle cx="60" cy="60" r="32" fill="#15130d"/>
-          <path class="hc-ear hc-ear-l" d="M 36 46 L 28 18 L 50 38 Z" fill="#15130d"/>
-          <path class="hc-ear hc-ear-r" d="M 84 46 L 92 18 L 70 38 Z" fill="#15130d"/>
-          <path d="M 38 42 L 36 28 L 44 36 Z" fill="#3a2f14"/>
-          <path d="M 82 42 L 84 28 L 76 36 Z" fill="#3a2f14"/>
-          <g class="hc-eyes">
-            <circle class="hc-eye" cx="48" cy="58" r="11" fill="#F6F6E9"/>
-            <circle class="hc-eye" cx="72" cy="58" r="11" fill="#F6F6E9"/>
-            <circle cx="48" cy="61" r="4.2" fill="#15130d"/>
-            <circle cx="72" cy="61" r="4.2" fill="#15130d"/>
-            <circle cx="45" cy="55" r="1.8" fill="#F6F6E9"/>
-            <circle cx="69" cy="55" r="1.8" fill="#F6F6E9"/>
-          </g>
-          <path d="M 57 74 L 60 77 L 63 74 Z" fill="#c0392b"/>
-          <path d="M 56 80 Q 60 83 64 80" stroke="#F6F6E9" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".5"/>
-          <g stroke="#F6F6E9" stroke-width=".9" opacity=".55" stroke-linecap="round">
-            <line x1="28" y1="70" x2="44" y2="72"/>
-            <line x1="28" y1="76" x2="44" y2="76"/>
-            <line x1="92" y1="70" x2="76" y2="72"/>
-            <line x1="92" y1="76" x2="76" y2="76"/>
-          </g>
-        </g>
-      </g>
-    </svg>
+    <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
+      <source src="assets/hero.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
