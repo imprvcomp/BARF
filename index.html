@@ -558,6 +558,7 @@
     background:#f1ecd5;
     color:var(--olive);
     border-bottom:1px solid rgba(50,57,21,.15);
+    overflow:visible;
   }
   .nav{
     display:flex;align-items:center;justify-content:space-between;
@@ -604,7 +605,7 @@
     opacity:.6;
   }
 
-  /* CONSULTAR — placa imagen (estilo grabado dorado sobre olive) */
+  /* CONSULTAR — placa imagen (grande, flotando sobre el header sin estirarlo) */
   .nav-cta{
     display:inline-block;
     padding:0;
@@ -612,6 +613,9 @@
     border:none;
     transition:transform .25s ease, filter .25s ease;
     line-height:0;
+    position:relative;z-index:10;
+    /* absorbe la altura extra para que el header no crezca */
+    margin:-55px 0;
   }
   .nav-cta img{
     display:block;
@@ -619,10 +623,11 @@
     filter:drop-shadow(0 10px 22px rgba(50,57,21,.45));
   }
   @media (max-width:900px){
+    .nav-cta{margin:-28px 0}
     .nav-cta img{height:100px}
   }
   .nav-cta:hover{transform:translateY(-2px)}
-  .nav-cta:hover img{filter:drop-shadow(0 8px 16px rgba(50,57,21,.4)) brightness(1.08)}
+  .nav-cta:hover img{filter:drop-shadow(0 12px 26px rgba(50,57,21,.5)) brightness(1.08)}
 
   /* ========== CART BUTTON + DRAWER ========== */
   .nav-right{display:flex;align-items:center;gap:14px}
