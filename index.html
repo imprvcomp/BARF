@@ -807,6 +807,25 @@
   .burger{display:none;width:32px;height:32px;cursor:pointer}
   .burger span{display:block;height:2px;background:var(--cream);margin:7px 0;transition:.3s}
 
+  /* ========== FEATURES BANNER (4 íconos debajo del hero) ========== */
+  .features-banner{
+    background:#f1ecd5;
+    padding:20px 0 30px;
+    width:100%;
+    display:flex;justify-content:center;
+    border-bottom:1px solid rgba(50,57,21,.08);
+  }
+  .features-banner img{
+    display:block;
+    width:96%;
+    max-width:1400px;
+    height:auto;
+  }
+  @media (max-width:600px){
+    .features-banner{padding:12px 0 18px}
+    .features-banner img{width:100%}
+  }
+
   /* ========== HERO (banner image chico + gato animado a la derecha) ========== */
   .hero{
     position:relative;
@@ -1947,13 +1966,18 @@
 <!-- ============= HERO ============= -->
 <section class="hero" id="inicio">
   <div class="hero-stage">
-    <img class="hero-banner" src="assets/hero-instinto.png?v=4" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
+    <img class="hero-banner" src="assets/hero-instinto.png?v=5" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
     <div class="hero-cat" aria-hidden="true">
       <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
         <source src="assets/hero.mp4" type="video/mp4" />
       </video>
     </div>
   </div>
+</section>
+
+<!-- ============= FEATURES BANNER (4 íconos) ============= -->
+<section class="features-banner" aria-label="Beneficios destacados">
+  <img src="assets/banner-features.png" alt="Carne real de calidad · Nutrición completa · Más salud y vitalidad · Dieta alineada con naturaleza"/>
 </section>
 
 <!-- ============= MARQUEE ============= -->
