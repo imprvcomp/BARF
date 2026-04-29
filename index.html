@@ -845,23 +845,32 @@
       0 20px 40px -15px rgba(50,57,21,.5);
   }
 
-  /* Botón VER CATÁLOGO — 3 capas anidadas, esquinas curvadas */
+  /* Botón VER CATÁLOGO — 3 capas anidadas, esquinas concave (mordidas hacia adentro) */
   .hero-cta-btn{
     position:absolute;
-    left:13%;bottom:11%;
+    left:11%;bottom:14%;
     z-index:4;
     display:inline-block;
     text-decoration:none;
     background:#b8893a;          /* gold layer 1 (outer) */
     padding:4px;                  /* gap = grosor del cream stripe */
-    border-radius:14px;
     transition:transform .25s ease, filter .25s ease;
+    /* Esquinas concave (mordidas hacia el interior) — 4 corners con bite circular */
+    -webkit-mask:
+      radial-gradient(circle 12px at top left,    transparent 12px, black 12.5px) top left/50% 50% no-repeat,
+      radial-gradient(circle 12px at top right,   transparent 12px, black 12.5px) top right/50% 50% no-repeat,
+      radial-gradient(circle 12px at bottom left, transparent 12px, black 12.5px) bottom left/50% 50% no-repeat,
+      radial-gradient(circle 12px at bottom right,transparent 12px, black 12.5px) bottom right/50% 50% no-repeat;
+    mask:
+      radial-gradient(circle 12px at top left,    transparent 12px, black 12.5px) top left/50% 50% no-repeat,
+      radial-gradient(circle 12px at top right,   transparent 12px, black 12.5px) top right/50% 50% no-repeat,
+      radial-gradient(circle 12px at bottom left, transparent 12px, black 12.5px) bottom left/50% 50% no-repeat,
+      radial-gradient(circle 12px at bottom right,transparent 12px, black 12.5px) bottom right/50% 50% no-repeat;
   }
   .hero-cta-btn .btn-mid{
     display:block;
     background:#f2e5c1;          /* cream stripe (layer 2) */
     padding:2px;
-    border-radius:11px;
   }
   .hero-cta-btn .btn-inner{
     display:flex;align-items:center;justify-content:center;gap:18px;
@@ -873,7 +882,6 @@
     font-size:clamp(18px, 1.6vw, 26px);
     letter-spacing:.16em;
     text-transform:uppercase;
-    border-radius:9px;
   }
   .hero-cta-btn .btn-icon{
     width:1.4em;height:1.4em;flex-shrink:0;
