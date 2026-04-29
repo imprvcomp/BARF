@@ -845,45 +845,26 @@
       0 20px 40px -15px rgba(50,57,21,.5);
   }
 
-  /* Botón VER CATÁLOGO — HTML + CSS puro, esquinas notched estilo ticket */
+  /* Botón VER CATÁLOGO — imagen procesada (cropped tight, sin halo) */
   .hero-cta-btn{
     position:absolute;
     left:14%;bottom:6%;
     z-index:4;
-    display:inline-flex;align-items:center;justify-content:center;gap:18px;
-    padding:22px 56px;
-    background:#b8893a;
-    color:#ffffff;
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(18px, 1.6vw, 26px);
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    text-decoration:none;
-    /* Doble borde decorativo cream interno (sin halo, sin glow externos) */
-    box-shadow:
-      inset 0 0 0 5px #b8893a,
-      inset 0 0 0 7px #f2e5c1,
-      inset 0 0 0 9px #b8893a;
-    /* Esquinas notched estilo ticket — 4 esquinas con cuts en escalón */
-    clip-path:polygon(
-      0 14px, 6px 14px, 6px 8px, 14px 8px, 14px 0,
-      calc(100% - 14px) 0, calc(100% - 14px) 8px, calc(100% - 6px) 8px, calc(100% - 6px) 14px, 100% 14px,
-      100% calc(100% - 14px), calc(100% - 6px) calc(100% - 14px), calc(100% - 6px) calc(100% - 8px), calc(100% - 14px) calc(100% - 8px), calc(100% - 14px) 100%,
-      14px 100%, 14px calc(100% - 8px), 6px calc(100% - 8px), 6px calc(100% - 14px), 0 calc(100% - 14px)
-    );
-    transition:background .25s ease, transform .25s ease;
+    display:inline-block;
+    line-height:0;
+    transition:transform .25s ease, filter .25s ease;
   }
-  .hero-cta-btn .btn-icon{
-    width:1.4em;height:1.4em;flex-shrink:0;
+  .hero-cta-btn img{
+    display:block;
+    width:clamp(360px, 36vw, 540px);
+    height:auto;
   }
-  .hero-cta-btn:hover{
-    background:#c9a040;
-    transform:scale(1.02);
-  }
+  .hero-cta-btn:hover{transform:scale(1.03)}
+  .hero-cta-btn:hover img{filter:brightness(1.06)}
   @media (max-width:600px){
-    .hero-cta-btn{left:50%;transform:translateX(-50%);bottom:5%;padding:14px 32px;font-size:14px;gap:12px}
-    .hero-cta-btn:hover{transform:translateX(-50%) scale(1.02)}
+    .hero-cta-btn{left:50%;transform:translateX(-50%);bottom:5%}
+    .hero-cta-btn img{width:clamp(260px, 70vw, 360px)}
+    .hero-cta-btn:hover{transform:translateX(-50%) scale(1.03)}
   }
   .hero-cat video{
     width:100%;height:100%;object-fit:cover;display:block;
@@ -1997,12 +1978,7 @@
       </video>
     </div>
     <a href="#productos" class="hero-cta-btn" aria-label="Ver catálogo de productos">
-      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <path d="M16 10a4 4 0 0 1-8 0"/>
-      </svg>
-      <span class="btn-text">Ver catálogo</span>
+      <img src="assets/btn-catalogo.png?v=6" alt="Ver catálogo"/>
     </a>
   </div>
 </section>
