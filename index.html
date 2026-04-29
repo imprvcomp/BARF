@@ -848,7 +848,7 @@
   /* Botón VER CATÁLOGO — abajo del subtítulo, link a productos */
   .hero-cta-btn{
     position:absolute;
-    left:6%;bottom:8%;
+    left:6%;bottom:6%;
     z-index:4;
     display:inline-block;
     line-height:0;
@@ -856,16 +856,13 @@
   }
   .hero-cta-btn img{
     display:block;
-    width:clamp(180px, 19vw, 280px);
+    width:clamp(280px, 30vw, 440px);
     height:auto;
-    filter:drop-shadow(0 6px 16px rgba(163,142,72,.3));
   }
   .hero-cta-btn:hover{transform:translateY(-3px)}
-  .hero-cta-btn:hover img{
-    filter:drop-shadow(0 10px 22px rgba(163,142,72,.5)) brightness(1.06);
-  }
+  .hero-cta-btn:hover img{filter:brightness(1.08)}
   @media (max-width:600px){
-    .hero-cta-btn{left:50%;transform:translateX(-50%);bottom:6%}
+    .hero-cta-btn{left:50%;transform:translateX(-50%);bottom:5%}
     .hero-cta-btn:hover{transform:translateX(-50%) translateY(-3px)}
   }
   .hero-cat video{
@@ -1973,7 +1970,7 @@
 <!-- ============= HERO ============= -->
 <section class="hero" id="inicio">
   <div class="hero-stage">
-    <img class="hero-banner" src="assets/hero-instinto.png?v=11" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
+    <img class="hero-banner" src="assets/hero-instinto.png?v=12" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
     <div class="hero-cat" aria-hidden="true">
       <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
         <source src="assets/hero.mp4" type="video/mp4" />
