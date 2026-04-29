@@ -845,25 +845,62 @@
       0 20px 40px -15px rgba(50,57,21,.5);
   }
 
-  /* Botón VER CATÁLOGO — imagen procesada (cropped tight, sin halo) */
+  /* Botón VER CATÁLOGO — 3 capas anidadas con clip-path notched para borde cream */
   .hero-cta-btn{
     position:absolute;
     left:14%;bottom:6%;
     z-index:4;
     display:inline-block;
-    line-height:0;
+    text-decoration:none;
+    background:#b8893a;          /* gold layer 1 (outer) */
+    padding:4px;                  /* gap = grosor del cream stripe */
     transition:transform .25s ease, filter .25s ease;
+    /* Esquinas notched estilo ticket — outer */
+    clip-path:polygon(
+      0 16px, 8px 16px, 8px 10px, 16px 10px, 16px 0,
+      calc(100% - 16px) 0, calc(100% - 16px) 10px, calc(100% - 8px) 10px, calc(100% - 8px) 16px, 100% 16px,
+      100% calc(100% - 16px), calc(100% - 8px) calc(100% - 16px), calc(100% - 8px) calc(100% - 10px), calc(100% - 16px) calc(100% - 10px), calc(100% - 16px) 100%,
+      16px 100%, 16px calc(100% - 10px), 8px calc(100% - 10px), 8px calc(100% - 16px), 0 calc(100% - 16px)
+    );
   }
-  .hero-cta-btn img{
+  .hero-cta-btn .btn-mid{
     display:block;
-    width:clamp(360px, 36vw, 540px);
-    height:auto;
+    background:#f2e5c1;          /* cream stripe (layer 2) */
+    padding:2px;                  /* grosor de la stripe */
+    /* Notched más chico (offset 4px) */
+    clip-path:polygon(
+      0 14px, 6px 14px, 6px 8px, 14px 8px, 14px 0,
+      calc(100% - 14px) 0, calc(100% - 14px) 8px, calc(100% - 6px) 8px, calc(100% - 6px) 14px, 100% 14px,
+      100% calc(100% - 14px), calc(100% - 6px) calc(100% - 14px), calc(100% - 6px) calc(100% - 8px), calc(100% - 14px) calc(100% - 8px), calc(100% - 14px) 100%,
+      14px 100%, 14px calc(100% - 8px), 6px calc(100% - 8px), 6px calc(100% - 14px), 0 calc(100% - 14px)
+    );
+  }
+  .hero-cta-btn .btn-inner{
+    display:flex;align-items:center;justify-content:center;gap:18px;
+    padding:22px 56px;
+    background:#b8893a;          /* gold layer 3 (interior con texto) */
+    color:#f5e9c5;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(18px, 1.6vw, 26px);
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    /* Notched aún más chico */
+    clip-path:polygon(
+      0 12px, 4px 12px, 4px 6px, 12px 6px, 12px 0,
+      calc(100% - 12px) 0, calc(100% - 12px) 6px, calc(100% - 4px) 6px, calc(100% - 4px) 12px, 100% 12px,
+      100% calc(100% - 12px), calc(100% - 4px) calc(100% - 12px), calc(100% - 4px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%,
+      12px 100%, 12px calc(100% - 6px), 4px calc(100% - 6px), 4px calc(100% - 12px), 0 calc(100% - 12px)
+    );
+  }
+  .hero-cta-btn .btn-icon{
+    width:1.4em;height:1.4em;flex-shrink:0;
   }
   .hero-cta-btn:hover{transform:scale(1.03)}
-  .hero-cta-btn:hover img{filter:brightness(1.06)}
+  .hero-cta-btn:hover .btn-inner{filter:brightness(1.06)}
   @media (max-width:600px){
     .hero-cta-btn{left:50%;transform:translateX(-50%);bottom:5%}
-    .hero-cta-btn img{width:clamp(260px, 70vw, 360px)}
+    .hero-cta-btn .btn-inner{padding:14px 32px;font-size:14px;gap:12px}
     .hero-cta-btn:hover{transform:translateX(-50%) scale(1.03)}
   }
   .hero-cat video{
@@ -1978,7 +2015,16 @@
       </video>
     </div>
     <a href="#productos" class="hero-cta-btn" aria-label="Ver catálogo de productos">
-      <img src="assets/btn-catalogo.png?v=6" alt="Ver catálogo"/>
+      <span class="btn-mid">
+        <span class="btn-inner">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="btn-text">Ver catálogo</span>
+        </span>
+      </span>
     </a>
   </div>
 </section>
