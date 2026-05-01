@@ -561,7 +561,7 @@
   }
   .nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 32px;max-width:1340px;margin:0 auto;gap:32px;
+    padding:14px 7vw 14px 14vw;max-width:none;margin:0;gap:32px;
   }
   .brand{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
   .logo{display:none}
@@ -831,32 +831,32 @@
     object-position:center;
     image-rendering:auto;
   }
-  /* Botón VER CATÁLOGO — a la derecha del subtítulo del hero */
+  /* Botón VER CATÁLOGO — a la derecha del subtítulo, dentro del ancho del título */
   .hero-cta-btn{
     position:absolute;
-    left:38%;bottom:24%;
+    left:32%;bottom:23%;
     z-index:4;
-    display:inline-flex;align-items:center;gap:12px;
-    padding:14px 32px;
+    display:inline-flex;align-items:center;gap:9px;
+    padding:9px 20px;
     background:var(--gold);
     color:var(--cream);
     font-family:var(--display);
     font-weight:700;
-    font-size:clamp(13px, 1vw, 17px);
-    letter-spacing:.2em;
+    font-size:clamp(10px, .82vw, 13px);
+    letter-spacing:.18em;
     text-transform:uppercase;
     text-decoration:none;
-    border:2px solid var(--olive);
-    border-radius:6px;
-    box-shadow:inset 0 0 0 4px var(--gold), inset 0 0 0 5px rgba(246,237,209,.65), inset 0 0 0 7px var(--gold);
+    border:1.5px solid var(--olive);
+    border-radius:5px;
+    box-shadow:inset 0 0 0 3px var(--gold), inset 0 0 0 4px rgba(246,237,209,.6), inset 0 0 0 5px var(--gold);
     transition:background .25s ease, color .25s ease, transform .25s ease;
   }
-  .hero-cta-btn svg{width:1.2em;height:1.2em;flex-shrink:0}
+  .hero-cta-btn svg{width:1.1em;height:1.1em;flex-shrink:0}
   .hero-cta-btn:hover{
     background:var(--olive);color:var(--gold);transform:translateY(-2px);
   }
   @media (max-width:900px){
-    .hero-cta-btn{left:50%;bottom:6%;transform:translateX(-50%);padding:11px 22px;font-size:12px}
+    .hero-cta-btn{left:50%;bottom:6%;transform:translateX(-50%);padding:9px 18px;font-size:11px}
     .hero-cta-btn:hover{transform:translateX(-50%) translateY(-2px)}
   }
 
