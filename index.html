@@ -582,10 +582,10 @@
     color:var(--khaki);opacity:.85;font-weight:600;
   }
 
-  .nav ul{list-style:none;display:flex;gap:32px;align-items:center}
+  .nav ul{list-style:none;display:flex;gap:54px;align-items:center}
   .nav ul a{
     font-family:var(--subtitle);
-    font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
     font-weight:700;padding:8px 0;position:relative;
     transition:color .25s;color:var(--cream);
   }
@@ -596,9 +596,9 @@
   }
   .nav ul li + li{position:relative}
   .nav ul li + li::before{
-    content:"";position:absolute;left:-18px;top:50%;
+    content:"";position:absolute;left:-29px;top:50%;
     width:4px;height:4px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);
-    opacity:.6;
+    opacity:.7;
   }
 
   /* CONSULTAR — placa imagen grande que "cuelga" del header */
@@ -831,6 +831,35 @@
     object-position:center;
     image-rendering:auto;
   }
+  /* Botón VER CATÁLOGO — a la derecha del subtítulo del hero */
+  .hero-cta-btn{
+    position:absolute;
+    left:38%;bottom:24%;
+    z-index:4;
+    display:inline-flex;align-items:center;gap:12px;
+    padding:14px 32px;
+    background:var(--gold);
+    color:var(--cream);
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(13px, 1vw, 17px);
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border:2px solid var(--olive);
+    border-radius:6px;
+    box-shadow:inset 0 0 0 4px var(--gold), inset 0 0 0 5px rgba(246,237,209,.65), inset 0 0 0 7px var(--gold);
+    transition:background .25s ease, color .25s ease, transform .25s ease;
+  }
+  .hero-cta-btn svg{width:1.2em;height:1.2em;flex-shrink:0}
+  .hero-cta-btn:hover{
+    background:var(--olive);color:var(--gold);transform:translateY(-2px);
+  }
+  @media (max-width:900px){
+    .hero-cta-btn{left:50%;bottom:6%;transform:translateX(-50%);padding:11px 22px;font-size:12px}
+    .hero-cta-btn:hover{transform:translateX(-50%) translateY(-2px)}
+  }
+
   /* Video hero, rectangular 9:16, lado derecho — bordes redondeados + marco verde finito */
   .hero-cat{
     position:absolute;
@@ -1954,6 +1983,14 @@
         <source src="assets/hero.mp4" type="video/mp4" />
       </video>
     </div>
+    <a href="#productos" class="hero-cta-btn" aria-label="Ver catálogo de productos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span>Ver Catálogo</span>
+    </a>
   </div>
 </section>
 
