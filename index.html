@@ -561,9 +561,44 @@
   }
   .nav{
     display:flex;align-items:center;
-    padding:14px 7vw 14px 13.6vw;max-width:none;margin:0;gap:48px;
+    padding:14px 18vw 14px 13.6vw;max-width:none;margin:0;gap:48px;
   }
-  .nav-right{margin-left:auto}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+
+  /* Botones sociales del header (alineados con el borde derecho de la animación) */
+  .social-pill{
+    position:relative;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;
+    border-radius:50%;
+    background:rgba(246,246,233,.06);
+    border:1.5px solid var(--sage);
+    color:var(--cream);
+    text-decoration:none;
+    transition:background .25s ease, color .25s ease, transform .25s ease, border-color .25s ease;
+  }
+  .social-pill svg{width:18px;height:18px;display:block}
+  .social-pill::after{
+    /* Pequeñas orejitas de gato decorativas en la parte superior */
+    content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);
+    width:18px;height:6px;
+    background:
+      linear-gradient(135deg, transparent 50%, var(--sage) 50%) 0 0/9px 6px no-repeat,
+      linear-gradient(225deg, transparent 50%, var(--sage) 50%) 9px 0/9px 6px no-repeat;
+    opacity:.85;
+    pointer-events:none;
+  }
+  .social-pill:hover{
+    background:var(--gold);
+    color:var(--dark);
+    border-color:var(--gold);
+    transform:translateY(-2px);
+  }
+  .social-pill:hover::after{
+    background:
+      linear-gradient(135deg, transparent 50%, var(--gold) 50%) 0 0/9px 6px no-repeat,
+      linear-gradient(225deg, transparent 50%, var(--gold) 50%) 9px 0/9px 6px no-repeat;
+  }
   .brand{display:flex;flex-direction:row;align-items:center;gap:16px;text-decoration:none}
   .logo{display:none}
   /* Logo circular con borde olive más claro (sage) para contraste con el header oscuro */
@@ -799,8 +834,61 @@
   .cart-toast svg{width:18px;height:18px;color:var(--khaki)}
   .cart-toast.show{transform:translate(-50%, 0)}
 
-  .burger{display:none;width:32px;height:32px;cursor:pointer}
-  .burger span{display:block;height:2px;background:var(--cream);margin:7px 0;transition:.3s}
+  /* Burger en forma de HUELLA DE GATO */
+  .burger{
+    display:none;width:42px;height:42px;
+    background:transparent;border:none;cursor:pointer;
+    color:var(--cream);padding:0;
+    transition:transform .35s cubic-bezier(.2,.7,.1,1), color .25s ease;
+  }
+  .burger svg{width:100%;height:100%;display:block}
+  .burger:hover{color:var(--gold);transform:rotate(-10deg) scale(1.06)}
+  .burger.is-open{color:var(--gold);transform:rotate(35deg) scale(1.08)}
+
+  /* Menú emergente — popup con tema BARF */
+  .nav ul.is-open{
+    display:flex !important;
+    position:absolute;
+    top:100%;left:0;right:0;
+    flex-direction:column;
+    align-items:flex-start;
+    background:var(--olive);
+    padding:28px 14vw 32px 14vw;
+    gap:18px;
+    border-top:1px solid rgba(163,142,72,.35);
+    border-bottom:3px solid var(--gold);
+    box-shadow:0 24px 50px -12px rgba(0,0,0,.45);
+    animation:pawMenuDrop .35s cubic-bezier(.2,.7,.1,1);
+    z-index:99;
+  }
+  .nav ul.is-open li{
+    list-style:none;
+    position:relative;
+    padding-left:34px;
+    width:100%;
+  }
+  .nav ul.is-open li + li::before{display:none}
+  .nav ul.is-open li::after{
+    content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+    width:22px;height:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23A38E48'><ellipse cx='20' cy='22' rx='6.5' ry='9'/><ellipse cx='44' cy='22' rx='6.5' ry='9'/><ellipse cx='11' cy='38' rx='5.5' ry='7.5'/><ellipse cx='53' cy='38' rx='5.5' ry='7.5'/><path d='M32 30c-9 0-15 8-15 16.5 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7C47 38 41 30 32 30z'/></svg>");
+    background-size:contain;background-repeat:no-repeat;
+    opacity:.8;
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .nav ul.is-open li:hover::after{
+    transform:translateY(-50%) rotate(-12deg) scale(1.15);
+    opacity:1;
+  }
+  .nav ul.is-open a{
+    font-size:14px !important;letter-spacing:.28em !important;
+    padding:6px 0 !important;
+    display:inline-block;
+  }
+  @keyframes pawMenuDrop{
+    from{opacity:0;transform:translateY(-14px)}
+    to{opacity:1;transform:translateY(0)}
+  }
 
   /* ========== HERO (full-width, aspect 2.4:1 para mostrar imagen completa) ========== */
   .hero{
@@ -1928,7 +2016,15 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-count" id="cartCount">0</span>
       </button>
-      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+          <ellipse cx="20" cy="22" rx="6.5" ry="9"/>
+          <ellipse cx="44" cy="22" rx="6.5" ry="9"/>
+          <ellipse cx="11" cy="38" rx="5.5" ry="7.5"/>
+          <ellipse cx="53" cy="38" rx="5.5" ry="7.5"/>
+          <path d="M32 30c-9 0-15 8-15 16.5 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7C47 38 41 30 32 30z"/>
+        </svg>
+      </button>
     </div>
   </nav>
 </header>
@@ -3001,25 +3097,22 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   render();
 })();
 
-/* ===================== BURGER (mobile nav toggle — simple reveal) ===================== */
+/* ===================== BURGER (mobile paw menu toggle) ===================== */
 const burger = document.getElementById('burger');
 if(burger){
+  const ul = document.querySelector('.nav ul');
   burger.addEventListener('click', ()=>{
-    const ul = document.querySelector('.nav ul');
-    if(ul.style.display === 'flex'){
-      ul.style.display = 'none';
-    } else {
-      ul.style.display = 'flex';
-      ul.style.position = 'absolute';
-      ul.style.top = '72px';
-      ul.style.left = 0;
-      ul.style.right = 0;
-      ul.style.flexDirection = 'column';
-      ul.style.background = 'var(--olive)';
-      ul.style.padding = '20px 32px';
-      ul.style.gap = '18px';
-      ul.style.borderBottom = '1px solid rgba(246,246,233,.1)';
-    }
+    const open = ul.classList.toggle('is-open');
+    burger.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  // Cerrar al click en cualquier link del menu
+  ul.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      ul.classList.remove('is-open');
+      burger.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
