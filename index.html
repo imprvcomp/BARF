@@ -6,7 +6,7 @@
 <title>BARFirenzina — Nutrición Premium para Gatos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <!-- Preload hero video so it starts playing instantly on page load -->
 <link rel="preload" as="video" href="assets/hero.mp4" type="video/mp4">
 
@@ -22,9 +22,9 @@
     --serif: "Cormorant Garamond", Georgia, serif;
     --sans: "Inter", system-ui, -apple-system, sans-serif;
     --mono: "Montserrat", "Inter", system-ui, sans-serif;
-    /* Títulos: Cinzel · Subtítulos: Intropro con fallback Inter */
-    --display: "Cinzel", "Anton", Georgia, serif;
-    --subtitle: "Intropro", "Inter", system-ui, sans-serif;
+    /* Títulos: Playfair Display · Subtítulos: Playfair Display */
+    --display: "Playfair Display", "Cinzel", Georgia, serif;
+    --subtitle: "Playfair Display", "Inter", system-ui, sans-serif;
     --shadow-sm: 0 4px 14px -6px rgba(42,40,31,.18);
     --shadow-md: 0 18px 40px -20px rgba(42,40,31,.30);
     --shadow-lg: 0 30px 70px -30px rgba(42,40,31,.45);
@@ -561,9 +561,10 @@
   }
   .nav{
     display:flex;align-items:center;
-    padding:14px 18vw 14px 13.6vw;max-width:none;margin:0;gap:48px;
+    padding:clamp(8px, .9vw, 18px) 18vw clamp(8px, .9vw, 18px) 13.6vw;max-width:none;margin:0;
+    gap:clamp(20px, 3vw, 48px);
   }
-  .nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:clamp(8px, .9vw, 14px)}
 
   /* Botones sociales del header (alineados con el borde derecho de la animación) */
   .social-pill{
@@ -599,27 +600,28 @@
       linear-gradient(135deg, transparent 50%, var(--gold) 50%) 0 0/9px 6px no-repeat,
       linear-gradient(225deg, transparent 50%, var(--gold) 50%) 9px 0/9px 6px no-repeat;
   }
-  .brand{display:flex;flex-direction:row;align-items:center;gap:16px;text-decoration:none}
+  .brand{display:flex;flex-direction:row;align-items:center;gap:clamp(10px, 1vw, 18px);text-decoration:none}
   .logo{display:none}
-  /* Logo circular con borde olive más claro (sage) para contraste con el header oscuro */
+  /* Logo circular con borde olive más claro (sage) — escala proporcional */
   .brand-logo{
-    width:64px;height:64px;
+    width:clamp(40px, 3.6vw, 70px);
+    height:clamp(40px, 3.6vw, 70px);
     border-radius:50%;
     object-fit:cover;
     background:#f5efd6;
-    border:1.5px solid var(--sage);
-    box-shadow:0 0 0 2px rgba(124,132,86,.18);
+    border:clamp(1px, .12vw, 2px) solid var(--sage);
+    box-shadow:0 0 0 clamp(1px, .15vw, 3px) rgba(124,132,86,.18);
     flex-shrink:0;
     transition:transform .35s ease, box-shadow .35s ease;
   }
   .brand:hover .brand-logo{
     transform:rotate(-6deg) scale(1.04);
-    box-shadow:0 0 0 3px rgba(124,132,86,.32);
+    box-shadow:0 0 0 clamp(2px, .22vw, 4px) rgba(124,132,86,.32);
   }
   .brand-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
   .brand-name{
     font-family:var(--display);
-    font-size:clamp(22px, 2.2vw, 30px);
+    font-size:clamp(15px, 1.8vw, 32px);
     font-weight:800;
     color:var(--cream);
     letter-spacing:.03em;
@@ -630,14 +632,14 @@
   .brand-text::after{
     content:"Alimentación natural para gatos";
     font-family:var(--subtitle);
-    font-size:10px;letter-spacing:.25em;text-transform:uppercase;
+    font-size:clamp(7px, .7vw, 12px);letter-spacing:.25em;text-transform:uppercase;
     color:var(--khaki);opacity:.85;font-weight:600;
   }
 
-  .nav ul{list-style:none;display:flex;gap:54px;align-items:center}
+  .nav ul{list-style:none;display:flex;gap:clamp(24px, 3.2vw, 60px);align-items:center}
   .nav ul a{
     font-family:var(--subtitle);
-    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    font-size:clamp(9px, .82vw, 14px);letter-spacing:.32em;text-transform:uppercase;
     font-weight:700;padding:8px 0;position:relative;
     transition:color .25s;color:var(--cream);
   }
@@ -834,9 +836,11 @@
   .cart-toast svg{width:18px;height:18px;color:var(--khaki)}
   .cart-toast.show{transform:translate(-50%, 0)}
 
-  /* Burger en forma de HUELLA DE GATO — visible en desktop y mobile */
+  /* Burger en forma de HUELLA DE GATO — escala proporcional */
   .burger{
-    display:block;width:46px;height:46px;
+    display:block;
+    width:clamp(28px, 2.8vw, 52px);
+    height:clamp(28px, 2.8vw, 52px);
     background:transparent;border:none;cursor:pointer;
     color:var(--cream);padding:0;
     transition:transform .35s cubic-bezier(.2,.7,.1,1), color .25s ease;
@@ -890,6 +894,19 @@
     to{opacity:1;transform:translateY(0)}
   }
 
+  /* ========== COMPROMISO BANNER (imagen full width) ========== */
+  .compromiso-banner{
+    width:100%;
+    background:#f1ecd5;
+    display:block;
+    line-height:0;
+  }
+  .compromiso-banner img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+
   /* ========== HERO (full-width, aspect 2.4:1 para mostrar imagen completa) ========== */
   .hero{
     position:relative;
@@ -914,24 +931,24 @@
     object-position:center;
     image-rendering:auto;
   }
-  /* Botón VER CATÁLOGO — a la derecha del subtítulo, dentro del ancho del título */
+  /* Botón VER CATÁLOGO — a la derecha del subtítulo, escala proporcional al viewport */
   .hero-cta-btn{
     position:absolute;
     left:40%;bottom:26%;
     z-index:4;
-    display:inline-flex;align-items:center;gap:10px;
-    padding:11px 26px;
+    display:inline-flex;align-items:center;gap:clamp(6px, .55vw, 12px);
+    padding:clamp(7px, .65vw, 13px) clamp(16px, 1.5vw, 30px);
     background:var(--gold);
     color:var(--cream);
     font-family:var(--display);
     font-weight:700;
-    font-size:clamp(11px, .95vw, 15px);
+    font-size:clamp(9px, .82vw, 16px);
     letter-spacing:.18em;
     text-transform:uppercase;
     text-decoration:none;
-    border:1.5px solid var(--olive);
-    border-radius:9px;
-    box-shadow:inset 0 0 0 3px var(--gold), inset 0 0 0 4px rgba(246,237,209,.6), inset 0 0 0 6px var(--gold);
+    border:clamp(1px, .1vw, 2px) solid var(--olive);
+    border-radius:clamp(5px, .5vw, 11px);
+    box-shadow:inset 0 0 0 clamp(2px, .18vw, 4px) var(--gold), inset 0 0 0 clamp(3px, .25vw, 5px) rgba(246,237,209,.6), inset 0 0 0 clamp(4px, .38vw, 7px) var(--gold);
     transition:background .25s ease, color .25s ease, transform .25s ease;
   }
   .hero-cta-btn svg{width:1.15em;height:1.15em;flex-shrink:0}
@@ -1766,6 +1783,47 @@
   }
   .poster-arrow svg{width:48px;height:48px}
 
+  /* Nuevo bloque explicaciones — sin números */
+  .explain-divider{
+    width:clamp(60px, 6vw, 110px);
+    height:1px;
+    background:var(--gold);
+    margin:18px auto 22px;
+    opacity:.7;
+  }
+  .explain-sub{
+    text-align:center;
+    font-family:var(--display);
+    font-size:clamp(16px, 1.6vw, 26px);
+    font-weight:500;
+    color:var(--olive);
+    margin:0 0 14px;
+    letter-spacing:.005em;
+  }
+  .explain-symptoms{
+    text-align:center;
+    font-family:var(--subtitle);
+    font-size:clamp(11px, 1vw, 16px);
+    color:var(--olive);
+    margin:0 0 50px;
+    display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
+    gap:clamp(8px, .8vw, 14px);
+    opacity:.85;
+  }
+  .explain-symptoms .dot-sep{
+    color:var(--gold);
+    font-size:1.2em;
+    line-height:0;
+  }
+  .explain-tagline{
+    text-align:center;
+    font-family:var(--display);
+    font-size:clamp(15px, 1.5vw, 24px);
+    font-weight:700;
+    color:var(--olive);
+    letter-spacing:.04em;
+    margin:0 0 36px;
+  }
   .explain-signoff{
     text-align:center;margin:90px auto 0;
     font-family:var(--serif);font-style:italic;font-weight:400;
@@ -1810,6 +1868,16 @@
   }
   .ig-head{
     text-align:center;max-width:760px;margin:0 auto 70px;position:relative;
+  }
+  .ig-intro{
+    text-align:center;
+    font-family:var(--display);
+    font-size:clamp(15px, 1.4vw, 22px);
+    font-style:italic;
+    color:var(--cream);
+    margin:0 0 18px;
+    opacity:.9;
+    letter-spacing:.005em;
   }
   .ig-eyebrow{
     display:inline-flex;align-items:center;gap:14px;
@@ -2095,38 +2163,9 @@
   </div>
 </div>
 
-<!-- ============= SECRETO ============= -->
-<section class="secret">
-  <div class="floating-deco" style="top:10%;left:4%;width:90px;height:90px;color:var(--olive);opacity:.15">
-    <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 5c20 15 35 35 35 55-20 0-40-15-50-35 5-7 10-13 15-20z"/></svg>
-  </div>
-  <div class="floating-deco" style="bottom:12%;right:6%;width:70px;height:70px;color:var(--cream);opacity:.3;animation-delay:-4s">
-    <svg viewBox="0 0 100 100" fill="currentColor"><path d="M15 80c10-30 40-60 75-65-5 35-30 60-65 75-5-3-7-6-10-10z"/></svg>
-  </div>
-  <div class="container secret-inner">
-    <div class="fade-in">
-      <span class="section-eyebrow">El Secreto</span>
-      <h2>Ingredientes<br>100% Naturales</h2>
-      <p class="lead">Carnes magras, órganos y huesos carnosos molidos. La dieta BARF imita lo que un felino comería en libertad — sin conservantes, sin cereales, sin atajos.</p>
-    </div>
-    <div class="icon-row stagger fade-in">
-      <div class="icon-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-10A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 5C19 16.5 12 21 12 21z"/></svg>
-        <div class="title">Salud</div>
-        <div class="sub">Corazón fuerte</div>
-      </div>
-      <div class="icon-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-9 7-16 16-16-1 9-7 16-16 16z"/><path d="M5 21c3-6 7-10 14-12"/></svg>
-        <div class="title">Natural</div>
-        <div class="sub">Sin aditivos</div>
-      </div>
-      <div class="icon-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c2-4 5-5 8-5s6 1 8 5c-2 4-5 5-8 5s-6-1-8-5z"/><path d="M8 12c1-2 2.5-3 4-3s3 1 4 3c-1 2-2.5 3-4 3s-3-1-4-3z"/></svg>
-        <div class="title">Proteína</div>
-        <div class="sub">Músculo puro</div>
-      </div>
-    </div>
-  </div>
+<!-- ============= NUESTRO COMPROMISO (banner imagen) ============= -->
+<section class="compromiso-banner">
+  <img src="assets/compromiso.jpg" alt="Nuestro Compromiso — Carne real, formulación nutricional precisa, crudo y cocido adaptado, alineado a su naturaleza"/>
 </section>
 
 <!-- ============= NUESTRO BARF / INFO ============= -->
@@ -2147,23 +2186,9 @@
       </div>
     </div>
     <div class="fade-in">
-      <span class="section-eyebrow">Nuestro BARF</span>
-      <h2>Lo que come un gato <em>salvaje</em>, con estándares de laboratorio.</h2>
-      <p class="body">BARF significa Biologically Appropriate Raw Food. Cada receta está formulada por veterinarios nutricionistas para imitar la dieta ancestral del felino, respetando sus necesidades anatómicas y metabólicas reales.</p>
-      <ul class="feature-list">
-        <li>
-          <div class="num">01</div>
-          <div class="txt"><strong>Selección de materia prima</strong><span>Carnes frescas de productores locales, certificadas para consumo humano.</span></div>
-        </li>
-        <li>
-          <div class="num">02</div>
-          <div class="txt"><strong>Balance nutricional</strong><span>Proporción exacta de músculo, órganos y huesos carnosos molidos.</span></div>
-        </li>
-        <li>
-          <div class="num">03</div>
-          <div class="txt"><strong>Frío continuo</strong><span>Elaboración en cámaras a 2°C y entrega en cadena de frío hasta tu casa.</span></div>
-        </li>
-      </ul>
+      <span class="section-eyebrow">Acompañamiento</span>
+      <h2>No estás solo en el <em>cambio</em>.</h2>
+      <p class="body">Acompañamos a cada tutor en la transición hacia una alimentación natural. Cada gato es distinto, y trabajamos para acercarlo a su naturaleza respetando sus tiempos y preferencias.</p>
       <a href="#productos" class="btn btn-primary">
         Empezar ahora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -2177,8 +2202,8 @@
   <div class="container">
     <div class="section-head fade-in">
       <span class="eye">Catálogo</span>
-      <h2>Nuestras Recetas</h2>
-      <p>Pequeños lotes, frescura garantizada. Elegí la receta que mejor calce con el paladar de tu gato.</p>
+      <h2>Podés elegir entre alimento Crudo o Cocido</h2>
+      <p>Adaptamos el proceso para mantener el valor nutricional, respetando siempre las necesidades del gato.</p>
     </div>
 
     <div class="product-grid two-cols stagger fade-in">
@@ -2337,33 +2362,22 @@
 <section class="explain" id="explicaciones">
   <div class="container">
     <header class="explain-head fade-in">
-      <span class="eyebrow-x">Explicaciones</span>
-      <h2>La diferencia, <em>en números</em>.</h2>
+      <h2>NO TODO LO QUE NORMALIZAMOS ES NATURAL</h2>
+      <div class="explain-divider"></div>
+      <p class="explain-sub">Nos acostumbramos a cosas que no deberían pasar</p>
+      <p class="explain-symptoms">
+        <span>Vómitos frecuentes</span>
+        <span class="dot-sep">•</span>
+        <span>Alimentos que no entendemos</span>
+        <span class="dot-sep">•</span>
+        <span>Digestiones pesadas</span>
+      </p>
     </header>
 
-    <div class="stat-ticker fade-in">
-      <div class="stat" data-target="92">
-        <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
-        <label>Humedad natural</label>
-      </div>
-      <div class="stat" data-target="0">
-        <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
-        <label>Conservantes</label>
-      </div>
-      <div class="stat" data-target="100">
-        <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
-        <label>Proteína animal</label>
-      </div>
-      <div class="stat" data-target="2">
-        <div class="num-wrap"><span class="num">0</span><span class="unit">°C</span></div>
-        <label>Cadena de frío</label>
-      </div>
-    </div>
+    <p class="explain-tagline fade-in">PERO UN GATO SANO NO DEBERÍA VIVIR ASÍ.</p>
 
     <!-- =========================================================
-      POSTER STORY — videos hospedados en /videos/ (carpeta aparte)
-      Subí explain-problem.mp4 y explain-solution.mp4 a /videos/
-      (o cambiá los src por una URL externa de Cloudinary/Vimeo/etc).
+      POSTER STORY — videos hospedados en /videos/
     ========================================================= -->
     <div class="poster-story fade-in">
       <div class="poster-frame problem">
@@ -2384,8 +2398,6 @@
         <span class="p-label">La solución</span>
       </div>
     </div>
-
-    <p class="explain-signoff fade-in">Datos reales. Sin letra chica.</p>
   </div>
 </section>
 
@@ -2421,6 +2433,7 @@
   <div class="container">
     <header class="ig-head fade-in">
       <span class="ig-eyebrow">Comunidad</span>
+      <p class="ig-intro">No solo vendemos alimento; construimos una comunidad de gatos y tutores</p>
       <h2>Seguinos en <em>@barfirenzina</em></h2>
       <p>Gatos felices, recetas del día y detrás de escena. Escribinos por WhatsApp para asesoramiento personalizado.</p>
     </header>
@@ -2564,7 +2577,7 @@
         <div class="person">
           <div class="avatar">M</div>
           <div>
-            <div class="name">Dr. Martín Saravia</div>
+            <div class="name">Martín Saravia</div>
             <div class="role">Veterinario felino · Belgrano</div>
           </div>
         </div>
