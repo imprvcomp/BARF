@@ -894,17 +894,20 @@
     to{opacity:1;transform:translateY(0)}
   }
 
-  /* ========== COMPROMISO BANNER (imagen full width) ========== */
+  /* ========== COMPROMISO BANNER (banner angosto, full width) ========== */
   .compromiso-banner{
     width:100%;
     background:#f1ecd5;
     display:block;
     line-height:0;
+    overflow:hidden;
   }
   .compromiso-banner img{
     display:block;
     width:100%;
-    height:auto;
+    height:clamp(140px, 18vw, 320px);
+    object-fit:cover;
+    object-position:center;
   }
 
   /* ========== HERO (full-width, aspect 2.4:1 para mostrar imagen completa) ========== */
@@ -1696,9 +1699,10 @@
     line-height:1.05;letter-spacing:.005em;text-transform:uppercase;
     color:var(--olive);
     white-space:nowrap;
-    margin:0 auto 0 0;
+    margin:0;
     text-align:left;
-    padding-left:clamp(12px, 3vw, 56px);
+    padding-left:0;
+    margin-left:clamp(-30px, -1.5vw, -8px);
   }
   .explain-head h2 em{
     color:var(--gold);font-style:normal;display:inline-block;
@@ -1812,10 +1816,13 @@
     font-family:var(--subtitle);
     font-size:clamp(11px, 1vw, 16px);
     color:var(--olive);
-    margin:0 0 8px;
+    margin:0 0 -2px;
     display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
     gap:clamp(8px, .8vw, 14px);
     opacity:.85;
+  }
+  .explain-tagline{
+    margin-top:0 !important;
   }
   .explain-symptoms .dot-sep{
     color:var(--gold);
