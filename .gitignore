@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+.vscode/
+.idea/
+
+# Local backup/scratch files (no subir al repo)
+backup.html
+indexxxxxxxx.html
+xxxx.html
