@@ -958,6 +958,7 @@
     background:var(--cream);
     padding:clamp(28px, 4vw, 60px) clamp(24px, 4vw, 56px);
     border:2px solid var(--olive);
+    border-radius:14px;
     box-shadow:
       inset 0 0 0 6px var(--cream),
       inset 0 0 0 7px rgba(163,142,72,.45),
@@ -1002,7 +1003,7 @@
     padding:14px 50px 14px 16px;
     background:#fffaeb;
     border:1.5px solid rgba(50,57,21,.25);
-    border-radius:6px;
+    border-radius:10px;
     font-family:var(--display);
     font-size:clamp(18px, 1.6vw, 24px);
     font-weight:700;
@@ -1027,7 +1028,7 @@
     padding:14px 16px;
     background:#fffaeb;
     border:1.5px solid rgba(50,57,21,.25);
-    border-radius:6px;
+    border-radius:10px;
     font-family:var(--subtitle);
     font-size:clamp(13px, 1vw, 15px);
     color:var(--olive);
@@ -1104,11 +1105,14 @@
     font-style:normal;
   }
 
+  .calc-actions{
+    display:flex;justify-content:center;align-items:center;
+    gap:14px;flex-wrap:wrap;
+  }
   .calc-cta{
-    display:block;text-align:center;
-    margin:0 auto;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-align:center;
     padding:14px 30px;
-    width:fit-content;
     background:var(--olive);color:var(--cream);
     text-decoration:none;
     font-family:var(--subtitle);
@@ -1116,10 +1120,15 @@
     letter-spacing:.28em;
     text-transform:uppercase;
     font-weight:700;
-    border-radius:4px;
-    transition:background .25s ease, transform .25s ease;
+    border-radius:10px;
+    border:1.5px solid var(--olive);
+    transition:background .25s ease, transform .25s ease, color .25s ease, border-color .25s ease;
   }
-  .calc-cta:hover{background:var(--gold);transform:translateY(-2px)}
+  .calc-cta:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
+  /* Variante WhatsApp: outline gold sobre cream para diferenciarlo del primario */
+  .calc-cta-wa{background:transparent;color:var(--olive);border-color:var(--gold)}
+  .calc-cta-wa svg{flex-shrink:0}
+  .calc-cta-wa:hover{background:var(--gold);color:var(--cream);border-color:var(--gold)}
 
   /* ========== HERO (full-width, aspect 2.4:1 para mostrar imagen completa) ========== */
   .hero{
@@ -2229,6 +2238,67 @@
     .social-btn{padding:14px 22px;font-size:11px;letter-spacing:.25em}
     .social-cta{gap:14px}
   }
+
+  /* ========== Floating WhatsApp button (paleta de la marca, no verde fluo) ========== */
+  .wa-float{
+    position:fixed;
+    left:clamp(16px, 2vw, 28px);
+    bottom:clamp(16px, 2vw, 28px);
+    z-index:9999;
+    display:inline-flex;align-items:center;gap:10px;
+    width:62px;height:62px;
+    padding:0;
+    background:var(--olive);
+    color:var(--cream);
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    text-decoration:none;
+    box-shadow:0 14px 32px -10px rgba(50,57,21,.55), 0 0 0 6px rgba(163,142,72,.10);
+    overflow:hidden;
+    justify-content:center;
+    transition:width .35s cubic-bezier(.4,.2,.2,1), border-radius .35s ease,
+               background .25s ease, color .25s ease,
+               transform .25s ease, box-shadow .25s ease;
+    cursor:pointer;
+  }
+  .wa-float svg{flex-shrink:0;transition:transform .3s ease}
+  .wa-float-tip{
+    font-family:var(--subtitle);
+    font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+    white-space:nowrap;
+    max-width:0;opacity:0;
+    transition:max-width .35s cubic-bezier(.4,.2,.2,1), opacity .25s ease, padding .35s ease;
+    padding:0;
+  }
+  .wa-float:hover{
+    width:200px;
+    border-radius:36px;
+    background:var(--gold);
+    color:var(--olive);
+    transform:translateY(-3px);
+    box-shadow:0 22px 46px -14px rgba(163,142,72,.55), 0 0 0 6px rgba(163,142,72,.18);
+  }
+  .wa-float:hover .wa-float-tip{
+    max-width:160px;opacity:1;padding-right:6px;
+  }
+  .wa-float:hover svg{transform:scale(1.05)}
+  /* Pulso sutil para llamar la atención sin ser invasivo */
+  .wa-float::before{
+    content:"";position:absolute;inset:-3px;border-radius:inherit;
+    border:1.5px solid var(--gold);opacity:.5;
+    animation:waPulse 2.4s ease-out infinite;pointer-events:none;
+  }
+  @keyframes waPulse{
+    0%{transform:scale(1);opacity:.5}
+    70%{transform:scale(1.25);opacity:0}
+    100%{transform:scale(1.25);opacity:0}
+  }
+  @media (max-width:600px){
+    .wa-float{width:54px;height:54px}
+    .wa-float svg{width:22px;height:22px}
+    .wa-float:hover{width:54px;border-radius:50%}
+    .wa-float:hover .wa-float-tip{max-width:0;opacity:0;padding:0}
+  }
 </style>
 </head>
 <body>
@@ -2620,7 +2690,13 @@
         <p class="calc-note">* Valores orientativos. Para planes personalizados consultanos por WhatsApp.</p>
       </div>
 
-      <a href="#productos" class="calc-cta">Ver productos →</a>
+      <div class="calc-actions">
+        <a href="#productos" class="calc-cta">Ver productos →</a>
+        <a class="calc-cta calc-cta-wa" href="https://wa.me/5491154846054?text=Hola!%20Quiero%20una%20consulta%20personalizada%20para%20mi%20gato" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785a9.85 9.85 0 0 1-5.014-1.371l-.36-.214-3.726.978.995-3.633-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.889-9.884a9.825 9.825 0 0 1 6.99 2.898 9.825 9.825 0 0 1 2.892 6.992c-.002 5.45-4.437 9.868-9.921 9.868zM20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.998 11.998 0 0 0 5.71 1.447h.005c6.582 0 11.94-5.335 11.943-11.893A11.821 11.821 0 0 0 20.52 3.449"/></svg>
+          <span>Consulta personalizada</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -3485,6 +3561,12 @@ if(heroImg){
   calc();
 })();
 </script>
+
+<!-- Botón flotante de WhatsApp (ajornado al estilo de la marca) -->
+<a class="wa-float" href="https://wa.me/5491154846054?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20BARFirenzina" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785a9.85 9.85 0 0 1-5.014-1.371l-.36-.214-3.726.978.995-3.633-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.889-9.884a9.825 9.825 0 0 1 6.99 2.898 9.825 9.825 0 0 1 2.892 6.992c-.002 5.45-4.437 9.868-9.921 9.868zM20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.998 11.998 0 0 0 5.71 1.447h.005c6.582 0 11.94-5.335 11.943-11.893A11.821 11.821 0 0 0 20.52 3.449"/></svg>
+  <span class="wa-float-tip">Escribinos</span>
+</a>
 
 </body>
 </html>
