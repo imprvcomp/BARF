@@ -248,7 +248,7 @@
     background:var(--cream);
     color:var(--dark);
     padding:56px 48px 52px;
-    border-radius:4px;
+    border-radius:14px;
     border:1px solid rgba(163,142,72,.28);
     box-shadow:0 40px 80px -30px rgba(0,0,0,.55), 0 0 0 1px rgba(246,246,233,.04);
     position:relative;
@@ -256,7 +256,7 @@
   .hist-card::before{
     content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
     border:1px solid rgba(163,142,72,.35);pointer-events:none;
-    border-radius:2px;
+    border-radius:10px;
   }
   .hist-eyebrow{
     display:inline-flex;align-items:center;gap:12px;
@@ -302,7 +302,7 @@
   /* Right — framed poster */
   .hist-poster{
     position:relative;
-    border-radius:4px;
+    border-radius:14px;
     overflow:hidden;
     background:var(--olive);
     padding:12px;
@@ -316,7 +316,7 @@
   .hist-poster video{
     width:100%;height:100%;display:block;object-fit:cover;
     aspect-ratio:3/4;
-    border-radius:2px;
+    border-radius:10px;
   }
   .hist-poster .hp-tag{
     position:absolute;bottom:24px;left:24px;z-index:2;
@@ -335,7 +335,7 @@
     margin-top:60px;
     display:grid;grid-template-columns:repeat(3,1fr);
     background:var(--cream);
-    border-radius:4px;
+    border-radius:14px;
     overflow:hidden;
     box-shadow:0 30px 60px -25px rgba(0,0,0,.4);
     border:1px solid rgba(163,142,72,.25);
@@ -1000,14 +1000,16 @@
   }
   .calc-input-wrap input{
     width:100%;
-    padding:14px 50px 14px 16px;
+    height:clamp(48px, 3.6vw, 56px);
+    padding:0 50px 0 16px;
     background:#fffaeb;
     border:1.5px solid rgba(50,57,21,.25);
     border-radius:10px;
     font-family:var(--display);
-    font-size:clamp(18px, 1.6vw, 24px);
+    font-size:clamp(16px, 1.3vw, 20px);
     font-weight:700;
     color:var(--olive);
+    box-sizing:border-box;
     transition:border-color .2s ease, box-shadow .2s ease;
     outline:none;
   }
@@ -1025,7 +1027,8 @@
   }
   .calc-field select{
     width:100%;
-    padding:14px 16px;
+    height:clamp(48px, 3.6vw, 56px);
+    padding:0 42px 0 16px;
     background:#fffaeb;
     border:1.5px solid rgba(50,57,21,.25);
     border-radius:10px;
@@ -1033,13 +1036,13 @@
     font-size:clamp(13px, 1vw, 15px);
     color:var(--olive);
     cursor:pointer;
+    box-sizing:border-box;
     appearance:none;
     -webkit-appearance:none;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A38E48' stroke-width='2.5' stroke-linecap='round'><polyline points='6 9 12 15 18 9'/></svg>");
     background-repeat:no-repeat;
     background-position:right 14px center;
     background-size:16px;
-    padding-right:42px;
     transition:border-color .2s ease, box-shadow .2s ease;
     outline:none;
   }
