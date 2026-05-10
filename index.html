@@ -555,7 +555,8 @@
   }
 
   /* ========== HEADER (verde olive + letras cream para contraste) ========== */
-  header{
+  /* :not([class]) → solo afecta al <header> principal del nav, no a los <header class="..."> de secciones */
+  header:not([class]){
     position:relative;
     z-index:100;
     background:var(--olive);
