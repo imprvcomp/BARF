@@ -39,6 +39,10 @@
     line-height:1.6;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='28' height='28' fill='%23A38E48'><ellipse cx='25' cy='24' rx='5.5' ry='8'/><ellipse cx='39' cy='24' rx='5.5' ry='8'/><ellipse cx='14' cy='32' rx='5' ry='7'/><ellipse cx='50' cy='32' rx='5' ry='7'/><path d='M32 32c-9 0-15 7-15 14 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7 0-7-6-14-15-14z'/></svg>") 14 14, auto;
+  }
+  a, button, .burger, .product-card, .hero-cta-btn, .nav-cta, [role="button"]{
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='32' height='32' fill='%23323915'><ellipse cx='25' cy='24' rx='5.5' ry='8'/><ellipse cx='39' cy='24' rx='5.5' ry='8'/><ellipse cx='14' cy='32' rx='5' ry='7'/><ellipse cx='50' cy='32' rx='5' ry='7'/><path d='M32 32c-9 0-15 7-15 14 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7 0-7-6-14-15-14z'/></svg>") 16 16, pointer;
   }
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
@@ -907,6 +911,219 @@
     height:auto;
   }
 
+  /* ========== CALCULADORA DE PORCIONES (vintage card) ========== */
+  .calc-section{
+    padding:clamp(60px, 8vw, 120px) 0;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .calc-section::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background-image:radial-gradient(circle at 2px 2px, rgba(50,57,21,.08) 1px, transparent 0);
+    background-size:32px 32px;
+  }
+  .calc-section > .container{position:relative;z-index:2}
+  .calc-head{
+    text-align:center;
+    max-width:680px;
+    margin:0 auto clamp(40px, 5vw, 70px);
+  }
+  .calc-eyebrow{
+    display:block;
+    font-family:var(--display);
+    font-size:clamp(11px, 1vw, 15px);
+    color:var(--gold);
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  .calc-head h2{
+    font-family:var(--display);
+    font-size:clamp(26px, 3vw, 48px);
+    color:var(--olive);
+    font-weight:800;
+    margin:0 0 14px;
+    line-height:1.1;
+  }
+  .calc-head p{
+    color:rgba(42,40,31,.7);
+    font-size:clamp(13px, 1.1vw, 17px);
+    margin:0;
+  }
+
+  /* Card principal con esquinas ornamentales */
+  .calc-card{
+    position:relative;
+    max-width:880px;
+    margin:0 auto;
+    background:#f7f1d8;
+    padding:clamp(28px, 4vw, 60px) clamp(24px, 4vw, 56px);
+    border:2px solid var(--olive);
+    box-shadow:
+      inset 0 0 0 6px #f7f1d8,
+      inset 0 0 0 7px rgba(163,142,72,.45),
+      0 30px 60px -25px rgba(50,57,21,.25);
+  }
+  .calc-corner{
+    position:absolute;
+    width:22px;height:22px;
+    border:2px solid var(--gold);
+  }
+  .calc-corner.tl{top:-8px;left:-8px;border-right:none;border-bottom:none}
+  .calc-corner.tr{top:-8px;right:-8px;border-left:none;border-bottom:none}
+  .calc-corner.bl{bottom:-8px;left:-8px;border-right:none;border-top:none}
+  .calc-corner.br{bottom:-8px;right:-8px;border-left:none;border-top:none}
+
+  .calc-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:clamp(18px, 2vw, 30px);
+    margin-bottom:clamp(28px, 3.5vw, 50px);
+  }
+  @media (max-width:780px){
+    .calc-grid{grid-template-columns:1fr}
+  }
+
+  .calc-field{display:flex;flex-direction:column;gap:8px}
+  .calc-label{
+    font-family:var(--subtitle);
+    font-size:clamp(10px, .85vw, 12px);
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--olive);
+    font-weight:700;
+    opacity:.85;
+  }
+  .calc-input-wrap{
+    position:relative;
+    display:flex;align-items:center;
+  }
+  .calc-input-wrap input{
+    width:100%;
+    padding:14px 50px 14px 16px;
+    background:var(--cream);
+    border:1.5px solid rgba(50,57,21,.25);
+    border-radius:6px;
+    font-family:var(--display);
+    font-size:clamp(18px, 1.6vw, 24px);
+    font-weight:700;
+    color:var(--olive);
+    transition:border-color .2s ease, box-shadow .2s ease;
+    outline:none;
+  }
+  .calc-input-wrap input:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(163,142,72,.18);
+  }
+  .calc-unit{
+    position:absolute;right:16px;
+    color:var(--gold);
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(14px, 1.2vw, 18px);
+    pointer-events:none;
+  }
+  .calc-field select{
+    width:100%;
+    padding:14px 16px;
+    background:var(--cream);
+    border:1.5px solid rgba(50,57,21,.25);
+    border-radius:6px;
+    font-family:var(--subtitle);
+    font-size:clamp(13px, 1vw, 15px);
+    color:var(--olive);
+    cursor:pointer;
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A38E48' stroke-width='2.5' stroke-linecap='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    background-size:16px;
+    padding-right:42px;
+    transition:border-color .2s ease, box-shadow .2s ease;
+    outline:none;
+  }
+  .calc-field select:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(163,142,72,.18);
+  }
+
+  /* Divisor decorativo con diamante */
+  .calc-divider{
+    display:flex;align-items:center;justify-content:center;
+    margin:clamp(20px, 2.5vw, 36px) 0;
+    gap:14px;
+    color:var(--gold);
+  }
+  .calc-divider::before,
+  .calc-divider::after{
+    content:"";flex:1;height:1px;background:rgba(163,142,72,.35);max-width:200px;
+  }
+  .calc-divider span{
+    width:8px;height:8px;background:var(--gold);transform:rotate(45deg);
+    box-shadow:0 0 0 3px rgba(163,142,72,.18);
+  }
+
+  /* Resultado */
+  .calc-result{margin-bottom:clamp(28px, 3vw, 44px)}
+  .calc-result-row{
+    display:grid;
+    grid-template-columns:1fr auto 1fr auto 1fr;
+    align-items:center;
+    gap:clamp(8px, 1vw, 16px);
+  }
+  @media (max-width:680px){
+    .calc-result-row{grid-template-columns:1fr;gap:18px}
+    .calc-result-divider{display:none}
+  }
+  .calc-result-item{text-align:center}
+  .calc-result-num{
+    font-family:var(--display);
+    font-size:clamp(34px, 4.5vw, 64px);
+    font-weight:800;
+    color:var(--olive);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .calc-result-label{
+    font-family:var(--subtitle);
+    font-size:clamp(10px, .85vw, 12px);
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+  }
+  .calc-result-divider{
+    width:1px;height:50px;background:rgba(163,142,72,.4);
+  }
+  .calc-note{
+    text-align:center;
+    margin:24px 0 0;
+    font-family:var(--subtitle);
+    font-size:clamp(11px, .9vw, 13px);
+    color:rgba(42,40,31,.55);
+    font-style:normal;
+  }
+
+  .calc-cta{
+    display:block;text-align:center;
+    margin:0 auto;
+    padding:14px 30px;
+    width:fit-content;
+    background:var(--olive);color:var(--cream);
+    text-decoration:none;
+    font-family:var(--subtitle);
+    font-size:clamp(11px, .95vw, 14px);
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-weight:700;
+    border-radius:4px;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .calc-cta:hover{background:var(--gold);transform:translateY(-2px)}
+
   /* ========== HERO (full-width, aspect 2.4:1 para mostrar imagen completa) ========== */
   .hero{
     position:relative;
@@ -960,12 +1177,12 @@
     .hero-cta-btn:hover{transform:translateX(-50%) translateY(-2px)}
   }
 
-  /* Video hero, rectangular 9:16, lado derecho — bordes redondeados + marco verde finito */
+  /* Video hero, rectangular 4:5 (más cuadrado), lado derecho — bordes redondeados + marco verde finito */
   .hero-cat{
     position:absolute;
     right:18%;top:50%;transform:translateY(-50%);
     height:74%;
-    aspect-ratio:9/16;
+    aspect-ratio:4/5;
     z-index:3;
     overflow:hidden;
     border-radius:14px;
@@ -1880,6 +2097,22 @@
   .ig-head{
     text-align:center;max-width:760px;margin:0 auto 70px;position:relative;
   }
+  /* Watermark logo emergiendo de la esquina inferior izquierda */
+  .ig-watermark{
+    position:absolute;
+    bottom:-12%;left:-6%;
+    width:clamp(220px, 28vw, 460px);
+    height:auto;
+    opacity:.18;
+    pointer-events:none;
+    z-index:1;
+    filter:saturate(.85) brightness(1.1);
+  }
+  .ig-section > .container{position:relative;z-index:2}
+  @media (max-width:600px){
+    .ig-watermark{bottom:-8%;left:-12%;width:200px;opacity:.14}
+  }
+
   .ig-intro{
     text-align:center;
     font-family:var(--display);
@@ -2325,6 +2558,76 @@
   </div>
 </section>
 
+<!-- ============= CALCULADORA DE PORCIONES VINTAGE ============= -->
+<section class="calc-section" id="calculadora">
+  <div class="container">
+    <header class="calc-head fade-in">
+      <span class="calc-eyebrow">— Calculadora —</span>
+      <h2>¿Cuánto BARF necesita tu gato?</h2>
+      <p>Calculá la porción diaria recomendada según el peso, edad y nivel de actividad de tu felino.</p>
+    </header>
+
+    <div class="calc-card fade-in">
+      <div class="calc-corner tl"></div>
+      <div class="calc-corner tr"></div>
+      <div class="calc-corner bl"></div>
+      <div class="calc-corner br"></div>
+
+      <div class="calc-grid">
+        <label class="calc-field">
+          <span class="calc-label">Peso del gato</span>
+          <div class="calc-input-wrap">
+            <input type="number" id="calcWeight" min="0.5" max="20" step="0.1" value="4" inputmode="decimal"/>
+            <span class="calc-unit">kg</span>
+          </div>
+        </label>
+
+        <label class="calc-field">
+          <span class="calc-label">Edad</span>
+          <select id="calcAge">
+            <option value="kitten">Cachorro (2 - 12 meses)</option>
+            <option value="adult" selected>Adulto (1 - 7 años)</option>
+            <option value="senior">Senior (8+ años)</option>
+          </select>
+        </label>
+
+        <label class="calc-field">
+          <span class="calc-label">Nivel de actividad</span>
+          <select id="calcActivity">
+            <option value="low">Bajo (vida sedentaria, en interior)</option>
+            <option value="medium" selected>Medio (juega y se mueve)</option>
+            <option value="high">Alto (muy activo, sale a pasear)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="calc-divider"><span></span></div>
+
+      <div class="calc-result">
+        <div class="calc-result-row">
+          <div class="calc-result-item">
+            <div class="calc-result-num" id="calcDaily">120</div>
+            <div class="calc-result-label">gramos por día</div>
+          </div>
+          <div class="calc-result-divider"></div>
+          <div class="calc-result-item">
+            <div class="calc-result-num" id="calcMonthly">3,6</div>
+            <div class="calc-result-label">kilos por mes</div>
+          </div>
+          <div class="calc-result-divider"></div>
+          <div class="calc-result-item">
+            <div class="calc-result-num" id="calcBags">7-8</div>
+            <div class="calc-result-label">bolsas/mes (500g)</div>
+          </div>
+        </div>
+        <p class="calc-note">* Valores orientativos. Para planes personalizados consultanos por WhatsApp.</p>
+      </div>
+
+      <a href="#productos" class="calc-cta">Ver productos →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============= HISTORIA BARFirenzina (redesign) ============= -->
 <section class="historia" id="historia">
   <!-- Animated background: drifting color blobs + floating paw prints -->
@@ -2441,6 +2744,7 @@
   automáticamente los blockquotes y los convierte en posts embebidos.
 ======================================================================= -->
 <section class="ig-section" id="instagram">
+  <img class="ig-watermark" src="assets/logo-watermark.png" alt="" aria-hidden="true"/>
   <div class="container">
     <header class="ig-head fade-in">
       <span class="ig-eyebrow">Comunidad</span>
@@ -3152,6 +3456,37 @@ if(heroImg){
     }
   }, {passive:true});
 }
+
+/* ===================== CALCULADORA DE PORCIONES ===================== */
+(function(){
+  const w = document.getElementById('calcWeight');
+  const a = document.getElementById('calcAge');
+  const act = document.getElementById('calcActivity');
+  const dailyEl = document.getElementById('calcDaily');
+  const monthlyEl = document.getElementById('calcMonthly');
+  const bagsEl = document.getElementById('calcBags');
+  if(!w || !a || !act) return;
+
+  // Multiplicadores aproximados de g/kg/día según etapa y actividad
+  // BARF típico = 3-5% del peso corporal/día
+  const ageFactor = { kitten: 0.055, adult: 0.035, senior: 0.030 };
+  const actFactor = { low: 0.85, medium: 1.0, high: 1.15 };
+
+  function calc(){
+    const weight = Math.max(0.5, Math.min(20, parseFloat(w.value) || 4));
+    const ageMult = ageFactor[a.value] || 0.035;
+    const actMult = actFactor[act.value] || 1.0;
+    const grams = Math.round(weight * 1000 * ageMult * actMult);
+    const monthly = (grams * 30) / 1000;
+    const bagsMin = Math.floor(monthly * 1000 / 500);
+    const bagsMax = Math.ceil(monthly * 1000 / 500);
+    dailyEl.textContent = grams;
+    monthlyEl.textContent = monthly.toFixed(1).replace('.', ',');
+    bagsEl.textContent = bagsMin === bagsMax ? bagsMin : `${bagsMin}-${bagsMax}`;
+  }
+  [w, a, act].forEach(el => el.addEventListener('input', calc));
+  calc();
+})();
 </script>
 
 </body>
