@@ -1518,26 +1518,83 @@
   /* ========== PRODUCTOS ========== */
   .products{
     background:
-      radial-gradient(ellipse at 20% 0%, rgba(163,142,72,.16), transparent 50%),
-      radial-gradient(ellipse at 80% 100%, rgba(163,142,72,.10), transparent 55%),
-      linear-gradient(180deg, var(--sage) 0%, #6c7349 100%);
-    padding:clamp(110px, 12vw, 170px) 0 clamp(130px, 14vw, 200px);
+      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(163,142,72,.28), transparent 60%),
+      radial-gradient(ellipse 60% 70% at 88% 80%, rgba(124,132,86,.35), transparent 55%),
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(163,142,72,.20), transparent 60%),
+      linear-gradient(180deg, #1a1f0a 0%, #20260e 45%, #161a08 100%);
+    padding:clamp(120px, 13vw, 190px) 0 clamp(140px, 15vw, 220px);
     color:var(--cream);
     position:relative;overflow:hidden;
+    isolation:isolate;
   }
+  /* Capa 1: textura de puntos cream brillantes */
   .products::before{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.08) 1px, transparent 0);
-    background-size:32px 32px;opacity:.6;
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+    background-image:
+      radial-gradient(circle at 2px 2px, rgba(246,246,233,.14) 1px, transparent 0),
+      radial-gradient(circle at 1px 1px, rgba(163,142,72,.10) 1px, transparent 0);
+    background-size:32px 32px, 18px 18px;
+    background-position:0 0, 16px 16px;
+    opacity:.7;
+    mask-image:radial-gradient(ellipse at center, black 40%, transparent 90%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 40%, transparent 90%);
   }
-  /* Decoraciones laterales gold */
+  /* Capa 2: lineas de luz oblicuas decorativas */
   .products::after{
-    content:"";position:absolute;top:50%;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(163,142,72,.25),transparent);
-    pointer-events:none;
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:
+      linear-gradient(115deg, transparent 30%, rgba(163,142,72,.06) 50%, transparent 70%),
+      linear-gradient(-65deg, transparent 35%, rgba(246,246,233,.04) 50%, transparent 65%);
+    background-size:240% 240%, 200% 200%;
+    background-position:0% 0%, 100% 100%;
+  }
+  /* Blobs gold animados (3 globos flotantes para dar movimiento sutil) */
+  .products-blobs{
+    position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+  }
+  .products-blob{
+    position:absolute;border-radius:50%;
+    filter:blur(60px);opacity:.55;
+    will-change:transform;
+  }
+  .products-blob.b1{
+    top:-10%;left:-8%;width:520px;height:520px;
+    background:radial-gradient(circle, rgba(163,142,72,.55), transparent 70%);
+    animation:productsBlobA 18s ease-in-out infinite;
+  }
+  .products-blob.b2{
+    bottom:-15%;right:-12%;width:620px;height:620px;
+    background:radial-gradient(circle, rgba(124,132,86,.55), transparent 65%);
+    animation:productsBlobB 22s ease-in-out infinite;
+  }
+  .products-blob.b3{
+    top:40%;left:45%;width:340px;height:340px;
+    background:radial-gradient(circle, rgba(191,187,133,.30), transparent 70%);
+    animation:productsBlobC 26s ease-in-out infinite;
+  }
+  @keyframes productsBlobA{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(40px,30px) scale(1.1)}
+  }
+  @keyframes productsBlobB{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(-50px,-30px) scale(1.12)}
+  }
+  @keyframes productsBlobC{
+    0%,100%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-45%,-55%) scale(1.18)}
+  }
+  /* Linea horizontal de luz que cruza */
+  .products-shine{
+    position:absolute;top:50%;left:0;right:0;height:1px;z-index:1;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(163,142,72,.45) 50%,transparent);
+    opacity:.5;
+  }
+  .products > .container, .products > .section-head, .products .product-grid{
+    position:relative;z-index:2;
   }
   /* Section head de productos: más dramatico */
-  .products .section-head{margin-bottom:0}
+  .products .section-head{margin-bottom:0;position:relative;z-index:2}
   .products .section-head .eye{
     color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.4em;
     margin-bottom:22px;display:inline-flex;align-items:center;gap:14px;
@@ -1553,9 +1610,11 @@
     color:var(--cream);
     margin:0 0 18px;
     letter-spacing:0;
+    text-shadow:0 4px 20px rgba(0,0,0,.4);
   }
   .products .section-head h2 em{
     color:var(--gold);font-style:normal;
+    text-shadow:0 0 30px rgba(163,142,72,.4);
   }
   .products .section-head p{
     font-size:clamp(14px,1.2vw,17px);
@@ -2976,6 +3035,12 @@
 
 <!-- ============= PRODUCTOS ============= -->
 <section class="products" id="productos">
+  <div class="products-blobs" aria-hidden="true">
+    <div class="products-blob b1"></div>
+    <div class="products-blob b2"></div>
+    <div class="products-blob b3"></div>
+  </div>
+  <div class="products-shine" aria-hidden="true"></div>
   <div class="container">
     <div class="section-head fade-in">
       <span class="eye">Nuestras Recetas</span>
@@ -3213,11 +3278,6 @@
       </div>
     </div>
 
-    <div class="hist-meta fade-in">
-      <div><span class="hm-n">2020</span><span class="hm-l">Fundación</span></div>
-      <div><span class="hm-n">+5.000</span><span class="hm-l">Gatos felices</span></div>
-      <div><span class="hm-n">48 hs</span><span class="hm-l">Cadena de frío</span></div>
-    </div>
   </div>
 </section>
 
