@@ -1394,17 +1394,20 @@
   .marquee{
     background:var(--olive);
     color:var(--cream);
-    padding:clamp(10px,1.1vw,16px) 0;
+    /* Altura calculada para coincidir con el header (brand-logo + padding-y doble) */
+    min-height:calc(clamp(40px, 3.6vw, 70px) + clamp(16px, 1.8vw, 36px));
+    display:flex;align-items:center;
+    padding:0;
     overflow:hidden;
     border-top:1px solid rgba(246,246,233,.08);
     border-bottom:1px solid rgba(246,246,233,.08);
   }
   .marquee-track{
-    display:flex;gap:48px;
+    display:flex;gap:60px;
     white-space:nowrap;
     animation:marquee 30s linear infinite;
     font-family:var(--serif);
-    font-size:clamp(13px,1.1vw,17px);
+    font-size:clamp(15px,1.4vw,22px);
     font-weight:500;
     letter-spacing:.04em;
   }
@@ -1518,20 +1521,20 @@
   /* ========== PRODUCTOS ========== */
   .products{
     background:
-      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(163,142,72,.28), transparent 60%),
-      radial-gradient(ellipse 60% 70% at 88% 80%, rgba(124,132,86,.35), transparent 55%),
-      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(163,142,72,.20), transparent 60%),
-      linear-gradient(180deg, #1a1f0a 0%, #20260e 45%, #161a08 100%);
+      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(163,142,72,.18), transparent 60%),
+      radial-gradient(ellipse 60% 70% at 88% 80%, rgba(124,132,86,.18), transparent 55%),
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(163,142,72,.12), transparent 60%),
+      linear-gradient(180deg, #fbf8e8 0%, var(--cream) 45%, #efe9d0 100%);
     padding:clamp(120px, 13vw, 190px) 0 clamp(140px, 15vw, 220px);
-    color:var(--cream);
+    color:var(--olive);
     position:relative;overflow:hidden;
     isolation:isolate;
   }
-  /* Capa 1: textura de puntos cream brillantes */
+  /* Capa 1: textura de puntos olive sutiles */
   .products::before{
     content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background-image:
-      radial-gradient(circle at 2px 2px, rgba(246,246,233,.14) 1px, transparent 0),
+      radial-gradient(circle at 2px 2px, rgba(50,57,21,.10) 1px, transparent 0),
       radial-gradient(circle at 1px 1px, rgba(163,142,72,.10) 1px, transparent 0);
     background-size:32px 32px, 18px 18px;
     background-position:0 0, 16px 16px;
@@ -1543,8 +1546,8 @@
   .products::after{
     content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background:
-      linear-gradient(115deg, transparent 30%, rgba(163,142,72,.06) 50%, transparent 70%),
-      linear-gradient(-65deg, transparent 35%, rgba(246,246,233,.04) 50%, transparent 65%);
+      linear-gradient(115deg, transparent 30%, rgba(163,142,72,.08) 50%, transparent 70%),
+      linear-gradient(-65deg, transparent 35%, rgba(124,132,86,.06) 50%, transparent 65%);
     background-size:240% 240%, 200% 200%;
     background-position:0% 0%, 100% 100%;
   }
@@ -1554,12 +1557,12 @@
   }
   .products-blob{
     position:absolute;border-radius:50%;
-    filter:blur(60px);opacity:.55;
+    filter:blur(70px);opacity:.7;
     will-change:transform;
   }
   .products-blob.b1{
     top:-10%;left:-8%;width:520px;height:520px;
-    background:radial-gradient(circle, rgba(163,142,72,.55), transparent 70%);
+    background:radial-gradient(circle, rgba(163,142,72,.65), transparent 70%);
     animation:productsBlobA 18s ease-in-out infinite;
   }
   .products-blob.b2{
@@ -1569,7 +1572,7 @@
   }
   .products-blob.b3{
     top:40%;left:45%;width:340px;height:340px;
-    background:radial-gradient(circle, rgba(191,187,133,.30), transparent 70%);
+    background:radial-gradient(circle, rgba(191,187,133,.45), transparent 70%);
     animation:productsBlobC 26s ease-in-out infinite;
   }
   @keyframes productsBlobA{
@@ -1587,8 +1590,8 @@
   /* Linea horizontal de luz que cruza */
   .products-shine{
     position:absolute;top:50%;left:0;right:0;height:1px;z-index:1;pointer-events:none;
-    background:linear-gradient(90deg,transparent,rgba(163,142,72,.45) 50%,transparent);
-    opacity:.5;
+    background:linear-gradient(90deg,transparent,rgba(163,142,72,.55) 50%,transparent);
+    opacity:.6;
   }
   .products > .container, .products > .section-head, .products .product-grid{
     position:relative;z-index:2;
@@ -1607,18 +1610,17 @@
     font-family:var(--display);
     font-size:clamp(36px,4.6vw,68px);
     line-height:1;
-    color:var(--cream);
+    color:var(--olive);
     margin:0 0 18px;
     letter-spacing:0;
-    text-shadow:0 4px 20px rgba(0,0,0,.4);
   }
   .products .section-head h2 em{
     color:var(--gold);font-style:normal;
-    text-shadow:0 0 30px rgba(163,142,72,.4);
+    text-shadow:0 0 24px rgba(163,142,72,.25);
   }
   .products .section-head p{
     font-size:clamp(14px,1.2vw,17px);
-    color:rgba(246,246,233,.78);
+    color:rgba(50,57,21,.7);
     max-width:600px;margin:0 auto;
     line-height:1.6;
   }
