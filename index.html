@@ -2309,9 +2309,9 @@
     content:"—";margin:0 16px;color:var(--gold);font-style:normal;opacity:.7;
   }
 
-  /* ========== INGREDIENTES (rediseño llamativo) ========== */
+  /* ========== INGREDIENTES (rediseño llamativo, sage más claro) ========== */
   .ingredients{
-    background:var(--olive);
+    background:linear-gradient(180deg, #8a9261 0%, var(--sage) 50%, #707855 100%);
     color:var(--cream);
     padding:clamp(80px,9vw,140px) 0;
     position:relative;
@@ -2320,13 +2320,13 @@
   /* Decoraciones: dos blobs gold sutiles + textura de puntos */
   .ingredients::before{
     content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.05) 1px, transparent 0);
-    background-size:32px 32px;opacity:.6;
+    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.08) 1px, transparent 0);
+    background-size:32px 32px;opacity:.5;
   }
   .ing-deco-a, .ing-deco-b{
     position:absolute;border-radius:50%;pointer-events:none;
-    background:radial-gradient(circle, rgba(163,142,72,.18), transparent 70%);
-    filter:blur(40px);
+    background:radial-gradient(circle, rgba(163,142,72,.22), transparent 70%);
+    filter:blur(50px);
   }
   .ing-deco-a{top:-150px;left:-100px;width:480px;height:480px}
   .ing-deco-b{bottom:-200px;right:-150px;width:560px;height:560px}
