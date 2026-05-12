@@ -6,7 +6,7 @@
 <title>BARFirenzina — Nutrición Premium para Gatos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- Preload hero video so it starts playing instantly on page load -->
 <link rel="preload" as="video" href="assets/hero.mp4" type="video/mp4">
 
@@ -22,31 +22,23 @@
     --serif: "Cormorant Garamond", Georgia, serif;
     --sans: "Inter", system-ui, -apple-system, sans-serif;
     --mono: "Montserrat", "Inter", system-ui, sans-serif;
-    /* Títulos: Playfair Display · Subtítulos: Playfair Display */
-    --display: "Playfair Display", "Cinzel", Georgia, serif;
-    --subtitle: "Playfair Display", "Inter", system-ui, sans-serif;
+    /* Títulos: Cinzel · Subtítulos: Intropro con fallback Inter */
+    --display: "Cinzel", "Anton", Georgia, serif;
+    --subtitle: "Intropro", "Inter", system-ui, sans-serif;
     --shadow-sm: 0 4px 14px -6px rgba(42,40,31,.18);
     --shadow-md: 0 18px 40px -20px rgba(42,40,31,.30);
     --shadow-lg: 0 30px 70px -30px rgba(42,40,31,.45);
-    /* Edge horizontal: ajustado a ~16% para mover la animacion del gato un poco a la izquierda.
-       El header usa la misma variable, por lo que sigue alineado al inicio del titulo y al final de la animacion. */
-    --hero-edge: clamp(24px, 16vw, 300px);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw}
+  html{scroll-behavior:smooth}
   body{
     font-family:var(--sans);
     color:var(--dark);
     background:var(--cream);
     line-height:1.6;
     overflow-x:hidden;
-    max-width:100vw;
     -webkit-font-smoothing:antialiased;
-    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='28' height='28' fill='%23A38E48'><ellipse cx='25' cy='24' rx='5.5' ry='8'/><ellipse cx='39' cy='24' rx='5.5' ry='8'/><ellipse cx='14' cy='32' rx='5' ry='7'/><ellipse cx='50' cy='32' rx='5' ry='7'/><path d='M32 32c-9 0-15 7-15 14 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7 0-7-6-14-15-14z'/></svg>") 14 14, auto;
-  }
-  a, button, .burger, .product-card, .hero-cta-btn, .nav-cta, [role="button"]{
-    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='32' height='32' fill='%23323915'><ellipse cx='25' cy='24' rx='5.5' ry='8'/><ellipse cx='39' cy='24' rx='5.5' ry='8'/><ellipse cx='14' cy='32' rx='5' ry='7'/><ellipse cx='50' cy='32' rx='5' ry='7'/><path d='M32 32c-9 0-15 7-15 14 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7 0-7-6-14-15-14z'/></svg>") 16 16, pointer;
   }
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
@@ -63,7 +55,7 @@
     pointer-events:none;
     z-index:1;
   }
-  .page-wrap{position:relative;overflow-x:hidden;width:100%;max-width:100vw}
+  .page-wrap{position:relative}
 
   /* Scroll progress bar */
   .scroll-progress{
@@ -252,7 +244,7 @@
     background:var(--cream);
     color:var(--dark);
     padding:56px 48px 52px;
-    border-radius:14px;
+    border-radius:4px;
     border:1px solid rgba(163,142,72,.28);
     box-shadow:0 40px 80px -30px rgba(0,0,0,.55), 0 0 0 1px rgba(246,246,233,.04);
     position:relative;
@@ -260,7 +252,7 @@
   .hist-card::before{
     content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
     border:1px solid rgba(163,142,72,.35);pointer-events:none;
-    border-radius:10px;
+    border-radius:2px;
   }
   .hist-eyebrow{
     display:inline-flex;align-items:center;gap:12px;
@@ -275,7 +267,7 @@
     color:var(--olive);text-transform:uppercase;
   }
   .hist-card h2 em{
-    font-style:normal;color:var(--gold);display:block;
+    font-style:italic;color:var(--gold);display:block;
   }
   .hist-divider{
     margin:28px 0 24px;width:72px;height:2px;
@@ -306,7 +298,7 @@
   /* Right — framed poster */
   .hist-poster{
     position:relative;
-    border-radius:14px;
+    border-radius:4px;
     overflow:hidden;
     background:var(--olive);
     padding:12px;
@@ -319,9 +311,8 @@
   .hist-poster img,
   .hist-poster video{
     width:100%;height:100%;display:block;object-fit:cover;
-    aspect-ratio:4/5;
-    object-position:center;
-    border-radius:10px;
+    aspect-ratio:3/4;
+    border-radius:2px;
   }
   .hist-poster .hp-tag{
     position:absolute;bottom:24px;left:24px;z-index:2;
@@ -340,7 +331,7 @@
     margin-top:60px;
     display:grid;grid-template-columns:repeat(3,1fr);
     background:var(--cream);
-    border-radius:14px;
+    border-radius:4px;
     overflow:hidden;
     box-shadow:0 30px 60px -25px rgba(0,0,0,.4);
     border:1px solid rgba(163,142,72,.25);
@@ -560,8 +551,7 @@
   }
 
   /* ========== HEADER (verde olive + letras cream para contraste) ========== */
-  /* :not([class]) → solo afecta al <header> principal del nav, no a los <header class="..."> de secciones */
-  header:not([class]){
+  header{
     position:relative;
     z-index:100;
     background:var(--olive);
@@ -570,70 +560,14 @@
     overflow:visible;
   }
   .nav{
-    display:flex;align-items:center;
-    /* Padding lateral = --hero-edge para que el header arranque/termine alineado al titulo y a la animacion del hero */
-    padding:clamp(8px, .9vw, 18px) var(--hero-edge);
-    max-width:none;margin:0;
-    gap:clamp(20px, 3vw, 48px);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 32px;max-width:1340px;margin:0 auto;gap:32px;
   }
-  .nav-right{margin-left:auto;display:flex;align-items:center;gap:clamp(8px, .9vw, 14px)}
-
-  /* Botones sociales del header (alineados con el borde derecho de la animación) */
-  .social-pill{
-    position:relative;
-    display:inline-flex;align-items:center;justify-content:center;
-    width:42px;height:42px;
-    border-radius:50%;
-    background:rgba(246,246,233,.06);
-    border:1.5px solid var(--sage);
-    color:var(--cream);
-    text-decoration:none;
-    transition:background .25s ease, color .25s ease, transform .25s ease, border-color .25s ease;
-  }
-  .social-pill svg{width:18px;height:18px;display:block}
-  .social-pill::after{
-    /* Pequeñas orejitas de gato decorativas en la parte superior */
-    content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);
-    width:18px;height:6px;
-    background:
-      linear-gradient(135deg, transparent 50%, var(--sage) 50%) 0 0/9px 6px no-repeat,
-      linear-gradient(225deg, transparent 50%, var(--sage) 50%) 9px 0/9px 6px no-repeat;
-    opacity:.85;
-    pointer-events:none;
-  }
-  .social-pill:hover{
-    background:var(--gold);
-    color:var(--dark);
-    border-color:var(--gold);
-    transform:translateY(-2px);
-  }
-  .social-pill:hover::after{
-    background:
-      linear-gradient(135deg, transparent 50%, var(--gold) 50%) 0 0/9px 6px no-repeat,
-      linear-gradient(225deg, transparent 50%, var(--gold) 50%) 9px 0/9px 6px no-repeat;
-  }
-  .brand{display:flex;flex-direction:row;align-items:center;gap:clamp(10px, 1vw, 18px);text-decoration:none}
+  .brand{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
   .logo{display:none}
-  /* Logo circular con borde olive más claro (sage) — escala proporcional */
-  .brand-logo{
-    width:clamp(40px, 3.6vw, 70px);
-    height:clamp(40px, 3.6vw, 70px);
-    border-radius:50%;
-    object-fit:cover;
-    background:#f5efd6;
-    border:clamp(1px, .12vw, 2px) solid var(--sage);
-    box-shadow:0 0 0 clamp(1px, .15vw, 3px) rgba(124,132,86,.18);
-    flex-shrink:0;
-    transition:transform .35s ease, box-shadow .35s ease;
-  }
-  .brand:hover .brand-logo{
-    transform:rotate(-6deg) scale(1.04);
-    box-shadow:0 0 0 clamp(2px, .22vw, 4px) rgba(124,132,86,.32);
-  }
-  .brand-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
   .brand-name{
     font-family:var(--display);
-    font-size:clamp(15px, 1.8vw, 32px);
+    font-size:clamp(22px, 2.2vw, 30px);
     font-weight:800;
     color:var(--cream);
     letter-spacing:.03em;
@@ -641,17 +575,17 @@
     line-height:1;
   }
   .brand-name span{color:var(--khaki);text-transform:lowercase}
-  .brand-text::after{
+  .brand::after{
     content:"Alimentación natural para gatos";
     font-family:var(--subtitle);
-    font-size:clamp(7px, .7vw, 12px);letter-spacing:.25em;text-transform:uppercase;
+    font-size:10px;letter-spacing:.25em;text-transform:uppercase;
     color:var(--khaki);opacity:.85;font-weight:600;
   }
 
-  .nav ul{list-style:none;display:flex;gap:clamp(24px, 3.2vw, 60px);align-items:center}
+  .nav ul{list-style:none;display:flex;gap:32px;align-items:center}
   .nav ul a{
     font-family:var(--subtitle);
-    font-size:clamp(9px, .82vw, 14px);letter-spacing:.32em;text-transform:uppercase;
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;
     font-weight:700;padding:8px 0;position:relative;
     transition:color .25s;color:var(--cream);
   }
@@ -662,11 +596,33 @@
   }
   .nav ul li + li{position:relative}
   .nav ul li + li::before{
-    content:"";position:absolute;left:-29px;top:50%;
+    content:"";position:absolute;left:-18px;top:50%;
     width:4px;height:4px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);
-    opacity:.7;
+    opacity:.6;
   }
 
+  /* CONSULTAR — placa imagen grande que "cuelga" del header */
+  .nav-cta{
+    display:inline-block;
+    padding:0;
+    background:transparent;
+    border:none;
+    transition:transform .25s ease, filter .25s ease;
+    line-height:0;
+    position:relative;z-index:10;
+    margin:-55px 0;
+  }
+  .nav-cta img{
+    display:block;
+    height:170px;width:auto;
+    filter:drop-shadow(0 10px 22px rgba(50,57,21,.45));
+  }
+  @media (max-width:900px){
+    .nav-cta{margin:-28px 0}
+    .nav-cta img{height:100px}
+  }
+  .nav-cta:hover{transform:translateY(-2px)}
+  .nav-cta:hover img{filter:drop-shadow(0 12px 26px rgba(50,57,21,.5)) brightness(1.08)}
 
   /* ========== CART BUTTON + DRAWER ========== */
   .nav-right{display:flex;align-items:center;gap:14px}
@@ -848,373 +804,63 @@
   .cart-toast svg{width:18px;height:18px;color:var(--khaki)}
   .cart-toast.show{transform:translate(-50%, 0)}
 
-  /* Burger en forma de HUELLA DE GATO — escala proporcional */
-  .burger{
-    display:block;
-    width:clamp(28px, 2.8vw, 52px);
-    height:clamp(28px, 2.8vw, 52px);
-    background:transparent;border:none;cursor:pointer;
-    color:var(--cream);padding:0;
-    transition:transform .35s cubic-bezier(.2,.7,.1,1), color .25s ease;
-  }
-  .burger svg{width:100%;height:100%;display:block}
-  .burger:hover{color:var(--gold);transform:rotate(-10deg) scale(1.06)}
-  .burger.is-open{color:var(--gold);transform:rotate(35deg) scale(1.08)}
+  .burger{display:none;width:32px;height:32px;cursor:pointer}
+  .burger span{display:block;height:2px;background:var(--cream);margin:7px 0;transition:.3s}
 
-  /* Menú emergente — popup con tema BARF */
-  .nav ul.is-open{
-    display:flex !important;
-    position:absolute;
-    top:100%;left:0;right:0;
-    flex-direction:column;
-    align-items:flex-start;
-    background:var(--olive);
-    padding:28px 14vw 32px 14vw;
-    gap:18px;
-    border-top:1px solid rgba(163,142,72,.35);
-    border-bottom:3px solid var(--gold);
-    box-shadow:0 24px 50px -12px rgba(0,0,0,.45);
-    animation:pawMenuDrop .35s cubic-bezier(.2,.7,.1,1);
-    z-index:99;
-  }
-  .nav ul.is-open li{
-    list-style:none;
-    position:relative;
-    padding-left:34px;
+  /* ========== FEATURES BANNER (4 íconos debajo del hero) ========== */
+  .features-banner{
+    background:#f1ecd5;
+    padding:30px 0 50px;
     width:100%;
+    display:flex;justify-content:center;
+    border-bottom:1px solid rgba(50,57,21,.1);
   }
-  .nav ul.is-open li + li::before{display:none}
-  .nav ul.is-open li::after{
-    content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
-    width:22px;height:22px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23A38E48'><ellipse cx='25' cy='24' rx='5.5' ry='8'/><ellipse cx='39' cy='24' rx='5.5' ry='8'/><ellipse cx='14' cy='32' rx='5' ry='7'/><ellipse cx='50' cy='32' rx='5' ry='7'/><path d='M32 32c-9 0-15 7-15 14 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7 0-7-6-14-15-14z'/></svg>");
-    background-size:contain;background-repeat:no-repeat;
-    opacity:.8;
-    transition:transform .3s ease, opacity .3s ease;
-  }
-  .nav ul.is-open li:hover::after{
-    transform:translateY(-50%) rotate(-12deg) scale(1.15);
-    opacity:1;
-  }
-  .nav ul.is-open a{
-    font-size:14px !important;letter-spacing:.28em !important;
-    padding:6px 0 !important;
-    display:inline-block;
-  }
-  @keyframes pawMenuDrop{
-    from{opacity:0;transform:translateY(-14px)}
-    to{opacity:1;transform:translateY(0)}
-  }
-
-  /* ========== COMPROMISO BANNER (proporción 6:1 exacta, sin márgenes ni marco) ========== */
-  .compromiso-banner{
-    width:100%;
-    max-width:100vw;
-    overflow:hidden;
-    background:transparent;
+  .features-banner img{
     display:block;
-    line-height:0;
-    border:none;
-    box-shadow:none;
-  }
-  .compromiso-banner img{
-    display:block;
-    width:100%;
+    width:94%;
+    max-width:1500px;
     height:auto;
   }
-
-  /* ========== CALCULADORA DE PORCIONES (vintage card) ========== */
-  .calc-section{
-    padding:clamp(60px, 8vw, 120px) 0;
-    background:var(--cream);
-    position:relative;
-    overflow:hidden;
-  }
-  .calc-section::before{display:none}
-  .calc-section > .container{position:relative;z-index:2}
-  .calc-head{
-    text-align:center;
-    max-width:680px;
-    margin:0 auto clamp(40px, 5vw, 70px);
-  }
-  .calc-eyebrow{
-    display:block;
-    font-family:var(--display);
-    font-size:clamp(11px, 1vw, 15px);
-    color:var(--gold);
-    letter-spacing:.32em;
-    text-transform:uppercase;
-    margin-bottom:14px;
-    font-weight:600;
-  }
-  .calc-head h2{
-    font-family:var(--display);
-    font-size:clamp(26px, 3vw, 48px);
-    color:var(--olive);
-    font-weight:800;
-    margin:0 0 14px;
-    line-height:1.1;
-  }
-  .calc-head p{
-    color:rgba(42,40,31,.7);
-    font-size:clamp(13px, 1.1vw, 17px);
-    margin:0;
+  @media (max-width:600px){
+    .features-banner{padding:18px 0 28px}
+    .features-banner img{width:96%}
   }
 
-  /* Card principal con esquinas ornamentales — mismo fondo que la sección */
-  .calc-card{
-    position:relative;
-    max-width:880px;
-    margin:0 auto;
-    background:var(--cream);
-    padding:clamp(28px, 4vw, 60px) clamp(24px, 4vw, 56px);
-    border:2px solid var(--olive);
-    border-radius:14px;
-    box-shadow:
-      inset 0 0 0 6px var(--cream),
-      inset 0 0 0 7px rgba(163,142,72,.45),
-      0 30px 60px -25px rgba(50,57,21,.25);
-  }
-  .calc-corner{
-    position:absolute;
-    width:22px;height:22px;
-    border:2px solid var(--gold);
-  }
-  .calc-corner.tl{top:-8px;left:-8px;border-right:none;border-bottom:none}
-  .calc-corner.tr{top:-8px;right:-8px;border-left:none;border-bottom:none}
-  .calc-corner.bl{bottom:-8px;left:-8px;border-right:none;border-top:none}
-  .calc-corner.br{bottom:-8px;right:-8px;border-left:none;border-top:none}
-
-  .calc-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:clamp(18px, 2vw, 30px);
-    margin-bottom:clamp(28px, 3.5vw, 50px);
-  }
-  @media (max-width:780px){
-    .calc-grid{grid-template-columns:1fr}
-  }
-
-  .calc-field{display:flex;flex-direction:column;gap:8px}
-  .calc-label{
-    font-family:var(--subtitle);
-    font-size:clamp(10px, .85vw, 12px);
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    color:var(--olive);
-    font-weight:700;
-    opacity:.85;
-  }
-  .calc-input-wrap{
-    position:relative;
-    display:flex;align-items:center;
-  }
-  .calc-input-wrap input{
-    width:100%;
-    height:clamp(48px, 3.6vw, 56px);
-    padding:0 50px 0 16px;
-    background:#fffaeb;
-    border:1.5px solid rgba(50,57,21,.25);
-    border-radius:10px;
-    font-family:var(--display);
-    font-size:clamp(16px, 1.3vw, 20px);
-    font-weight:700;
-    color:var(--olive);
-    box-sizing:border-box;
-    transition:border-color .2s ease, box-shadow .2s ease;
-    outline:none;
-  }
-  .calc-input-wrap input:focus{
-    border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(163,142,72,.18);
-  }
-  .calc-unit{
-    position:absolute;right:16px;
-    color:var(--gold);
-    font-family:var(--display);
-    font-weight:600;
-    font-size:clamp(14px, 1.2vw, 18px);
-    pointer-events:none;
-  }
-  .calc-field select{
-    width:100%;
-    height:clamp(48px, 3.6vw, 56px);
-    padding:0 42px 0 16px;
-    background:#fffaeb;
-    border:1.5px solid rgba(50,57,21,.25);
-    border-radius:10px;
-    font-family:var(--subtitle);
-    font-size:clamp(13px, 1vw, 15px);
-    color:var(--olive);
-    cursor:pointer;
-    box-sizing:border-box;
-    appearance:none;
-    -webkit-appearance:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A38E48' stroke-width='2.5' stroke-linecap='round'><polyline points='6 9 12 15 18 9'/></svg>");
-    background-repeat:no-repeat;
-    background-position:right 14px center;
-    background-size:16px;
-    transition:border-color .2s ease, box-shadow .2s ease;
-    outline:none;
-  }
-  .calc-field select:focus{
-    border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(163,142,72,.18);
-  }
-
-  /* Divisor decorativo con diamante */
-  .calc-divider{
-    display:flex;align-items:center;justify-content:center;
-    margin:clamp(20px, 2.5vw, 36px) 0;
-    gap:14px;
-    color:var(--gold);
-  }
-  .calc-divider::before,
-  .calc-divider::after{
-    content:"";flex:1;height:1px;background:rgba(163,142,72,.35);max-width:200px;
-  }
-  .calc-divider span{
-    width:8px;height:8px;background:var(--gold);transform:rotate(45deg);
-    box-shadow:0 0 0 3px rgba(163,142,72,.18);
-  }
-
-  /* Resultado */
-  .calc-result{margin-bottom:clamp(28px, 3vw, 44px)}
-  .calc-result-row{
-    display:grid;
-    grid-template-columns:1fr auto 1fr auto 1fr;
-    align-items:center;
-    gap:clamp(8px, 1vw, 16px);
-  }
-  @media (max-width:680px){
-    .calc-result-row{grid-template-columns:1fr;gap:18px}
-    .calc-result-divider{display:none}
-  }
-  .calc-result-item{text-align:center}
-  .calc-result-num{
-    font-family:var(--display);
-    font-size:clamp(34px, 4.5vw, 64px);
-    font-weight:800;
-    color:var(--olive);
-    line-height:1;
-    margin-bottom:6px;
-  }
-  .calc-result-label{
-    font-family:var(--subtitle);
-    font-size:clamp(10px, .85vw, 12px);
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:700;
-  }
-  .calc-result-divider{
-    width:1px;height:50px;background:rgba(163,142,72,.4);
-  }
-  .calc-note{
-    text-align:center;
-    margin:24px 0 0;
-    font-family:var(--subtitle);
-    font-size:clamp(11px, .9vw, 13px);
-    color:rgba(42,40,31,.55);
-    font-style:normal;
-  }
-
-  .calc-actions{
-    display:flex;justify-content:center;align-items:center;
-    gap:14px;flex-wrap:wrap;
-  }
-  .calc-cta{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    text-align:center;
-    padding:14px 30px;
-    background:var(--olive);color:var(--cream);
-    text-decoration:none;
-    font-family:var(--subtitle);
-    font-size:clamp(11px, .95vw, 14px);
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    font-weight:700;
-    border-radius:10px;
-    border:1.5px solid var(--olive);
-    transition:background .25s ease, transform .25s ease, color .25s ease, border-color .25s ease;
-  }
-  .calc-cta:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
-  /* Variante WhatsApp: outline gold sobre cream para diferenciarlo del primario */
-  .calc-cta-wa{background:transparent;color:var(--olive);border-color:var(--gold)}
-  .calc-cta-wa svg{flex-shrink:0}
-  .calc-cta-wa:hover{background:var(--gold);color:var(--cream);border-color:var(--gold)}
-
-  /* ========== HERO (full-width, aspect 2.4:1 para mostrar imagen completa) ========== */
+  /* ========== HERO (banner image full + video gato grande a la derecha) ========== */
   .hero{
     position:relative;
     width:100%;
-    max-width:100vw;
     aspect-ratio:2.4/1;
+    max-height:800px;
+    padding:0;
     background:#f1ecd5;
     overflow:hidden;
     isolation:isolate;
-    padding:0;
   }
   .hero-stage{
     position:relative;
     width:100%;
-    height:100%;
-    margin:0;
+    max-width:none;
+    min-height:640px;
+    display:block;
   }
   .hero-banner{
     display:block;
     width:100%;
-    height:100%;
+    height:auto;
+    min-height:640px;
     object-fit:cover;
     object-position:center;
-    image-rendering:auto;
   }
-  /* Botón VER CATÁLOGO — a la derecha del subtítulo, escala proporcional al viewport */
-  .hero-cta-btn{
-    position:absolute;
-    left:40%;bottom:26%;
-    z-index:4;
-    display:inline-flex;align-items:center;gap:clamp(6px, .55vw, 12px);
-    padding:clamp(7px, .65vw, 13px) clamp(16px, 1.5vw, 30px);
-    background:var(--gold);
-    color:var(--cream);
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(9px, .82vw, 16px);
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    text-decoration:none;
-    border:clamp(1px, .1vw, 2px) solid var(--olive);
-    border-radius:clamp(5px, .5vw, 11px);
-    box-shadow:inset 0 0 0 clamp(2px, .18vw, 4px) var(--gold), inset 0 0 0 clamp(3px, .25vw, 5px) rgba(246,237,209,.6), inset 0 0 0 clamp(4px, .38vw, 7px) var(--gold);
-    transition:background .25s ease, color .25s ease, transform .25s ease;
-  }
-  .hero-cta-btn svg{width:1.15em;height:1.15em;flex-shrink:0}
-  .hero-cta-btn:hover{
-    background:var(--olive);color:var(--gold);transform:translateY(-2px);
-  }
-  @media (max-width:900px){
-    .hero-cta-btn{left:50%;bottom:8%;transform:translateX(-50%);padding:10px 20px;font-size:11px;letter-spacing:.14em;white-space:nowrap}
-    .hero-cta-btn:hover{transform:translateX(-50%) translateY(-2px)}
-  }
-  @media (max-width:480px){
-    .hero-cta-btn{bottom:6%;padding:8px 14px;font-size:10px;letter-spacing:.1em;gap:6px}
-    .hero-cta-btn svg{width:1em;height:1em}
-  }
-
-  /* Video hero, rectangular 4:5 (más cuadrado), lado derecho — bordes redondeados + marco verde finito */
+  /* Video hero: ocupa la mitad derecha, alto completo del hero */
   .hero-cat{
     position:absolute;
-    /* right = misma --hero-edge que padding del nav → alineacion perfecta con final del header */
-    right:var(--hero-edge);top:50%;transform:translateY(-50%);
-    height:74%;
-    aspect-ratio:4/5;
+    right:0;top:0;bottom:0;
+    width:50%;
     z-index:3;
     overflow:hidden;
-    border-radius:14px;
-    border:2px solid var(--olive);
+    box-shadow:0 0 80px -20px rgba(50,57,21,.35);
   }
-
   .hero-cat video{
     width:100%;height:100%;object-fit:cover;display:block;
   }
@@ -1250,7 +896,7 @@
     text-transform:uppercase;
   }
   .hero h1 .accent{
-    font-style:normal;
+    font-style:italic;
     font-weight:400;
     color:var(--olive);
     position:relative;
@@ -1394,10 +1040,7 @@
   .marquee{
     background:var(--olive);
     color:var(--cream);
-    /* Altura calculada para coincidir con el header (brand-logo + padding-y doble) */
-    min-height:calc(clamp(40px, 3.6vw, 70px) + clamp(16px, 1.8vw, 36px));
-    display:flex;align-items:center;
-    padding:0;
+    padding:22px 0;
     overflow:hidden;
     border-top:1px solid rgba(246,246,233,.08);
     border-bottom:1px solid rgba(246,246,233,.08);
@@ -1406,10 +1049,7 @@
     display:flex;gap:60px;
     white-space:nowrap;
     animation:marquee 30s linear infinite;
-    font-family:var(--serif);
-    font-size:clamp(15px,1.4vw,22px);
-    font-weight:500;
-    letter-spacing:.04em;
+    font-family:var(--serif);font-size:22px;font-weight:500;
   }
   .marquee-track span{display:inline-flex;align-items:center;gap:60px}
   .marquee-track .dot{
@@ -1420,9 +1060,12 @@
     to{transform:translateX(-50%)}
   }
 
-  /* ========== SECRETO ========== */
-  .secret{background:var(--khaki);padding:110px 0;position:relative}
-  .secret-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:70px;align-items:center}
+  /* ========== INGREDIENTES (limpio, alineado, simétrico) ========== */
+  .ingredients{
+    background:var(--khaki);
+    padding:clamp(80px, 8vw, 120px) 0;
+    position:relative;
+  }
   .section-eyebrow{
     font-size:11px;letter-spacing:.3em;text-transform:uppercase;
     font-weight:600;color:var(--olive);margin-bottom:18px;
@@ -1431,28 +1074,90 @@
   .section-eyebrow::before{
     content:"";width:30px;height:1.5px;background:var(--olive);
   }
-  .secret h2{
+  .ing-header{
+    max-width:640px;margin:0 auto clamp(48px, 5vw, 72px);
+    text-align:center;
+  }
+  .ing-kicker{
+    display:block;
     font-family:var(--display);
-    font-size:clamp(32px,3.6vw,52px);
-    font-weight:800;color:var(--olive);line-height:1.05;
-    margin-bottom:22px;letter-spacing:.01em;text-transform:uppercase;
+    font-size:13px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:18px;
   }
-  .secret p.lead{max-width:480px;color:#3a3a28;margin-bottom:36px;font-size:16px}
+  .ing-header h2{
+    font-family:var(--display);
+    font-size:clamp(30px, 3.4vw, 48px);
+    font-weight:800;color:var(--olive);
+    line-height:1.05;margin:0 0 16px;
+    letter-spacing:.005em;text-transform:uppercase;
+  }
+  .ing-header h2 em{color:var(--gold);font-style:normal}
+  .ing-header p{
+    color:rgba(50,57,21,.7);
+    font-size:clamp(13px, 1.1vw, 16px);
+    margin:0;
+  }
 
-  .icon-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .icon-card{
-    text-align:center;padding:28px 14px;
-    background:rgba(246,246,233,.55);border-radius:18px;
-    transition:transform .35s ease, background .35s ease;
-    border:1px solid rgba(50,57,21,.08);
+  /* Grid 3x2 perfectamente alineado */
+  .ing-grid{
+    list-style:none;padding:0;margin:0;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:clamp(16px, 1.6vw, 24px);
+    max-width:1100px;
+    margin:0 auto;
   }
-  .icon-card:hover{background:var(--cream);transform:translateY(-6px)}
-  .icon-card svg{width:44px;height:44px;color:var(--olive);margin-bottom:12px}
-  .icon-card .title{
-    font-size:13px;letter-spacing:.18em;text-transform:uppercase;
-    font-weight:600;color:var(--dark);margin-bottom:4px;
+  .ing-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    min-height:200px;
+    padding:32px 20px;
+    background:var(--cream);
+    border:1px solid rgba(50,57,21,.10);
+    border-radius:14px;
+    text-align:center;
+    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
   }
-  .icon-card .sub{font-size:12px;color:#5a5742}
+  .ing-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--gold);
+    box-shadow:0 18px 40px -20px rgba(50,57,21,.25);
+  }
+  .ing-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:rgba(163,142,72,.08);
+    border:1.5px solid rgba(163,142,72,.45);
+    color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    transition:background .35s ease, border-color .35s ease, color .35s ease;
+  }
+  .ing-card:hover .ing-icon{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--cream);
+  }
+  .ing-icon svg{width:32px;height:32px}
+  .ing-card h3{
+    font-family:var(--display);
+    font-size:16px;
+    font-weight:700;
+    color:var(--olive);
+    margin:0;
+    line-height:1.2;
+    letter-spacing:.005em;
+  }
+  @media (max-width:860px){
+    .ing-grid{grid-template-columns:repeat(2, 1fr)}
+  }
+  @media (max-width:480px){
+    .ing-grid{grid-template-columns:1fr;max-width:380px}
+    .ing-card{min-height:auto;padding:24px 18px}
+  }
 
   /* ========== NUESTRO BARF (info section) ========== */
   .info{padding:120px 0;background:var(--cream);position:relative}
@@ -1499,7 +1204,7 @@
     font-weight:800;color:var(--dark);line-height:1.05;margin-bottom:22px;
     letter-spacing:.01em;text-transform:uppercase;
   }
-  .info h2 em{font-style:normal;color:var(--olive)}
+  .info h2 em{font-style:italic;color:var(--olive)}
   .info p.body{color:#4a4735;margin-bottom:28px;font-size:16px;max-width:520px}
 
   .feature-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:40px}
@@ -1520,109 +1225,13 @@
 
   /* ========== PRODUCTOS ========== */
   .products{
-    background:
-      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(163,142,72,.18), transparent 60%),
-      radial-gradient(ellipse 60% 70% at 88% 80%, rgba(124,132,86,.18), transparent 55%),
-      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(163,142,72,.12), transparent 60%),
-      linear-gradient(180deg, #fbf8e8 0%, var(--cream) 45%, #efe9d0 100%);
-    padding:clamp(120px, 13vw, 190px) 0 clamp(140px, 15vw, 220px);
-    color:var(--olive);
+    background:var(--sage);padding:120px 0;color:var(--cream);
     position:relative;overflow:hidden;
-    isolation:isolate;
   }
-  /* Capa 1: textura de puntos olive sutiles */
   .products::before{
-    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-    background-image:
-      radial-gradient(circle at 2px 2px, rgba(50,57,21,.10) 1px, transparent 0),
-      radial-gradient(circle at 1px 1px, rgba(163,142,72,.10) 1px, transparent 0);
-    background-size:32px 32px, 18px 18px;
-    background-position:0 0, 16px 16px;
-    opacity:.7;
-    mask-image:radial-gradient(ellipse at center, black 40%, transparent 90%);
-    -webkit-mask-image:radial-gradient(ellipse at center, black 40%, transparent 90%);
-  }
-  /* Capa 2: lineas de luz oblicuas decorativas */
-  .products::after{
-    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-    background:
-      linear-gradient(115deg, transparent 30%, rgba(163,142,72,.08) 50%, transparent 70%),
-      linear-gradient(-65deg, transparent 35%, rgba(124,132,86,.06) 50%, transparent 65%);
-    background-size:240% 240%, 200% 200%;
-    background-position:0% 0%, 100% 100%;
-  }
-  /* Blobs gold animados (3 globos flotantes para dar movimiento sutil) */
-  .products-blobs{
-    position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;
-  }
-  .products-blob{
-    position:absolute;border-radius:50%;
-    filter:blur(70px);opacity:.7;
-    will-change:transform;
-  }
-  .products-blob.b1{
-    top:-10%;left:-8%;width:520px;height:520px;
-    background:radial-gradient(circle, rgba(163,142,72,.65), transparent 70%);
-    animation:productsBlobA 18s ease-in-out infinite;
-  }
-  .products-blob.b2{
-    bottom:-15%;right:-12%;width:620px;height:620px;
-    background:radial-gradient(circle, rgba(124,132,86,.55), transparent 65%);
-    animation:productsBlobB 22s ease-in-out infinite;
-  }
-  .products-blob.b3{
-    top:40%;left:45%;width:340px;height:340px;
-    background:radial-gradient(circle, rgba(191,187,133,.45), transparent 70%);
-    animation:productsBlobC 26s ease-in-out infinite;
-  }
-  @keyframes productsBlobA{
-    0%,100%{transform:translate(0,0) scale(1)}
-    50%{transform:translate(40px,30px) scale(1.1)}
-  }
-  @keyframes productsBlobB{
-    0%,100%{transform:translate(0,0) scale(1)}
-    50%{transform:translate(-50px,-30px) scale(1.12)}
-  }
-  @keyframes productsBlobC{
-    0%,100%{transform:translate(-50%,-50%) scale(1)}
-    50%{transform:translate(-45%,-55%) scale(1.18)}
-  }
-  /* Linea horizontal de luz que cruza */
-  .products-shine{
-    position:absolute;top:50%;left:0;right:0;height:1px;z-index:1;pointer-events:none;
-    background:linear-gradient(90deg,transparent,rgba(163,142,72,.55) 50%,transparent);
-    opacity:.6;
-  }
-  .products > .container, .products > .section-head, .products .product-grid{
-    position:relative;z-index:2;
-  }
-  /* Section head de productos: más dramatico */
-  .products .section-head{margin-bottom:0;position:relative;z-index:2}
-  .products .section-head .eye{
-    color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.4em;
-    margin-bottom:22px;display:inline-flex;align-items:center;gap:14px;
-  }
-  .products .section-head .eye::before,
-  .products .section-head .eye::after{
-    content:"";width:32px;height:1px;background:var(--gold);
-  }
-  .products .section-head h2{
-    font-family:var(--display);
-    font-size:clamp(36px,4.6vw,68px);
-    line-height:1;
-    color:var(--olive);
-    margin:0 0 18px;
-    letter-spacing:0;
-  }
-  .products .section-head h2 em{
-    color:var(--gold);font-style:normal;
-    text-shadow:0 0 24px rgba(163,142,72,.25);
-  }
-  .products .section-head p{
-    font-size:clamp(14px,1.2vw,17px);
-    color:rgba(50,57,21,.7);
-    max-width:600px;margin:0 auto;
-    line-height:1.6;
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.08) 1px, transparent 0);
+    background-size:32px 32px;opacity:.6;
   }
   .section-head{text-align:center;margin-bottom:70px;position:relative;z-index:2}
   .section-head .eye{
@@ -1647,45 +1256,19 @@
   }
   .product-grid.two-cols{
     grid-template-columns:repeat(2,1fr);
-    max-width:1100px;margin:0 auto;
-    gap:clamp(28px, 4vw, 70px);
-    padding-top:clamp(60px, 7vw, 100px);
+    max-width:880px;margin:0 auto;gap:40px;
   }
   /* wrapper allows kitten-decor to peek above the card without breaking ribbon clip */
   .product-card-wrap{position:relative}
   .product-card{
-    position:relative;background:var(--cream);border-radius:20px;
+    position:relative;background:var(--cream);border-radius:24px;
     padding:0;color:var(--dark);
-    box-shadow:
-      0 60px 100px -40px rgba(0,0,0,.55),
-      0 0 0 1px rgba(163,142,72,.18),
-      inset 0 0 0 1px rgba(246,246,233,.5);
-    transition:transform .55s cubic-bezier(.2,.7,.1,1), box-shadow .55s ease;
+    box-shadow:var(--shadow-md);
+    transition:transform .5s cubic-bezier(.2,.7,.1,1), box-shadow .5s ease;
     overflow:hidden;
     isolation:isolate;
   }
-  /* Borde decorativo interno gold sutil */
-  .product-card::before{
-    content:"";position:absolute;inset:10px;border:1px solid rgba(163,142,72,.22);
-    border-radius:14px;pointer-events:none;z-index:4;
-  }
-  .product-card:hover{
-    transform:translateY(-18px);
-    box-shadow:
-      0 80px 130px -40px rgba(0,0,0,.65),
-      0 0 0 1px rgba(163,142,72,.4),
-      0 0 60px -10px rgba(163,142,72,.35);
-  }
-  /* Numero de receta (#01, #02) en esquina superior derecha */
-  .product-card .recipe-num{
-    position:absolute;top:14px;right:18px;z-index:4;
-    font-family:var(--serif);font-weight:500;
-    font-size:clamp(28px, 2.6vw, 38px);
-    color:var(--gold);opacity:.55;
-    line-height:1;letter-spacing:-.02em;pointer-events:none;
-    transition:opacity .4s ease, transform .4s ease;
-  }
-  .product-card:hover .recipe-num{opacity:.85;transform:translateY(-2px)}
+  .product-card:hover{transform:translateY(-14px);box-shadow:var(--shadow-lg)}
   .product-card-wrap:hover .kitten-decor{transform:translateY(-14px) rotate(-4deg)}
 
   .kitten-decor{
@@ -1713,7 +1296,7 @@
     width:100%;aspect-ratio:5/4;
     overflow:hidden;background:var(--sage);
     margin-bottom:0;position:relative;
-    border-radius:20px 20px 0 0;
+    border-radius:24px 24px 0 0;
   }
   .product-photo img{
     width:100%;height:100%;object-fit:cover;
@@ -1723,14 +1306,10 @@
 
   /* real product photo — square container, photo blends into card (no rectangle mark) */
   .product-photo-real{
-    background:linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    background:var(--cream);
     aspect-ratio:1/1;
     display:flex;align-items:center;justify-content:center;
     isolation:isolate;
-  }
-  .product-photo-real::before{
-    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-    background:radial-gradient(circle at center, transparent 40%, rgba(163,142,72,.08) 100%);
   }
   .product-photo-real img{
     object-fit:contain;
@@ -1739,9 +1318,8 @@
     padding:0;
     transform:scale(1.4);
     mix-blend-mode:multiply;
-    transition:transform .9s cubic-bezier(.2,.7,.1,1);
   }
-  .product-card:hover .product-photo-real img{transform:scale(1.55) rotate(-2deg)}
+  .product-card:hover .product-photo-real img{transform:scale(1.48)}
 
   /* subtle bottom gradient on photo */
   .product-photo::after{
@@ -1792,51 +1370,22 @@
   .quick-view:hover svg{color:var(--cream)}
 
   .card-body{
-    padding:clamp(26px,2.6vw,38px) clamp(24px,2.5vw,36px) clamp(26px,2.6vw,36px);
+    padding:24px 26px 26px;
     position:relative;
     background:var(--cream-2);
   }
   .card-body .category{
-    font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-    font-weight:700;color:var(--gold);margin-bottom:10px;
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .card-body .category::before{
-    content:"";width:22px;height:1px;background:var(--gold);
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    font-weight:600;color:var(--sage);margin-bottom:6px;
   }
   .product-card h3{
-    font-family:var(--display);
-    font-size:clamp(26px, 2.4vw, 36px);
-    font-weight:800;
-    color:var(--olive);
-    margin-bottom:10px;
-    line-height:1.05;
-    letter-spacing:-.005em;
-    text-transform:uppercase;
+    font-family:var(--subtitle);font-size:22px;font-weight:700;letter-spacing:.005em;
+    color:var(--dark);margin-bottom:8px;line-height:1.05;
+    letter-spacing:-.01em;
   }
   .product-card .desc{
-    font-size:clamp(13px, 1.05vw, 15px);
-    line-height:1.55;
-    color:#6a6650;
-    margin-bottom:18px;
-    font-style:normal;
-    max-width:38ch;
-  }
-  /* Highlights pequeños (3 features con check gold) */
-  .product-highlights{
-    list-style:none;padding:0;margin:0 0 18px;
-    display:flex;flex-direction:column;gap:8px;
-  }
-  .product-highlights li{
-    display:flex;align-items:center;gap:10px;
-    font-size:13px;color:var(--dark);font-weight:500;
-  }
-  .product-highlights li::before{
-    content:"";flex-shrink:0;
-    width:18px;height:18px;border-radius:50%;
-    background:rgba(163,142,72,.18);
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A38E48' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 12 10 18 20 6'/></svg>");
-    background-size:11px;background-position:center;background-repeat:no-repeat;
+    font-size:13px;color:#6a6650;margin-bottom:14px;
+    font-style:italic;
   }
   .stars{display:flex;gap:2px;margin-bottom:4px;color:var(--gold);align-items:center}
   .stars svg{width:14px;height:14px}
@@ -1855,36 +1404,24 @@
     display:flex;align-items:center;justify-content:space-between;
     gap:14px;
   }
-  .price-wrap{display:flex;flex-direction:column;line-height:1.05}
+  .price-wrap{display:flex;flex-direction:column;line-height:1.1}
   .price-wrap .was{
     font-family:var(--mono);font-weight:500;
     font-size:12px;color:#a09a82;text-decoration:line-through;letter-spacing:.01em;
-    margin-bottom:2px;
   }
   .price{
-    font-family:var(--serif);
-    font-size:clamp(32px, 3vw, 44px);
-    font-weight:600;
-    color:var(--olive);
-    letter-spacing:-.02em;
-    line-height:1;
+    font-family:var(--mono);font-size:26px;font-weight:700;
+    color:var(--gold);letter-spacing:-.02em;
   }
-  .price .cur{
-    font-family:var(--mono);
-    font-size:16px;vertical-align:super;margin-right:3px;font-weight:600;
-    color:var(--gold);
-  }
-  .price small{font-family:var(--serif);font-weight:500;color:var(--gold);font-size:.5em !important}
+  .price .cur{font-size:14px;vertical-align:super;margin-right:2px;font-weight:600}
 
   .add-btn{
     background:var(--olive);color:var(--cream);
-    padding:15px 26px;border-radius:999px;
-    font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;
-    display:inline-flex;align-items:center;gap:10px;
-    transition:background .3s ease, transform .25s ease, gap .3s ease, box-shadow .3s ease;
+    padding:13px 22px;border-radius:999px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:background .3s ease, transform .25s ease, gap .3s ease;
     position:relative;overflow:hidden;
-    border:1.5px solid var(--olive);
-    box-shadow:0 8px 20px -8px rgba(50,57,21,.4);
   }
   .add-btn::before{
     content:"";position:absolute;inset:0;
@@ -1895,12 +1432,8 @@
   .add-btn:hover::before{transform:translateX(0)}
   .add-btn span{position:relative;z-index:2}
   .add-btn svg{width:14px;height:14px;position:relative;z-index:2;transition:transform .3s ease}
-  .add-btn:hover{
-    gap:14px;
-    border-color:var(--gold);color:var(--olive);
-    box-shadow:0 14px 30px -10px rgba(163,142,72,.55);
-  }
-  .add-btn:hover svg{transform:translateX(4px)}
+  .add-btn:hover{gap:12px}
+  .add-btn:hover svg{transform:translateX(3px)}
 
   /* ========== RESEÑAS ========== */
   .reviews{padding:120px 0;background:var(--cream);position:relative}
@@ -1927,7 +1460,7 @@
   .review-card .stars{margin-bottom:16px}
   .review-card .text{
     color:#3a3a28;font-size:15px;margin-bottom:24px;
-    font-style:normal;
+    font-style:italic;
   }
   .review-card .person{display:flex;gap:14px;align-items:center}
   .avatar{
@@ -2002,7 +1535,7 @@
     font-weight:800;line-height:1.05;margin-bottom:18px;
     position:relative;z-index:2;letter-spacing:.01em;text-transform:uppercase;
   }
-  .cta-banner h2 em{font-style:normal;color:var(--khaki)}
+  .cta-banner h2 em{font-style:italic;color:var(--khaki)}
   .cta-banner p{
     max-width:520px;margin:0 auto 34px;color:rgba(246,246,233,.8);
     font-size:16px;position:relative;z-index:2;
@@ -2057,76 +1590,38 @@
 
   /* ========== RESPONSIVE ========== */
   @media (max-width:1000px){
-    :root{--hero-edge:clamp(16px, 4vw, 50px)}
     .nav ul{display:none}
     .burger{display:block}
     .nav-cta{display:none}
-    .nav{gap:14px}
     .hero-grid{grid-template-columns:1fr;gap:60px}
     .hero-visual{order:-1;max-width:440px;margin:0 auto}
     .hero-image-wrap{aspect-ratio:4/4}
-    .secret-inner,.info-grid{grid-template-columns:1fr;gap:50px}
+    /* Hero: video pasa debajo del banner en mobile */
+    .hero-stage{min-height:auto}
+    .hero-banner{min-height:auto;width:100%;height:auto}
+    .hero-cat{
+      position:relative;
+      right:auto;top:auto;bottom:auto;
+      width:100%;
+      aspect-ratio:16/10;
+      box-shadow:none;
+    }
+    .info-grid{grid-template-columns:1fr;gap:50px}
     .product-grid{grid-template-columns:repeat(2,1fr);gap:24px}
     .review-grid{grid-template-columns:1fr;gap:20px}
     .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
     .info-visual .side-img{display:none}
-    .hist-grid{grid-template-columns:1fr;gap:36px}
-    .hist-poster{transform:none;max-width:520px;margin:0 auto}
-  }
-  /* Tablet / mobile grande — entre 768px y 1000px */
-  @media (max-width:768px){
-    .hero{aspect-ratio:1.8/1}
-    .hero-cat{right:4%;height:78%}
-    .brand-text{display:none}
-    .calc-actions{flex-direction:column;width:100%}
-    .calc-actions .calc-cta{width:100%}
-    .product-grid{grid-template-columns:1fr;gap:20px}
-    .calc-card{padding:clamp(22px,4vw,40px) clamp(18px,3vw,32px)}
-    .hist-card{padding:36px 26px 32px}
-    .hist-card h2{font-size:clamp(28px,7vw,42px)}
-    .hist-meta{grid-template-columns:1fr}
-    .hist-meta > div{border-right:none;border-bottom:1px solid rgba(163,142,72,.22);padding:22px 24px}
-    .hist-meta > div:last-child{border-bottom:none}
-    .hero-cta-btn{padding:9px 16px;font-size:11px;letter-spacing:.16em}
-    .faq-wrap{padding:0 18px}
-    .reviews,.benefits,.info,.faq,.ig-section,.calc-section,.historia{padding-left:0;padding-right:0}
-    .container{padding-left:20px;padding-right:20px}
   }
   @media (max-width:620px){
-    :root{--hero-edge:14px}
     .product-grid{grid-template-columns:1fr}
-    .icon-row{grid-template-columns:1fr;gap:14px}
     .footer-grid{grid-template-columns:1fr}
-    .container{padding-left:20px;padding-right:20px}
-    .hero{min-height:auto;padding:0;aspect-ratio:1.6/1}
-    .hero-cat{right:4%;height:72%}
+    .container,.nav{padding-left:20px;padding-right:20px}
+    .hero{min-height:auto;padding:60px 0 80px}
     .hero-meta{gap:22px}
     .meta-item .num{font-size:30px}
     .cta-row{flex-direction:column;align-items:stretch}
     .btn{justify-content:center}
     .float-badge{display:none}
-    /* Header más compacto */
-    .nav{padding:8px var(--hero-edge);gap:10px}
-    .brand-logo{width:38px;height:38px}
-    .nav-right{gap:10px}
-    .cart-btn{width:40px;height:40px}
-    .cart-btn svg{width:18px;height:18px}
-    .burger{width:38px;height:38px}
-    /* Calculadora full-bleed mobile */
-    .calc-section{padding:60px 0 80px}
-    .calc-head h2{font-size:clamp(22px,6vw,28px)}
-    .calc-head p{font-size:13px;padding:0 18px}
-    .calc-card{margin:0 14px;max-width:none}
-    .calc-corner{width:16px;height:16px}
-    /* WhatsApp botón flotante no debe tapar contenido en mobile */
-    .wa-float{left:14px;bottom:14px}
-    /* Cart drawer ocupa más ancho */
-    .cart-drawer{width:100% !important;max-width:380px}
-    /* Tipografía general bajada */
-    h2{font-size:clamp(24px,6vw,34px) !important}
-    .section-head h2{font-size:clamp(26px,7vw,38px)}
-    /* IG block: cuidar overflow del watermark grande */
-    .ig-section{overflow:hidden}
   }
 
   /* ============================================
@@ -2147,7 +1642,7 @@
   .explain > .container{position:relative;z-index:2}
 
   .explain-head{
-    max-width:100%;margin:0 auto 36px;text-align:center;
+    max-width:900px;margin:0 auto 80px;text-align:center;
     position:relative;
     background:transparent !important;
     padding:0;
@@ -2156,18 +1651,16 @@
   .explain-head .eyebrow-x{
     display:inline-block;
     font-size:11px;letter-spacing:.45em;text-transform:uppercase;
-    color:var(--sage);font-weight:700;margin-bottom:18px;
+    color:var(--sage);font-weight:700;margin-bottom:22px;
   }
   .explain-head h2{
     font-family:var(--display);font-weight:800;
-    font-size:clamp(20px, 3.4vw, 56px);
-    line-height:1.05;letter-spacing:.005em;text-transform:uppercase;
+    font-size:clamp(38px, 5vw, 68px);
+    line-height:1.02;letter-spacing:.01em;text-transform:uppercase;
     color:var(--olive);
-    margin:0;
-    text-align:center;
   }
   .explain-head h2 em{
-    color:var(--gold);font-style:normal;display:inline-block;
+    color:var(--gold);font-style:italic;display:inline-block;
   }
 
   /* STAT TICKER — fully transparent, just the numbers (no box, no borders) */
@@ -2203,7 +1696,7 @@
   }
   .stat-ticker .stat .num-wrap .unit{
     font-size:.38em;color:var(--gold);margin-top:.35em;font-weight:400;
-    font-style:normal;
+    font-style:italic;
   }
   .stat-ticker .stat label{
     display:block;margin-top:16px;
@@ -2215,15 +1708,13 @@
   .poster-story{
     display:grid;grid-template-columns:1fr auto 1fr;
     gap:36px;align-items:center;margin-bottom:60px;
-    max-width:1020px;margin-left:auto;margin-right:auto;
   }
   .poster-frame{
     position:relative;
     background:var(--olive);
     padding:10px;
-    border-radius:18px;
-    border:2px solid var(--gold);
-    box-shadow:0 40px 70px -35px rgba(42,40,31,.6), inset 0 0 0 1px rgba(246,237,209,.15);
+    border-radius:3px;
+    box-shadow:0 40px 70px -35px rgba(42,40,31,.6);
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
   }
   .poster-frame img,
@@ -2231,7 +1722,7 @@
     width:100%;height:auto;display:block;
     aspect-ratio:2/3;object-fit:cover;
     object-position:center center;
-    border-radius:12px;
+    border-radius:1px;
     background:var(--olive);
   }
   .poster-frame.problem{transform:rotate(-2deg)}
@@ -2255,253 +1746,15 @@
   }
   .poster-arrow svg{width:48px;height:48px}
 
-  /* Nuevo bloque explicaciones — sin números */
-  .explain-divider{
-    width:clamp(60px, 6vw, 110px);
-    height:1px;
-    background:var(--gold);
-    margin:16px auto 14px;
-    opacity:.7;
-  }
-  .explain-sub{
-    text-align:center;
-    font-family:var(--display);
-    font-size:clamp(16px, 1.6vw, 26px);
-    font-weight:500;
-    color:var(--olive);
-    margin:0 0 6px;
-    letter-spacing:.005em;
-    font-style:normal;
-  }
-  .explain-symptoms{
-    text-align:center;
-    font-family:var(--subtitle);
-    font-size:clamp(11px, 1vw, 16px);
-    color:var(--olive);
-    margin:0;
-    display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
-    gap:clamp(8px, .8vw, 14px);
-    opacity:.85;
-  }
-  .explain-tagline{
-    margin-top:0 !important;
-  }
-  .explain-symptoms .dot-sep{
-    color:var(--gold);
-    font-size:1.2em;
-    line-height:0;
-  }
-  .explain-tagline{
-    text-align:center;
-    font-family:var(--display);
-    font-size:clamp(15px, 1.5vw, 24px);
-    font-weight:700;
-    color:var(--olive);
-    letter-spacing:.04em;
-    margin:0 0 36px;
-  }
   .explain-signoff{
     text-align:center;margin:90px auto 0;
-    font-family:var(--serif);font-style:normal;font-weight:400;
+    font-family:var(--serif);font-style:italic;font-weight:400;
     font-size:22px;color:rgba(42,40,31,.7);
     letter-spacing:.01em;
   }
   .explain-signoff::before,
   .explain-signoff::after{
     content:"—";margin:0 16px;color:var(--gold);font-style:normal;opacity:.7;
-  }
-
-  /* ========== INGREDIENTES (rediseño llamativo, sage más claro) ========== */
-  .ingredients{
-    background:linear-gradient(180deg, #8a9261 0%, var(--sage) 50%, #707855 100%);
-    color:var(--cream);
-    padding:clamp(80px,9vw,140px) 0;
-    position:relative;
-    overflow:hidden;
-  }
-  /* Decoraciones: dos blobs gold sutiles + textura de puntos */
-  .ingredients::before{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:radial-gradient(circle at 2px 2px, rgba(246,246,233,.08) 1px, transparent 0);
-    background-size:32px 32px;opacity:.5;
-  }
-  .ing-deco-a, .ing-deco-b{
-    position:absolute;border-radius:50%;pointer-events:none;
-    background:radial-gradient(circle, rgba(163,142,72,.22), transparent 70%);
-    filter:blur(50px);
-  }
-  .ing-deco-a{top:-150px;left:-100px;width:480px;height:480px}
-  .ing-deco-b{bottom:-200px;right:-150px;width:560px;height:560px}
-
-  .ing-head{
-    text-align:center;
-    max-width:720px;
-    margin:0 auto clamp(50px,6vw,80px);
-    position:relative;z-index:2;
-  }
-  .ing-eyebrow{
-    display:block;
-    font-family:var(--display);
-    font-size:clamp(11px,1vw,15px);
-    color:var(--gold);
-    letter-spacing:.32em;
-    text-transform:uppercase;
-    margin-bottom:18px;
-    font-weight:600;
-  }
-  .ing-head h2{
-    font-family:var(--display);
-    font-size:clamp(30px,3.6vw,56px);
-    color:var(--cream);
-    font-weight:800;
-    margin:0 0 18px;
-    line-height:1.05;
-    text-transform:uppercase;
-    letter-spacing:.005em;
-  }
-  .ing-head h2 em{color:var(--gold);font-style:normal}
-  .ing-divider{
-    width:80px;height:2px;
-    background:var(--gold);
-    margin:0 auto 22px;
-    position:relative;opacity:.8;
-  }
-  .ing-divider span{
-    position:absolute;left:50%;top:-4px;transform:translateX(-50%) rotate(45deg);
-    width:10px;height:10px;background:var(--gold);
-  }
-  .ing-head p{
-    font-size:clamp(14px,1.2vw,17px);
-    color:rgba(246,246,233,.75);
-    margin:0;
-  }
-
-  .ingredient-grid{
-    list-style:none;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:clamp(18px,2vw,32px);
-    margin:0 auto;
-    max-width:1180px;
-    padding:0;
-    position:relative;z-index:2;
-  }
-  .ingredient-card{
-    position:relative;
-    background:linear-gradient(180deg, rgba(246,246,233,.04), rgba(246,246,233,.02));
-    backdrop-filter:blur(4px);
-    border:1px solid rgba(163,142,72,.28);
-    border-radius:16px;
-    padding:clamp(34px,3.5vw,52px) clamp(22px,2.3vw,32px) clamp(28px,3vw,42px);
-    text-align:left;
-    overflow:hidden;
-    transition:transform .45s cubic-bezier(.2,.8,.2,1),
-               border-color .35s ease,
-               box-shadow .35s ease,
-               background .35s ease;
-  }
-  /* Borde gold sutil interior */
-  .ingredient-card::before{
-    content:"";position:absolute;inset:8px;border:1px solid rgba(163,142,72,.18);
-    border-radius:10px;pointer-events:none;
-    transition:border-color .35s ease;
-  }
-  /* Gold accent ring que aparece en hover */
-  .ingredient-card::after{
-    content:"";position:absolute;top:0;left:0;width:0;height:2px;
-    background:var(--gold);transition:width .5s cubic-bezier(.2,.8,.2,1);
-  }
-  .ing-number{
-    display:block;
-    font-family:var(--serif);
-    font-size:clamp(48px,5.5vw,84px);
-    font-weight:500;
-    color:var(--gold);
-    line-height:1;
-    margin-bottom:10px;
-    letter-spacing:-.02em;
-    opacity:.55;
-    transition:opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1);
-  }
-  .ing-icon{
-    display:flex;align-items:center;justify-content:center;
-    width:clamp(56px,5vw,76px);
-    height:clamp(56px,5vw,76px);
-    margin:8px 0 22px;
-    border-radius:50%;
-    background:rgba(163,142,72,.10);
-    border:1px solid rgba(163,142,72,.35);
-    color:var(--gold);
-    transition:transform .5s cubic-bezier(.2,.8,.2,1),
-               background .35s ease,
-               border-color .35s ease,
-               color .35s ease;
-  }
-  .ing-icon svg{
-    width:60%;height:60%;
-  }
-  .ingredient-card h3{
-    font-family:var(--display);
-    font-size:clamp(18px,1.6vw,24px);
-    font-weight:700;
-    color:var(--cream);
-    margin:0 0 10px;
-    line-height:1.15;
-    letter-spacing:.01em;
-  }
-  .ing-tag{
-    display:inline-block;
-    font-family:var(--subtitle);
-    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-    color:var(--khaki);
-    font-weight:600;
-    padding-top:8px;
-    border-top:1px solid rgba(163,142,72,.25);
-    transition:color .35s ease, border-color .35s ease;
-  }
-  /* HOVER → eleva, ilumina, número y icono se animan */
-  .ingredient-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--gold);
-    background:linear-gradient(180deg, rgba(163,142,72,.12), rgba(163,142,72,.04));
-    box-shadow:0 30px 60px -28px rgba(163,142,72,.45),
-               0 0 0 1px rgba(163,142,72,.2);
-  }
-  .ingredient-card:hover::before{border-color:rgba(163,142,72,.4)}
-  .ingredient-card:hover::after{width:100%}
-  .ingredient-card:hover .ing-number{
-    opacity:.85;transform:translateX(2px);
-  }
-  .ingredient-card:hover .ing-icon{
-    transform:scale(1.08) rotate(-4deg);
-    background:var(--gold);
-    border-color:var(--gold);
-    color:var(--olive);
-  }
-  .ingredient-card:hover .ing-tag{
-    color:var(--gold);
-    border-color:var(--gold);
-  }
-
-  @media (max-width:900px){
-    .ingredient-grid{grid-template-columns:repeat(2,1fr);gap:16px}
-  }
-  @media (max-width:560px){
-    .ingredient-grid{grid-template-columns:1fr;gap:14px;max-width:440px}
-    .ingredient-card{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      grid-template-areas:
-        "number title"
-        "icon   tag";
-      gap:6px 18px;
-      padding:22px 22px 18px;
-      align-items:center;
-    }
-    .ing-number{grid-area:number;font-size:48px;margin:0;align-self:start}
-    .ingredient-card h3{grid-area:title;margin:0;align-self:end}
-    .ing-icon{grid-area:icon;width:46px;height:46px;margin:0}
-    .ing-tag{grid-area:tag;border-top:none;padding-top:0;align-self:center}
   }
 
   @media (max-width: 960px){
@@ -2538,32 +1791,6 @@
   .ig-head{
     text-align:center;max-width:760px;margin:0 auto 70px;position:relative;
   }
-  /* Watermark logo emergiendo de la esquina inferior izquierda */
-  .ig-watermark{
-    position:absolute;
-    bottom:-14%;left:-7%;
-    width:clamp(380px, 44vw, 760px);
-    height:auto;
-    opacity:.22;
-    pointer-events:none;
-    z-index:1;
-    filter:saturate(.9) brightness(1.05);
-  }
-  .ig-section > .container{position:relative;z-index:2}
-  @media (max-width:600px){
-    .ig-watermark{bottom:-8%;left:-14%;width:320px;opacity:.18}
-  }
-
-  .ig-intro{
-    text-align:center;
-    font-family:var(--display);
-    font-size:clamp(15px, 1.4vw, 22px);
-    font-style:normal;
-    color:var(--cream);
-    margin:0 0 18px;
-    opacity:.9;
-    letter-spacing:.005em;
-  }
   .ig-eyebrow{
     display:inline-flex;align-items:center;gap:14px;
     font-size:11px;letter-spacing:.45em;text-transform:uppercase;
@@ -2580,7 +1807,7 @@
     color:var(--cream);
   }
   .ig-head h2 em{
-    font-style:normal;color:var(--gold);display:inline-block;
+    font-style:italic;color:var(--gold);display:inline-block;
   }
   .ig-head p{
     margin-top:22px;font-size:17px;color:rgba(246,246,233,.75);
@@ -2673,67 +1900,6 @@
     .social-btn{padding:14px 22px;font-size:11px;letter-spacing:.25em}
     .social-cta{gap:14px}
   }
-
-  /* ========== Floating WhatsApp button (paleta de la marca, no verde fluo) ========== */
-  .wa-float{
-    position:fixed;
-    left:clamp(16px, 2vw, 28px);
-    bottom:clamp(16px, 2vw, 28px);
-    z-index:9999;
-    display:inline-flex;align-items:center;justify-content:center;gap:0;
-    width:62px;height:62px;
-    padding:0;
-    background:var(--olive);
-    color:var(--cream);
-    border:1.5px solid var(--gold);
-    border-radius:50%;
-    text-decoration:none;
-    box-shadow:0 14px 32px -10px rgba(50,57,21,.55), 0 0 0 6px rgba(163,142,72,.10);
-    overflow:hidden;
-    transition:width .35s cubic-bezier(.4,.2,.2,1), border-radius .35s ease,
-               background .25s ease, color .25s ease,
-               transform .25s ease, box-shadow .25s ease, gap .35s ease;
-    cursor:pointer;
-  }
-  .wa-float svg{flex-shrink:0;transition:transform .3s ease}
-  .wa-float-tip{
-    font-family:var(--subtitle);
-    font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
-    white-space:nowrap;
-    max-width:0;opacity:0;
-    transition:max-width .35s cubic-bezier(.4,.2,.2,1), opacity .25s ease, padding .35s ease;
-    padding:0;
-  }
-  .wa-float:hover{
-    width:200px;
-    gap:10px;
-    border-radius:36px;
-    background:var(--gold);
-    color:var(--olive);
-    transform:translateY(-3px);
-    box-shadow:0 22px 46px -14px rgba(163,142,72,.55), 0 0 0 6px rgba(163,142,72,.18);
-  }
-  .wa-float:hover .wa-float-tip{
-    max-width:160px;opacity:1;
-  }
-  .wa-float:hover svg{transform:scale(1.05)}
-  /* Pulso sutil para llamar la atención sin ser invasivo */
-  .wa-float::before{
-    content:"";position:absolute;inset:-3px;border-radius:inherit;
-    border:1.5px solid var(--gold);opacity:.5;
-    animation:waPulse 2.4s ease-out infinite;pointer-events:none;
-  }
-  @keyframes waPulse{
-    0%{transform:scale(1);opacity:.5}
-    70%{transform:scale(1.25);opacity:0}
-    100%{transform:scale(1.25);opacity:0}
-  }
-  @media (max-width:600px){
-    .wa-float{width:54px;height:54px}
-    .wa-float svg{width:22px;height:22px}
-    .wa-float:hover{width:54px;border-radius:50%}
-    .wa-float:hover .wa-float-tip{max-width:0;opacity:0;padding:0}
-  }
 </style>
 </head>
 <body>
@@ -2812,35 +1978,25 @@
 <header>
   <nav class="nav">
     <a href="#inicio" class="brand">
-      <img class="brand-logo" src="assets/logo.jpg" alt="BARFirenzina logo"/>
-      <span class="brand-text">
-        <span class="brand-name">BARFIRENZINA</span>
-      </span>
+      <span class="brand-name">BARFIRENZINA</span>
     </a>
     <ul>
       <li><a href="#inicio" class="active">Inicio</a></li>
       <li><a href="#nuestro-barf">Sobre BARF</a></li>
-      <li><a href="#ingredientes">Ingredientes</a></li>
-      <li><a href="#productos">Recetas</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#beneficios">Beneficios</a></li>
       <li><a href="#preguntas">FAQ</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav-right">
-      <button class="cart-btn" id="cartBtn" aria-label="Ver carrito">
+      <a href="https://wa.me/5491154846054" target="_blank" rel="noopener" class="nav-cta" aria-label="Consultar">
+        <img src="assets/btn-consultar.png" alt="Consultar"/>
+      </a>
+      <button class="cart-btn" id="cartBtn" aria-label="Ver carrito" style="display:none">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-count" id="cartCount">0</span>
       </button>
-      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
-        <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
-          <!-- 4 dedos juntos arriba, pegados a la almohadilla -->
-          <ellipse cx="25" cy="24" rx="5.5" ry="8"/>
-          <ellipse cx="39" cy="24" rx="5.5" ry="8"/>
-          <ellipse cx="14" cy="32" rx="5" ry="7"/>
-          <ellipse cx="50" cy="32" rx="5" ry="7"/>
-          <!-- almohadilla principal pegada -->
-          <path d="M32 32c-9 0-15 7-15 14 0 4 3 7 7 7 3.5 0 5.5-2 8-2s4.5 2 8 2c4 0 7-3 7-7 0-7-6-14-15-14z"/>
-        </svg>
-      </button>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
     </div>
   </nav>
 </header>
@@ -2884,21 +2040,18 @@
 <!-- ============= HERO ============= -->
 <section class="hero" id="inicio">
   <div class="hero-stage">
-    <img class="hero-banner" src="assets/hero-instinto.png?v=14" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
+    <img class="hero-banner" src="assets/hero-instinto.png?v=5" alt="BARFirenzina — Instinto felino, cuidado consciente"/>
     <div class="hero-cat" aria-hidden="true">
       <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
         <source src="assets/hero.mp4" type="video/mp4" />
       </video>
     </div>
-    <a href="#productos" class="hero-cta-btn" aria-label="Ver catálogo de productos">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <path d="M16 10a4 4 0 0 1-8 0"/>
-      </svg>
-      <span>Ver Catálogo</span>
-    </a>
   </div>
+</section>
+
+<!-- ============= FEATURES BANNER (4 íconos) ============= -->
+<section class="features-banner" aria-label="Beneficios destacados">
+  <img src="assets/banner-features.png" alt="Carne real de calidad · Nutrición completa · Más salud y vitalidad · Dieta alineada con naturaleza"/>
 </section>
 
 <!-- ============= MARQUEE ============= -->
@@ -2909,9 +2062,72 @@
   </div>
 </div>
 
-<!-- ============= NUESTRO COMPROMISO (banner imagen) ============= -->
-<section class="compromiso-banner">
-  <img src="assets/compromiso.jpg?v=3" alt="Nuestro Compromiso — Carne real, formulación nutricional precisa, crudo y cocido adaptado, alineado a su naturaleza"/>
+<!-- ============= INGREDIENTES (rediseño limpio y alineado) ============= -->
+<section class="ingredients" id="ingredientes">
+  <div class="container">
+    <header class="ing-header fade-in">
+      <span class="ing-kicker">— Ingredientes —</span>
+      <h2>Lo que usamos <em>importa</em></h2>
+      <p>Trazabilidad real, materia prima apta para consumo humano, sin atajos.</p>
+    </header>
+    <ul class="ing-grid fade-in">
+      <li class="ing-card">
+        <span class="ing-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 18c0-5 4-9 10-9s10 4 10 9c0 3-1 5-3 7"/>
+            <path d="M16 30c0-7 7-12 16-12s16 5 16 12c0 6-4 10-9 12l-2 12c0 2-2 4-5 4s-5-2-5-4l-2-12c-5-2-9-6-9-12z"/>
+            <circle cx="28" cy="28" r="1.5" fill="currentColor"/>
+          </svg>
+        </span>
+        <h3>Pollo Pastoril</h3>
+      </li>
+      <li class="ing-card">
+        <span class="ing-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 28c0-8 8-14 18-14s18 6 18 14c0 4-2 7-5 10 2 4 2 9-1 12-4 4-12 4-18 0-4-2-7-6-8-10-2 0-4-2-4-4z"/>
+            <path d="M22 30c2 4 6 6 10 6s8-2 10-6"/>
+          </svg>
+        </span>
+        <h3>Órganos de Vaca</h3>
+      </li>
+      <li class="ing-card">
+        <span class="ing-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <ellipse cx="32" cy="36" rx="16" ry="20"/>
+            <path d="M24 30c2-4 6-7 10-7" opacity=".6"/>
+          </svg>
+        </span>
+        <h3>Huevos libres de jaula</h3>
+      </li>
+      <li class="ing-card">
+        <span class="ing-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 12c-3 0-5 2-5 5 0 2 1 4 3 5l-6 8c-2 2-2 5 0 7 2 2 5 2 7 0l8-6c1 2 3 3 5 3 3 0 5-2 5-5 0-2-1-4-3-5l6-8c2-2 2-5 0-7-2-2-5-2-7 0l-8 6c-1-2-3-3-5-3z"/>
+          </svg>
+        </span>
+        <h3>Calcio Natural</h3>
+      </li>
+      <li class="ing-card">
+        <span class="ing-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 26h36l-3 24c-.5 3-3 6-7 6H24c-4 0-6.5-3-7-6z"/>
+            <path d="M12 26h40" stroke-width="2.4"/>
+            <path d="M22 16c0 2-2 3-2 5M32 14c0 3-3 4-3 7M42 16c0 2-2 3-2 5" opacity=".7"/>
+          </svg>
+        </span>
+        <h3>Caldo de Huesos</h3>
+      </li>
+      <li class="ing-card">
+        <span class="ing-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="14" y="22" width="36" height="20" rx="10"/>
+            <path d="M32 22v20"/>
+          </svg>
+        </span>
+        <h3>Suplementos</h3>
+      </li>
+    </ul>
+  </div>
 </section>
 
 <!-- ============= NUESTRO BARF / INFO ============= -->
@@ -2932,9 +2148,23 @@
       </div>
     </div>
     <div class="fade-in">
-      <span class="section-eyebrow">Acompañamiento</span>
-      <h2>No estás solo en el <em>cambio</em></h2>
-      <p class="body">Cambiar la alimentación de un gato no es trivial: cada uno tiene su carácter, sus tiempos y sus mañas. Por eso te asesoramos uno a uno por WhatsApp, ajustamos las porciones a tu rutina y resolvemos las dudas que aparecen en el camino. Vos no transicionás solo, y tu gato tampoco.</p>
+      <span class="section-eyebrow">Nuestro BARF</span>
+      <h2>Lo que come un gato <em>salvaje</em>, con estándares de laboratorio.</h2>
+      <p class="body">BARF significa Biologically Appropriate Raw Food. Cada receta está formulada por veterinarios nutricionistas para imitar la dieta ancestral del felino, respetando sus necesidades anatómicas y metabólicas reales.</p>
+      <ul class="feature-list">
+        <li>
+          <div class="num">01</div>
+          <div class="txt"><strong>Selección de materia prima</strong><span>Carnes frescas de productores locales, certificadas para consumo humano.</span></div>
+        </li>
+        <li>
+          <div class="num">02</div>
+          <div class="txt"><strong>Balance nutricional</strong><span>Proporción exacta de músculo, órganos y huesos carnosos molidos.</span></div>
+        </li>
+        <li>
+          <div class="num">03</div>
+          <div class="txt"><strong>Frío continuo</strong><span>Elaboración en cámaras a 2°C y entrega en cadena de frío hasta tu casa.</span></div>
+        </li>
+      </ul>
       <a href="#productos" class="btn btn-primary">
         Empezar ahora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -2943,111 +2173,13 @@
   </div>
 </section>
 
-<!-- ============= INGREDIENTES (Lo que usamos importa) ============= -->
-<section class="ingredients" id="ingredientes">
-  <div class="ing-deco-a" aria-hidden="true"></div>
-  <div class="ing-deco-b" aria-hidden="true"></div>
-  <div class="container">
-    <header class="ing-head fade-in">
-      <span class="ing-eyebrow">— Ingredientes —</span>
-      <h2>Lo que usamos <em>importa</em></h2>
-      <div class="ing-divider"><span></span></div>
-      <p>Trazabilidad real, materia prima apta para consumo humano, sin atajos.</p>
-    </header>
-    <ul class="ingredient-grid fade-in stagger">
-      <li class="ingredient-card">
-        <span class="ing-number">01</span>
-        <div class="ing-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M22 18c0-5 4-9 10-9s10 4 10 9c0 3-1 5-3 7"/>
-            <path d="M16 30c0-7 7-12 16-12s16 5 16 12c0 6-4 10-9 12l-2 12c0 2-2 4-5 4s-5-2-5-4l-2-12c-5-2-9-6-9-12z"/>
-            <circle cx="28" cy="28" r="1.2" fill="currentColor"/>
-            <path d="M40 22c2 0 4 2 4 4"/>
-          </svg>
-        </div>
-        <h3>Pollo Pastoril</h3>
-        <span class="ing-tag">Carne magra</span>
-      </li>
-      <li class="ingredient-card">
-        <span class="ing-number">02</span>
-        <div class="ing-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 28c0-8 8-14 18-14s18 6 18 14c0 4-2 7-5 10 2 4 2 9-1 12-4 4-12 4-18 0-4-2-7-6-8-10-2 0-4-2-4-4 0-3 0-5 0-8z"/>
-            <path d="M22 30c2 4 6 6 10 6s8-2 10-6"/>
-            <circle cx="28" cy="26" r="1.5" fill="currentColor"/>
-            <circle cx="40" cy="26" r="1.5" fill="currentColor"/>
-          </svg>
-        </div>
-        <h3>Órganos de Vaca</h3>
-        <span class="ing-tag">Vísceras frescas</span>
-      </li>
-      <li class="ingredient-card">
-        <span class="ing-number">03</span>
-        <div class="ing-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <ellipse cx="32" cy="36" rx="16" ry="20"/>
-            <path d="M24 30c2-4 6-7 10-7" opacity=".6"/>
-            <circle cx="27" cy="32" r="1.2" fill="currentColor" opacity=".4"/>
-          </svg>
-        </div>
-        <h3>Huevos libres de jaula</h3>
-        <span class="ing-tag">Aves felices</span>
-      </li>
-      <li class="ingredient-card">
-        <span class="ing-number">04</span>
-        <div class="ing-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 22c0-4 3-7 7-7s7 3 7 7c0 2-1 3-2 4l4 6 4-6c-1-1-2-2-2-4 0-4 3-7 7-7s7 3 7 7-3 7-7 7c-1 0-2 0-3-1l-5 7 5 7c1-1 2-1 3-1 4 0 7 3 7 7s-3 7-7 7-7-3-7-7c0-2 1-3 2-4l-4-6-4 6c1 1 2 2 2 4 0 4-3 7-7 7s-7-3-7-7 3-7 7-7c1 0 2 0 3 1l5-7-5-7c-1 1-2 1-3 1-4 0-7-3-7-7z"/>
-          </svg>
-        </div>
-        <h3>Calcio Natural</h3>
-        <span class="ing-tag">De hueso molido</span>
-      </li>
-      <li class="ingredient-card">
-        <span class="ing-number">05</span>
-        <div class="ing-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 26h36l-3 24c-.5 3-3 6-7 6H24c-4 0-6.5-3-7-6z"/>
-            <path d="M12 26h40" stroke-width="2.4"/>
-            <path d="M22 16c0 2-2 3-2 5M32 14c0 3-3 4-3 7M42 16c0 2-2 3-2 5" opacity=".7"/>
-            <circle cx="28" cy="38" r="1.5" fill="currentColor" opacity=".5"/>
-            <circle cx="36" cy="44" r="1.2" fill="currentColor" opacity=".5"/>
-          </svg>
-        </div>
-        <h3>Caldo de Huesos</h3>
-        <span class="ing-tag">Cocción lenta</span>
-      </li>
-      <li class="ingredient-card">
-        <span class="ing-number">06</span>
-        <div class="ing-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="14" y="22" width="36" height="20" rx="10"/>
-            <path d="M32 22v20"/>
-            <circle cx="22" cy="32" r="1.5" fill="currentColor"/>
-            <circle cx="42" cy="32" r="1.5" fill="currentColor"/>
-            <path d="M8 32h4M52 32h4" opacity=".5"/>
-          </svg>
-        </div>
-        <h3>Suplementos</h3>
-        <span class="ing-tag">Taurina + vitaminas</span>
-      </li>
-    </ul>
-  </div>
-</section>
-
 <!-- ============= PRODUCTOS ============= -->
 <section class="products" id="productos">
-  <div class="products-blobs" aria-hidden="true">
-    <div class="products-blob b1"></div>
-    <div class="products-blob b2"></div>
-    <div class="products-blob b3"></div>
-  </div>
-  <div class="products-shine" aria-hidden="true"></div>
   <div class="container">
     <div class="section-head fade-in">
-      <span class="eye">Nuestras Recetas</span>
-      <h2>Crudo o <em>Cocido</em>.<br>Vos elegís.</h2>
-      <p>Dos formatos con la misma fórmula nutricional, adaptados a lo que tu gato prefiere y necesita.</p>
+      <span class="eye">Catálogo</span>
+      <h2>Nuestras Recetas</h2>
+      <p>Pequeños lotes, frescura garantizada. Elegí la receta que mejor calce con el paladar de tu gato.</p>
     </div>
 
     <div class="product-grid two-cols stagger fade-in">
@@ -3068,7 +2200,6 @@
         </g>
       </svg>
       <article class="product-card" data-id="1" data-name="BARF Crudo" data-price="13" data-img="assets/barf-crudo.jpg">
-        <span class="recipe-num">01</span>
         <div class="ribbon">Bestseller</div>
         <div class="product-photo product-photo-real">
           <div class="tag gold">Más Vendido</div>
@@ -3081,12 +2212,7 @@
         <div class="card-body">
           <div class="category">Receta Cruda</div>
           <h3>BARF Crudo</h3>
-          <p class="desc">Carne y órganos frescos sin cocción. Nutrientes biológicamente intactos, listos para servir.</p>
-          <ul class="product-highlights">
-            <li>Cadena de frío 100% controlada</li>
-            <li>Sin conservantes ni aditivos</li>
-            <li>Formulado por nutricionistas</li>
-          </ul>
+          <p class="desc">Carne y órganos frescos, sin cocción. Nutrientes biológicamente intactos.</p>
           <div class="stars">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
@@ -3126,7 +2252,6 @@
         </g>
       </svg>
       <article class="product-card" data-id="2" data-name="BARF Cocido" data-price="13" data-img="assets/barf-cocido.jpg">
-        <span class="recipe-num">02</span>
         <div class="product-photo product-photo-real">
           <div class="tag">Suave</div>
           <button class="quick-view" aria-label="Vista rápida">
@@ -3139,11 +2264,6 @@
           <div class="category">Receta Cocida</div>
           <h3>BARF Cocido</h3>
           <p class="desc">La misma fórmula, cocida a baja temperatura. Ideal para gatos sensibles o senior.</p>
-          <ul class="product-highlights">
-            <li>Cocción lenta a baja temperatura</li>
-            <li>Más digerible para gatos delicados</li>
-            <li>Misma trazabilidad de ingredientes</li>
-          </ul>
           <div class="stars">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
@@ -3170,82 +2290,6 @@
   </div>
 </section>
 
-<!-- ============= CALCULADORA DE PORCIONES VINTAGE ============= -->
-<section class="calc-section" id="calculadora">
-  <div class="container">
-    <header class="calc-head fade-in">
-      <span class="calc-eyebrow">— Calculadora —</span>
-      <h2>¿Cuánto BARF necesita tu gato?</h2>
-      <p>Calculá la porción diaria recomendada según el peso, edad y nivel de actividad de tu felino.</p>
-    </header>
-
-    <div class="calc-card fade-in">
-      <div class="calc-corner tl"></div>
-      <div class="calc-corner tr"></div>
-      <div class="calc-corner bl"></div>
-      <div class="calc-corner br"></div>
-
-      <div class="calc-grid">
-        <label class="calc-field">
-          <span class="calc-label">Peso del gato</span>
-          <div class="calc-input-wrap">
-            <input type="number" id="calcWeight" min="0.5" max="20" step="0.1" value="4" inputmode="decimal"/>
-            <span class="calc-unit">kg</span>
-          </div>
-        </label>
-
-        <label class="calc-field">
-          <span class="calc-label">Edad</span>
-          <select id="calcAge">
-            <option value="kitten">Cachorro (2 - 12 meses)</option>
-            <option value="adult" selected>Adulto (1 - 7 años)</option>
-            <option value="senior">Senior (8+ años)</option>
-          </select>
-        </label>
-
-        <label class="calc-field">
-          <span class="calc-label">Nivel de actividad</span>
-          <select id="calcActivity">
-            <option value="low">Bajo (vida sedentaria, en interior)</option>
-            <option value="medium" selected>Medio (juega y se mueve)</option>
-            <option value="high">Alto (muy activo, sale a pasear)</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="calc-divider"><span></span></div>
-
-      <div class="calc-result">
-        <div class="calc-result-row">
-          <div class="calc-result-item">
-            <div class="calc-result-num" id="calcDaily">120</div>
-            <div class="calc-result-label">gramos por día</div>
-          </div>
-          <div class="calc-result-divider"></div>
-          <div class="calc-result-item">
-            <div class="calc-result-num" id="calcMonthly">3,6</div>
-            <div class="calc-result-label">kilos por mes</div>
-          </div>
-          <div class="calc-result-divider"></div>
-          <div class="calc-result-item">
-            <div class="calc-result-num" id="calcBags">7-8</div>
-            <div class="calc-result-label">bolsas/mes (500g)</div>
-          </div>
-        </div>
-        <p class="calc-note">* Valores orientativos. Para planes personalizados consultanos por WhatsApp.</p>
-      </div>
-
-      <div class="calc-actions">
-        <a href="#productos" class="calc-cta">Ver productos →</a>
-        <a class="calc-cta calc-cta-wa" href="https://wa.me/5491154846054?text=Hola!%20Quiero%20una%20consulta%20personalizada%20para%20mi%20gato" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785a9.85 9.85 0 0 1-5.014-1.371l-.36-.214-3.726.978.995-3.633-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.889-9.884a9.825 9.825 0 0 1 6.99 2.898 9.825 9.825 0 0 1 2.892 6.992c-.002 5.45-4.437 9.868-9.921 9.868zM20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.998 11.998 0 0 0 5.71 1.447h.005c6.582 0 11.94-5.335 11.943-11.893A11.821 11.821 0 0 0 20.52 3.449"/></svg>
-          <span>Consulta personalizada</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============= HISTORIA BARFirenzina (redesign) ============= -->
 <section class="historia" id="historia">
   <!-- Animated background: drifting color blobs + floating paw prints -->
@@ -3260,13 +2304,15 @@
     <div class="hist-paw p4"><svg viewBox="0 0 64 64"><path d="M20 14c-3 0-5 3-5 7s2 7 5 7 5-3 5-7-2-7-5-7zm24 0c-3 0-5 3-5 7s2 7 5 7 5-3 5-7-2-7-5-7zM10 28c-3 0-5 3-5 6s2 6 5 6 5-3 5-6-2-6-5-6zm44 0c-3 0-5 3-5 6s2 6 5 6 5-3 5-6-2-6-5-6zM32 30c-8 0-14 8-14 16 0 4 3 7 7 7 3 0 5-2 7-2s4 2 7 2c4 0 7-3 7-7 0-8-6-16-14-16z"/></svg></div>
   </div>
 
+  <div class="hist-rec"><span></span>Filmado en nuestra cocina</div>
+
   <div class="container">
     <div class="hist-inner">
       <div class="hist-card fade-in">
         <span class="hist-eyebrow">Historia BARFirenzina</span>
-        <h2>Cocinamos para los que <em>no piden permiso</em></h2>
+        <h2>Porque un gato <em>no pide permiso.</em></h2>
         <div class="hist-divider"><span></span></div>
-        <p>BARFirenzina nació de la convicción de que el instinto felino no se discute. Cada receta se elabora en lotes pequeños, con materia prima apta para consumo humano y una trazabilidad que no se negocia. Porque alimentar bien a un gato no es una moda: es respetar lo que ya sabe pedir.</p>
+        <p>Nacimos del vínculo con nuestros propios felinos. Entendimos que su instinto no negocia — y que la comida que merecen tampoco debería hacer concesiones. Cocinamos cada receta en lotes pequeños, con materia prima apta para consumo humano y una cadena de frío que nunca se corta.</p>
         <a href="#productos" class="hist-btn">Ver recetas
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -3280,6 +2326,11 @@
       </div>
     </div>
 
+    <div class="hist-meta fade-in">
+      <div><span class="hm-n">2020</span><span class="hm-l">Fundación</span></div>
+      <div><span class="hm-n">+5.000</span><span class="hm-l">Gatos felices</span></div>
+      <div><span class="hm-n">48 hs</span><span class="hm-l">Cadena de frío</span></div>
+    </div>
   </div>
 </section>
 
@@ -3287,22 +2338,33 @@
 <section class="explain" id="explicaciones">
   <div class="container">
     <header class="explain-head fade-in">
-      <h2>NO TODO LO QUE NORMALIZAMOS ES NATURAL</h2>
-      <div class="explain-divider"></div>
-      <p class="explain-sub">Nos acostumbramos a cosas que no deberían pasar</p>
-      <p class="explain-symptoms">
-        <span>Vómitos frecuentes</span>
-        <span class="dot-sep">•</span>
-        <span>Alimentos que no entendemos</span>
-        <span class="dot-sep">•</span>
-        <span>Digestiones pesadas</span>
-      </p>
+      <span class="eyebrow-x">Explicaciones</span>
+      <h2>La diferencia, <em>en números</em>.</h2>
     </header>
 
-    <p class="explain-tagline fade-in">PERO UN GATO SANO NO DEBERÍA VIVIR ASÍ.</p>
+    <div class="stat-ticker fade-in">
+      <div class="stat" data-target="92">
+        <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
+        <label>Humedad natural</label>
+      </div>
+      <div class="stat" data-target="0">
+        <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
+        <label>Conservantes</label>
+      </div>
+      <div class="stat" data-target="100">
+        <div class="num-wrap"><span class="num">0</span><span class="unit">%</span></div>
+        <label>Proteína animal</label>
+      </div>
+      <div class="stat" data-target="2">
+        <div class="num-wrap"><span class="num">0</span><span class="unit">°C</span></div>
+        <label>Cadena de frío</label>
+      </div>
+    </div>
 
     <!-- =========================================================
-      POSTER STORY — videos hospedados en /videos/
+      POSTER STORY — videos hospedados en /videos/ (carpeta aparte)
+      Subí explain-problem.mp4 y explain-solution.mp4 a /videos/
+      (o cambiá los src por una URL externa de Cloudinary/Vimeo/etc).
     ========================================================= -->
     <div class="poster-story fade-in">
       <div class="poster-frame problem">
@@ -3323,6 +2385,8 @@
         <span class="p-label">La solución</span>
       </div>
     </div>
+
+    <p class="explain-signoff fade-in">Datos reales. Sin letra chica.</p>
   </div>
 </section>
 
@@ -3355,13 +2419,11 @@
   automáticamente los blockquotes y los convierte en posts embebidos.
 ======================================================================= -->
 <section class="ig-section" id="instagram">
-  <img class="ig-watermark" src="assets/logo-watermark.png" alt="" aria-hidden="true"/>
   <div class="container">
     <header class="ig-head fade-in">
       <span class="ig-eyebrow">Comunidad</span>
-      <p class="ig-intro">No vendemos solo alimento. Construimos una comunidad.</p>
       <h2>Seguinos en <em>@barfirenzina</em></h2>
-      <p>Detrás de cada bolsa hay un gato con nombre, una historia y una transición. Acá compartimos esos momentos: el primer plato, los avances, las dudas, las pequeñas victorias. Sumate, contanos cómo le va al tuyo, y escribinos por WhatsApp cuando quieras un consejo personalizado.</p>
+      <p>Gatos felices, recetas del día y detrás de escena. Escribinos por WhatsApp para asesoramiento personalizado.</p>
     </header>
 
     <div class="ig-grid fade-in">
@@ -3499,12 +2561,12 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
         </div>
-        <p class="text">Mateo era de los gatos que jugaban con la comida sin comerla. Probamos BARFirenzina y a la semana ya esperaba el plato. Encima volvió a tener energía para correr por toda la casa.</p>
+        <p class="text">Recomiendo BARFirenzina a todos mis pacientes. La calidad de las recetas y la trazabilidad de los ingredientes es excepcional.</p>
         <div class="person">
           <div class="avatar">M</div>
           <div>
-            <div class="name">Mariana López</div>
-            <div class="role">Cliente desde 2023 · Villa Crespo</div>
+            <div class="name">Dr. Martín Saravia</div>
+            <div class="role">Veterinario felino · Belgrano</div>
           </div>
         </div>
       </div>
@@ -3578,8 +2640,8 @@
 <!-- ============= CTA BANNER ============= -->
 <section class="cta-banner" id="contacto">
   <div class="container">
-    <h2>Cambiá lo que come,<br><em>sin cambiar tu rutina</em></h2>
-    <p>BARFirenzina te llega <strong>congelado</strong>, en porciones listas para usar. Se conserva en el freezer hasta 3 meses; sacás solo la porción del día, la descongelás en la heladera, y servís. Nada de mezclas, ni cocción, ni preparación.</p>
+    <h2>El instinto de tu gato<br><em>merece lo mejor.</em></h2>
+    <p>Empezá hoy con un plan BARFirenzina y recibí tu primer pedido fresco, frío y listo para servir.</p>
     <a href="#productos" class="btn btn-primary">
       Hacer mi primer pedido
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -3605,8 +2667,7 @@
         <ul>
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#nuestro-barf">Nuestro BARF</a></li>
-          <li><a href="#ingredientes">Ingredientes</a></li>
-          <li><a href="#productos">Recetas</a></li>
+          <li><a href="#productos">Productos</a></li>
           <li><a href="#resenas">Reseñas</a></li>
           <li><a href="#preguntas">Preguntas</a></li>
         </ul>
@@ -4001,58 +3062,8 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
   goShop.addEventListener('click', (e)=>{ e.preventDefault(); close(); const p = document.getElementById('productos'); if(p) p.scrollIntoView({behavior:'smooth'}); });
 
-  // Reproduce un maullido al finalizar la compra
-  // Si existe assets/meow.mp3, lo usa; sino genera uno sintético con Web Audio API
-  let meowAudio = null;
-  function playMeow(){
-    try {
-      if(!meowAudio){
-        meowAudio = new Audio('assets/meow.mp3');
-        meowAudio.volume = 0.65;
-        meowAudio.preload = 'auto';
-      }
-      meowAudio.currentTime = 0;
-      const p = meowAudio.play();
-      if(p && p.catch) p.catch(()=> playSyntheticMeow());
-    } catch(e){ playSyntheticMeow(); }
-  }
-  function playSyntheticMeow(){
-    try {
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      if(!Ctx) return;
-      const ctx = new Ctx();
-      const now = ctx.currentTime;
-      const osc = ctx.createOscillator();
-      osc.type = 'sawtooth';
-      // Sweep "MI" sube, "AU" baja → forma fonética de maullido
-      osc.frequency.setValueAtTime(450, now);
-      osc.frequency.linearRampToValueAtTime(720, now + 0.12);
-      osc.frequency.exponentialRampToValueAtTime(280, now + 0.55);
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.Q.value = 6;
-      filter.frequency.setValueAtTime(1200, now);
-      filter.frequency.linearRampToValueAtTime(2400, now + 0.12);
-      filter.frequency.exponentialRampToValueAtTime(800, now + 0.55);
-
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(0.28, now + 0.04);
-      gain.gain.linearRampToValueAtTime(0.20, now + 0.20);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
-
-      osc.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.65);
-      // Cierra el contexto cuando termina
-      setTimeout(()=>{ try{ ctx.close(); }catch(e){} }, 800);
-    } catch(e){}
-  }
-
   checkoutBtn.addEventListener('click', ()=>{
     if(cart.length===0) return;
-    playMeow();
     showToast('¡Gracias! Te contactaremos para finalizar el pedido.');
     cart = []; save(); render();
     setTimeout(close, 1200);
@@ -4089,22 +3100,25 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   render();
 })();
 
-/* ===================== BURGER (mobile paw menu toggle) ===================== */
+/* ===================== BURGER (mobile nav toggle — simple reveal) ===================== */
 const burger = document.getElementById('burger');
 if(burger){
-  const ul = document.querySelector('.nav ul');
   burger.addEventListener('click', ()=>{
-    const open = ul.classList.toggle('is-open');
-    burger.classList.toggle('is-open', open);
-    burger.setAttribute('aria-expanded', open);
-  });
-  // Cerrar al click en cualquier link del menu
-  ul.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click', ()=>{
-      ul.classList.remove('is-open');
-      burger.classList.remove('is-open');
-      burger.setAttribute('aria-expanded', 'false');
-    });
+    const ul = document.querySelector('.nav ul');
+    if(ul.style.display === 'flex'){
+      ul.style.display = 'none';
+    } else {
+      ul.style.display = 'flex';
+      ul.style.position = 'absolute';
+      ul.style.top = '72px';
+      ul.style.left = 0;
+      ul.style.right = 0;
+      ul.style.flexDirection = 'column';
+      ul.style.background = 'var(--olive)';
+      ul.style.padding = '20px 32px';
+      ul.style.gap = '18px';
+      ul.style.borderBottom = '1px solid rgba(246,246,233,.1)';
+    }
   });
 }
 
@@ -4118,44 +3132,7 @@ if(heroImg){
     }
   }, {passive:true});
 }
-
-/* ===================== CALCULADORA DE PORCIONES ===================== */
-(function(){
-  const w = document.getElementById('calcWeight');
-  const a = document.getElementById('calcAge');
-  const act = document.getElementById('calcActivity');
-  const dailyEl = document.getElementById('calcDaily');
-  const monthlyEl = document.getElementById('calcMonthly');
-  const bagsEl = document.getElementById('calcBags');
-  if(!w || !a || !act) return;
-
-  // Multiplicadores aproximados de g/kg/día según etapa y actividad
-  // BARF típico = 3-5% del peso corporal/día
-  const ageFactor = { kitten: 0.055, adult: 0.035, senior: 0.030 };
-  const actFactor = { low: 0.85, medium: 1.0, high: 1.15 };
-
-  function calc(){
-    const weight = Math.max(0.5, Math.min(20, parseFloat(w.value) || 4));
-    const ageMult = ageFactor[a.value] || 0.035;
-    const actMult = actFactor[act.value] || 1.0;
-    const grams = Math.round(weight * 1000 * ageMult * actMult);
-    const monthly = (grams * 30) / 1000;
-    const bagsMin = Math.floor(monthly * 1000 / 500);
-    const bagsMax = Math.ceil(monthly * 1000 / 500);
-    dailyEl.textContent = grams;
-    monthlyEl.textContent = monthly.toFixed(1).replace('.', ',');
-    bagsEl.textContent = bagsMin === bagsMax ? bagsMin : `${bagsMin}-${bagsMax}`;
-  }
-  [w, a, act].forEach(el => el.addEventListener('input', calc));
-  calc();
-})();
 </script>
-
-<!-- Botón flotante de WhatsApp (ajornado al estilo de la marca) -->
-<a class="wa-float" href="https://wa.me/5491154846054?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20BARFirenzina" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
-  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785a9.85 9.85 0 0 1-5.014-1.371l-.36-.214-3.726.978.995-3.633-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.889-9.884a9.825 9.825 0 0 1 6.99 2.898 9.825 9.825 0 0 1 2.892 6.992c-.002 5.45-4.437 9.868-9.921 9.868zM20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.998 11.998 0 0 0 5.71 1.447h.005c6.582 0 11.94-5.335 11.943-11.893A11.821 11.821 0 0 0 20.52 3.449"/></svg>
-  <span class="wa-float-tip">Escribinos</span>
-</a>
 
 </body>
 </html>
