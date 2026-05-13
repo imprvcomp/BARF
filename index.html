@@ -2297,8 +2297,8 @@
 
   /* ========== INGREDIENTES (menu editorial, split layout) ========== */
   .ingredients{
-    background:var(--cream);
-    color:var(--olive);
+    background:var(--olive);
+    color:var(--cream);
     padding:90px 0;
     position:relative;
     overflow:hidden;
@@ -2307,7 +2307,7 @@
   .ingredients::before,
   .ingredients::after{
     content:"";position:absolute;left:0;right:0;height:1px;
-    background:linear-gradient(90deg, transparent, rgba(163,142,72,.35) 50%, transparent);
+    background:linear-gradient(90deg, transparent, rgba(163,142,72,.45) 50%, transparent);
   }
   .ingredients::before{top:0}
   .ingredients::after{bottom:0}
@@ -2331,7 +2331,7 @@
     font-family:var(--display);
     font-size:54px;
     font-weight:800;
-    color:var(--olive);
+    color:var(--cream);
     line-height:.98;
     margin:0 0 24px;
     text-transform:uppercase;
@@ -2341,7 +2341,7 @@
   .ing-aside p{
     font-size:15px;
     line-height:1.65;
-    color:rgba(50,57,21,.7);
+    color:rgba(246,246,233,.7);
     max-width:340px;
     margin:0 0 36px;
   }
@@ -2356,11 +2356,11 @@
     align-items:baseline;
     gap:24px;
     padding:24px 0;
-    border-top:1px solid rgba(50,57,21,.15);
+    border-top:1px solid rgba(246,246,233,.18);
     position:relative;
     transition:padding .3s ease;
   }
-  .ing-item:last-child{border-bottom:1px solid rgba(50,57,21,.15)}
+  .ing-item:last-child{border-bottom:1px solid rgba(246,246,233,.18)}
   .ing-num{
     font-family:var(--serif);
     font-size:18px;
@@ -2374,7 +2374,7 @@
     font-family:var(--display);
     font-size:28px;
     font-weight:600;
-    color:var(--olive);
+    color:var(--cream);
     line-height:1;
     letter-spacing:-.005em;
     transition:color .3s ease, transform .3s ease;
@@ -2385,7 +2385,7 @@
     font-size:11px;
     letter-spacing:.28em;
     text-transform:uppercase;
-    color:rgba(50,57,21,.5);
+    color:rgba(246,246,233,.5);
     font-weight:600;
     line-height:1;
     white-space:nowrap;
@@ -2398,7 +2398,7 @@
     color:var(--gold);
   }
   .ing-item:hover .ing-num{
-    color:var(--olive);
+    color:var(--cream);
   }
 
   @media (max-width:900px){
