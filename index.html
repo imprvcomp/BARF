@@ -2345,16 +2345,6 @@
     max-width:340px;
     margin:0 0 36px;
   }
-  /* Sello circular decorativo "apto humano" */
-  .ing-stamp{
-    display:inline-block;
-    width:104px;height:104px;
-    color:var(--gold);
-    opacity:.75;
-    transform:rotate(-8deg);
-  }
-  .ing-stamp svg{width:100%;height:100%}
-
   /* Columna derecha — lista tipo menu */
   .ing-list{
     list-style:none;padding:0;margin:0;
@@ -2390,12 +2380,6 @@
     transition:color .3s ease, transform .3s ease;
     transform-origin:left center;
   }
-  .ing-line{
-    height:1px;
-    background:repeating-linear-gradient(90deg, rgba(50,57,21,.25) 0 4px, transparent 4px 8px);
-    align-self:center;
-    min-width:40px;
-  }
   .ing-meta{
     font-family:var(--subtitle);
     font-size:11px;
@@ -2420,7 +2404,6 @@
   @media (max-width:900px){
     .ing-wrap{grid-template-columns:1fr;gap:50px}
     .ing-aside h2{font-size:42px}
-    .ing-stamp{display:none}
   }
   @media (max-width:560px){
     .ingredients{padding:70px 0}
@@ -2431,7 +2414,6 @@
       padding:20px 0;
     }
     .ing-name{font-size:20px}
-    .ing-line{display:none}
     .ing-meta{
       grid-column:1 / -1;
       margin-top:4px;
@@ -2882,49 +2864,36 @@
       <span class="ing-eyebrow">— Ingredientes —</span>
       <h2>Lo que usamos<br><em>importa</em></h2>
       <p>Trazabilidad real, materia prima apta para consumo humano. Cada ingrediente, elegido con criterio.</p>
-      <div class="ing-stamp">
-        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <circle cx="32" cy="32" r="28"/>
-          <circle cx="32" cy="32" r="22" stroke-dasharray="2 3"/>
-          <text x="32" y="36" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="11" font-style="italic" fill="currentColor" stroke="none">apto humano</text>
-        </svg>
-      </div>
     </aside>
     <ol class="ing-list fade-in">
       <li class="ing-item">
         <span class="ing-num">01</span>
         <span class="ing-name">Pollo Pastoril</span>
-        <span class="ing-line" aria-hidden="true"></span>
         <span class="ing-meta">Carne magra</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">02</span>
         <span class="ing-name">Órganos de Vaca</span>
-        <span class="ing-line" aria-hidden="true"></span>
         <span class="ing-meta">Vísceras frescas</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">03</span>
         <span class="ing-name">Huevos libres de jaula</span>
-        <span class="ing-line" aria-hidden="true"></span>
         <span class="ing-meta">Aves felices</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">04</span>
         <span class="ing-name">Calcio Natural</span>
-        <span class="ing-line" aria-hidden="true"></span>
         <span class="ing-meta">De hueso molido</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">05</span>
         <span class="ing-name">Caldo de Huesos</span>
-        <span class="ing-line" aria-hidden="true"></span>
         <span class="ing-meta">Cocción lenta</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">06</span>
         <span class="ing-name">Suplementos</span>
-        <span class="ing-line" aria-hidden="true"></span>
         <span class="ing-meta">Taurina + vitaminas</span>
       </li>
     </ol>
