@@ -36,7 +36,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw}
   body{
-    font-family:var(--sans);
+    font-family:var(--display);
     color:var(--dark);
     background:var(--cream);
     line-height:1.6;
@@ -318,8 +318,8 @@
   .hist-poster:hover{transform:rotate(0) scale(1.02)}
   .hist-poster img,
   .hist-poster video{
-    width:100%;height:100%;display:block;object-fit:cover;
-    aspect-ratio:4/5;
+    width:100%;height:auto;display:block;
+    object-fit:contain;
     object-position:center;
     border-radius:10px;
   }
@@ -2131,7 +2131,7 @@
   .explain > .container{position:relative;z-index:2}
 
   .explain-head{
-    max-width:100%;margin:0 auto 36px;text-align:center;
+    max-width:100%;margin:0 auto 14px;text-align:center;
     position:relative;
     background:transparent !important;
     padding:0;
@@ -2152,6 +2152,10 @@
   }
   .explain-head h2 em{
     color:var(--gold);font-style:normal;display:inline-block;
+  }
+  .explain-head h2 .ocre{
+    color:#C9A86A;
+    font-style:normal;
   }
 
   /* STAT TICKER — fully transparent, just the numbers (no box, no borders) */
@@ -2260,7 +2264,7 @@
   .explain-symptoms{
     text-align:center;
     font-family:var(--subtitle);
-    font-size:clamp(11px, 1vw, 16px);
+    font-size:clamp(13px, 1.2vw, 19px);
     color:var(--olive);
     margin:0;
     display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
@@ -2848,7 +2852,7 @@
     <div class="fade-in">
       <span class="section-eyebrow">Acompañamiento</span>
       <h2>No estás solo en el <em>cambio</em></h2>
-      <p class="body">Cambiar la alimentación de un gato no es trivial: cada uno tiene su carácter, sus tiempos y sus mañas. Por eso te asesoramos uno a uno por WhatsApp, ajustamos las porciones a tu rutina y resolvemos las dudas que aparecen en el camino. Vos no transicionás solo, y tu gato tampoco.</p>
+      <p class="body">Cambiar la alimentación de un gato no es trivial: cada uno tiene su carácter, sus tiempos y sus mañas. Por eso te asesoramos personalizadamente por nuestras redes, ajustamos las porciones a tu rutina y resolvemos las dudas que aparecen en el camino. Los gatos no transicionan solos, y sus tutores tampoco.</p>
       <a href="#productos" class="btn btn-primary">
         Empezar ahora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -2863,7 +2867,7 @@
     <aside class="ing-aside fade-in">
       <span class="ing-eyebrow">— Ingredientes —</span>
       <h2>Lo que usamos<br><em>importa</em></h2>
-      <p>Trazabilidad real, materia prima apta para consumo humano. Cada ingrediente, elegido con criterio.</p>
+      <p>Trazabilidad real, ingredientes frescos elegidos con criterio. Nutrición formulada para respetar su naturaleza.</p>
     </aside>
     <ol class="ing-list fade-in">
       <li class="ing-item">
@@ -2879,12 +2883,12 @@
       <li class="ing-item">
         <span class="ing-num">03</span>
         <span class="ing-name">Huevos libres de jaula</span>
-        <span class="ing-meta">Aves felices</span>
+        <span class="ing-meta">Nutrición natural</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">04</span>
         <span class="ing-name">Calcio Natural</span>
-        <span class="ing-meta">De hueso molido</span>
+        <span class="ing-meta">Cáscara de huevo</span>
       </li>
       <li class="ing-item">
         <span class="ing-num">05</span>
@@ -2893,8 +2897,8 @@
       </li>
       <li class="ing-item">
         <span class="ing-num">06</span>
-        <span class="ing-name">Suplementos</span>
-        <span class="ing-meta">Taurina + vitaminas</span>
+        <span class="ing-name">Suplementación Precisa</span>
+        <span class="ing-meta">Taurina + Omega 3, vit. E y complejo B</span>
       </li>
     </ol>
   </div>
@@ -3152,7 +3156,7 @@
 <section class="explain" id="explicaciones">
   <div class="container">
     <header class="explain-head fade-in">
-      <h2>NO TODO LO QUE NORMALIZAMOS ES NATURAL</h2>
+      <h2><span class="ocre">NO TODO</span> LO QUE NORMALIZAMOS <span class="ocre">ES NATURAL</span></h2>
       <div class="explain-divider"></div>
       <p class="explain-sub">Nos acostumbramos a cosas que no deberían pasar</p>
       <p class="explain-symptoms">
@@ -3226,7 +3230,7 @@
       <span class="ig-eyebrow">Comunidad</span>
       <p class="ig-intro">No vendemos solo alimento. Construimos una comunidad.</p>
       <h2>Seguinos en <em>@barfirenzina</em></h2>
-      <p>Detrás de cada bolsa hay un gato con nombre, una historia y una transición. Acá compartimos esos momentos: el primer plato, los avances, las dudas, las pequeñas victorias. Sumate, contanos cómo le va al tuyo, y escribinos por WhatsApp cuando quieras un consejo personalizado.</p>
+      <p>Detrás de cada bolsa hay un gato con nombre, una historia y un proceso. Acá compartimos esos momentos: el primer plato, los avances, las dudas, las pequeñas victorias. Sumate, contanos cómo le va al tuyo, y escribinos por redes cuando necesites un consejo personalizado.</p>
     </header>
 
     <div class="ig-grid fade-in">
@@ -3444,7 +3448,7 @@
 <section class="cta-banner" id="contacto">
   <div class="container">
     <h2>El instinto de tu gato<br><em>merece lo mejor.</em></h2>
-    <p>BARFirenzina te llega <strong>congelado</strong>, en porciones listas para usar. Se conserva en el freezer hasta 3 meses; sacás solo la porción del día, la descongelás en la heladera, y servís. Nada de mezclas, ni cocción, ni preparación.</p>
+    <p>BARFirenzina te llega <strong>congelado</strong>, en porciones listas para usar. Se conserva en el freezer hasta 4 meses; sacás solo la porción del día, la descongelás en la heladera, y servís. Nada de mezclas, ni cocción, ni preparación.</p>
     <a href="#productos" class="btn btn-primary">
       Hacer mi primer pedido
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
